@@ -137,7 +137,7 @@ const Timeline = () => {
               )}
               
               <span className="relative z-10 flex items-center gap-1 sm:gap-2">
-                <span className="hidden xs:inline">Day</span> {idx + 1}
+                <span>Day {idx + 1}</span>
                 {activeDay === day && (
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-black rounded-full animate-bounce"></span>
                 )}
