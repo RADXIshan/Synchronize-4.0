@@ -32,10 +32,10 @@ const Hero = ({ startAnimation }) => {
       {/* Overlay Content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center items-center pointer-events-none px-4">
         <div ref={textRef} className="text-center mb-6 sm:mb-8 flex flex-col md:block py-4 z-100">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-display font-black italic tracking-tighter text-white inline-block drop-shadow-[0_0_40px_rgba(255,255,255,0.4)]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-display font-black italic tracking-tighter text-white inline-block">
             SYNCHRONIZE
           </h1>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-display font-black italic tracking-tighter text-cyan-400 inline-block md:ml-6 drop-shadow-[0_0_30px_rgba(0,242,255,0.6)] pb-2 pr-2">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-display font-black italic tracking-tighter text-cyan-400 inline-block md:ml-6">
             4.0
           </h1>
         </div>

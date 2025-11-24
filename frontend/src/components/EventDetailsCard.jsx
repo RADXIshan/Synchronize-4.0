@@ -17,7 +17,14 @@ const EventDetailsCard = ({ event, onClose }) => {
 
     // Lock body scroll when modal is open
     const originalOverflow = document.body.style.overflow;
+    const originalPosition = document.body.style.position;
+    const originalTop = document.body.style.top;
+    const originalWidth = document.body.style.width;
+    
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
 
     gsap.fromTo('.modal-overlay', 
       { opacity: 0 },
@@ -33,6 +40,9 @@ const EventDetailsCard = ({ event, onClose }) => {
     if (!scrollContainer) {
       // Restore everything if scrollContainer is not available
       document.body.style.overflow = originalOverflow;
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+      document.body.style.width = originalWidth;
       if (lenis) lenis.start();
       return;
     }
@@ -52,13 +62,43 @@ const EventDetailsCard = ({ event, onClose }) => {
       }
     };
 
+    // Handle touch events for mobile devices
+    let touchStartY = 0;
+    
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+    
+    const handleTouchMove = (e) => {
+      const touchY = e.touches[0].clientY;
+      const touchDelta = touchStartY - touchY;
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+      const isAtTop = scrollTop === 0;
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+      
+      // Prevent rubber-band scrolling at boundaries
+      if ((touchDelta < 0 && isAtTop) || (touchDelta > 0 && isAtBottom)) {
+        e.preventDefault();
+      }
+    };
+
     scrollContainer.addEventListener('wheel', handleWheel, { passive: false });
+    scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+    scrollContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
       scrollContainer.removeEventListener('wheel', handleWheel);
+      scrollContainer.removeEventListener('touchstart', handleTouchStart);
+      scrollContainer.removeEventListener('touchmove', handleTouchMove);
       
       // Restore body styles
       document.body.style.overflow = originalOverflow;
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+      document.body.style.width = originalWidth;
+      
+      // Restore scroll position
+      window.scrollTo(0, scrollY);
       
       // Re-enable Lenis
       if (lenis) {
@@ -91,7 +131,6 @@ const EventDetailsCard = ({ event, onClose }) => {
     <div 
       className="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4"
       onClick={handleClose}
-      onTouchMove={(e) => e.preventDefault()}
     >
       <div 
         className="modal-content relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] bg-linear-to-br from-gray-900 via-black to-gray-900 rounded-xl sm:rounded-2xl border border-cyan-400/30 shadow-2xl shadow-cyan-400/20 overflow-hidden flex flex-col"

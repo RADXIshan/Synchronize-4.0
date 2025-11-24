@@ -72,7 +72,7 @@ const Navbar = () => {
         <Link 
           to="/" 
           onClick={() => setIsOpen(false)} 
-          className="text-xl sm:text-2xl font-display font-bold tracking-tighter hover:opacity-80 transition-opacity cursor-pointer group"
+          className="text-xl sm:text-2xl font-display font-bold tracking-tighter hover:opacity-80 transition-opacity cursor-pointer group italic"
         >
           SYNCHRONIZE <span className="text-cyan-400 group-hover:text-purple-400 transition-colors duration-300">4.0</span>
         </Link>
