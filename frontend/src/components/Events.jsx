@@ -60,74 +60,47 @@ const eventsData = [
 
 const Events = () => {
   const sectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const progressRef = useRef(null);
+  const cardsRef = useRef([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
-    const scrollContainer = containerRef.current;
+    const cards = cardsRef.current;
     
-    // Calculate the total scrollable width
-    const getScrollAmount = () => {
-      return -(scrollContainer.scrollWidth - window.innerWidth);
-    };
-
-    const tween = gsap.to(scrollContainer, {
-      x: getScrollAmount,
-      ease: "none",
-    });
-
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: () => `+=${Math.abs(getScrollAmount())}`,
-      pin: true,
-      pinSpacing: true,
-      animation: tween,
-      scrub: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-         if (progressRef.current) {
-           progressRef.current.style.width = `${self.progress * 100}%`;
-         }
-      }
+    cards.forEach((card, index) => {
+      const isLast = index === cards.length - 1;
+      
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 15%",
+        end: isLast ? "bottom top" : "bottom 15%",
+        pin: !isLast,
+        pinSpacing: false,
+        scrub: 1,
+        onUpdate: (self) => {
+          if (!isLast) {
+            const progress = self.progress;
+            const scale = 1 - (progress * 0.1);
+            const yOffset = progress * 40;
+            const rotateX = progress * -8;
+            const brightness = 1 - (progress * 0.3);
+            
+            gsap.to(card, {
+              scale: scale,
+              y: yOffset,
+              rotateX: rotateX,
+              filter: `brightness(${brightness})`,
+              duration: 0.1,
+              ease: "none"
+            });
+          }
+        }
+      });
     });
 
     return () => {
-      // Kill ScrollTrigger instance
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
-
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 30;
-    const rotateY = (centerX - x) / 30;
-    
-    gsap.to(card, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      scale: 1.05,
-      duration: 0.4,
-      ease: "power2.out",
-      transformPerspective: 1000
-    });
-  };
-
-  const handleMouseLeave = (e) => {
-    gsap.to(e.currentTarget, {
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1,
-      duration: 0.6,
-      ease: "power2.out"
-    });
-  };
 
   const handleCardClick = (e, event) => {
     if (e) {
@@ -139,57 +112,72 @@ const Events = () => {
 
   return (
     <>
-    <section id="events" ref={sectionRef} className="h-screen overflow-hidden relative flex flex-col justify-center z-20">
-      <div className="container mx-auto px-4 sm:px-6 mb-6 sm:mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
-        <div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-3 sm:mb-4">
-            Featured <span className="text-cyan-400">Events</span>
-          </h2>
-          <button 
-            onClick={() => window.location.href = '/events'}
-            className="cursor-pointer px-4 sm:px-6 py-2 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105"
-          >
-            View All Events →
-          </button>
-        </div>
-        {/* Progress Bar */}
-        <div className="w-32 sm:w-48 h-1 bg-white/10 rounded-full overflow-hidden hidden md:block">
-          <div ref={progressRef} className="h-full bg-cyan-400 w-0 shadow-[0_0_15px_rgba(0,242,255,0.6)]"></div>
+    <section id="events" ref={sectionRef} className="relative py-20 z-20">
+      <div className="container mx-auto px-4 sm:px-6 mb-12 sm:mb-16 sticky top-20 z-30 pb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+          <div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-3 sm:mb-4">
+              Featured <span className="text-cyan-400">Events</span>
+            </h2>
+            <button 
+              onClick={() => window.location.href = '/events'}
+              className="cursor-pointer px-4 sm:px-6 py-2 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105"
+            >
+              View All Events →
+            </button>
+          </div>
         </div>
       </div>
 
-      <div ref={containerRef} className="flex gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 w-fit">
+      <div className="container mx-auto px-4 sm:px-6 space-y-8">
         {eventsData.map((event, index) => (
           <div 
-            key={index} 
-            className="w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[35vw] xl:w-[30vw] h-[55vh] sm:h-[60vh] relative group overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 cursor-pointer shrink-0"
-            style={{ transformStyle: 'preserve-3d' }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            key={index}
+            ref={(el) => (cardsRef.current[index] = el)}
+            className="w-full max-w-5xl mx-auto h-[70vh] sm:h-[75vh] relative group overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 cursor-pointer"
+            style={{ 
+              transformStyle: 'preserve-3d',
+              perspective: '1000px'
+            }}
             onClick={(e) => handleCardClick(e, event)}
           >
             <img 
               src={event.image} 
               alt={event.title} 
-              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-95 transition-all duration-500"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-black/20"></div>
             
             {/* Glow effect on hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-              <div className="absolute inset-0 bg-linear-to-t from-cyan-500/20 via-transparent to-transparent"></div>
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,242,255,0.15)]"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-cyan-500/30 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,242,255,0.2)]"></div>
             </div>
             
-            <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-all duration-500 ease-out">
-              <span className="text-cyan-400/70 text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2 block transition-all duration-300 group-hover:text-cyan-400 group-hover:tracking-[0.2em]">{event.category}</span>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-2 sm:mb-4 transition-all duration-300 group-hover:text-cyan-50 group-hover:scale-105 origin-left">{event.title}</h3>
-              <div className="flex items-center gap-2 text-cyan-400 transition-all duration-300 group-hover:gap-4">
-                <span className="text-xs sm:text-sm font-medium">View Details</span>
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12">
+              <div className="transform transition-all duration-500 group-hover:translate-y-[-10px]">
+                <span className="text-cyan-400/80 text-xs sm:text-sm uppercase tracking-[0.2em] mb-2 sm:mb-3 block transition-all duration-300 group-hover:text-cyan-400 group-hover:tracking-[0.3em]">
+                  {event.category}
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-3 sm:mb-4 transition-all duration-300 group-hover:text-cyan-50">
+                  {event.title}
+                </h3>
+                <p className="text-gray-300 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-2xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                  {event.description}
+                </p>
+                <div className="flex items-center gap-3 text-cyan-400 transition-all duration-300 group-hover:gap-5">
+                  <span className="text-sm sm:text-base font-medium">View Details</span>
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </div>
+            </div>
+
+            {/* Card number indicator */}
+            <div className="absolute top-6 right-6 sm:top-8 sm:right-8 text-white/20 text-6xl sm:text-7xl md:text-8xl font-display font-bold leading-none">
+              0{index + 1}
             </div>
           </div>
         ))}
