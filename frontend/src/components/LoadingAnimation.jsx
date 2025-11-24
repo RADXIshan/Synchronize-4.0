@@ -69,7 +69,7 @@ const LoadingAnimation = ({ loaderRef, loadingText = "Preparing Launch..." }) =>
         // Slow downward movement for parallax effect
         gsap.to(star, {
           y: '+=150',
-          duration: 10 + Math.random() * 10,
+          duration: 50 + Math.random() * 20,
           repeat: -1,
           ease: "linear"
         });

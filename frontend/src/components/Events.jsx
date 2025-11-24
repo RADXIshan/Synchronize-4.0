@@ -147,7 +147,7 @@ const Events = () => {
           </h2>
           <button 
             onClick={() => window.location.href = '/events'}
-            className="px-4 sm:px-6 py-2 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105"
+            className="cursor-pointer px-4 sm:px-6 py-2 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105"
           >
             View All Events →
           </button>
