@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -75,7 +75,7 @@ const Navbar = () => {
                 to={link.href}
                 ref={el => linksRef.current[index] = el}
                 onClick={() => setIsOpen(false)}
-                className="text-5xl md:text-7xl font-display font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-gray-400 hover:to-cyan-400 transition-all duration-300 opacity-0"
+                className="text-5xl md:text-7xl font-display font-bold text-white hover:text-white/60 transition-all duration-300 opacity-0"
               >
                 {link.name}
               </Link>
@@ -85,7 +85,7 @@ const Navbar = () => {
                 href={link.href}
                 ref={el => linksRef.current[index] = el}
                 onClick={() => setIsOpen(false)}
-                className="text-5xl md:text-7xl font-display font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-gray-400 hover:to-cyan-400 transition-all duration-300 opacity-0"
+                className="text-5xl md:text-7xl font-display font-bold text-white hover:text-white/60 transition-all duration-300 opacity-0"
               >
                 {link.name}
               </a>

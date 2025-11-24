@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -77,7 +77,7 @@ const Events = () => {
         </h2>
         {/* Progress Bar */}
         <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden hidden md:block">
-          <div ref={progressRef} className="h-full bg-cyan-400 w-0"></div>
+          <div ref={progressRef} className="h-full bg-cyan-400 w-0 shadow-[0_0_15px_rgba(0,242,255,0.6)]"></div>
         </div>
       </div>
 
@@ -98,9 +98,9 @@ const Events = () => {
             <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
             
             <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <span className="text-cyan-400 text-sm uppercase tracking-widest mb-2 block">{event.category}</span>
+              <span className="text-cyan-400/70 text-sm uppercase tracking-widest mb-2 block">{event.category}</span>
               <h3 className="text-3xl font-display font-bold text-white mb-4">{event.title}</h3>
-              <button className="text-white border-b border-cyan-400 pb-1 hover:text-cyan-400 transition-colors">
+              <button className="text-cyan-400 border-b border-cyan-400/60 pb-1 hover:border-cyan-400 hover:shadow-[0_2px_10px_rgba(0,242,255,0.3)] transition-all">
                 View Details
               </button>
             </div>

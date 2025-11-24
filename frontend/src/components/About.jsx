@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -58,23 +58,23 @@ const AnimatedNumber = ({ finalValue, label, delay = 0 }) => {
   }, [finalValue]);
 
   return (
-    <div ref={numberRef} className="relative">
-      <div className="glass-card p-8 rounded-2xl relative overflow-hidden border border-white/10">
-        {/* Gradient border effect */}
-        <div className="absolute inset-0 bg-linear-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+    <div ref={numberRef} className="relative group">
+      <div className="glass-card p-8 rounded-2xl relative overflow-hidden border border-white/10 transition-all duration-500 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_30px_rgba(0,242,255,0.2)]">
+        {/* Subtle hover effect */}
+        <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         
-        {/* Animated gradient line */}
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
+        {/* Top line */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-cyan-400/30 to-transparent"></div>
         
-        <h3 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-400 to-purple-500 mb-3 font-display">
+        <h3 className="text-5xl md:text-6xl font-bold text-white mb-3 font-display group-hover:text-cyan-400 transition-colors duration-500">
           {displayValue}
         </h3>
-        <p className="text-gray-300 uppercase tracking-widest text-sm font-semibold">
+        <p className="text-gray-400 uppercase tracking-widest text-sm font-semibold">
           {label}
         </p>
         
-        {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-purple-400 to-transparent"></div>
+        {/* Bottom line */}
+        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-cyan-400/30 to-transparent"></div>
       </div>
     </div>
   );
@@ -122,27 +122,27 @@ const About = () => {
 
   return (
     <section id="about" ref={sectionRef} className="min-h-screen flex items-center justify-center py-32 relative">
-      {/* Decorative elements */}
+      {/* Subtle decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyan-400/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-6">
         <div ref={contentRef} className="max-w-5xl mx-auto">
           {/* Title */}
           <div ref={titleRef} className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-display font-bold mb-4 text-white">
-              About <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-pink-400 to-cyan-400">The Fest</span>
+              About <span className="text-cyan-400">The Fest</span>
             </h2>
-            <div className="w-24 h-1 bg-linear-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-cyan-400/80 mx-auto rounded-full shadow-[0_0_15px_rgba(0,242,255,0.6)]"></div>
           </div>
           
           {/* Description Card */}
           <div ref={descriptionRef} className="glass-card p-10 md:p-14 rounded-3xl text-center relative overflow-hidden mb-16 border border-white/10 shadow-[0_0_80px_rgba(0,242,255,0.15)]">
-            {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-linear-to-br from-cyan-500/5 via-purple-500/5 to-pink-500/5"></div>
+            {/* Subtle background */}
+            <div className="absolute inset-0 bg-cyan-500/5"></div>
             
-            {/* Top gradient line */}
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-linear-to-r from-cyan-500 via-purple-500 to-pink-500"></div>
+            {/* Top line */}
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-cyan-400/30"></div>
             
             <div className="relative z-10">
               <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-6 font-light">
@@ -150,13 +150,13 @@ const About = () => {
                 We bring together the brightest minds to compete, collaborate, and create.
               </p>
               <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light">
-                From <span className="text-purple-400 font-semibold">coding marathons</span> to <span className="text-pink-400 font-semibold">robotics showdowns</span>, immerse yourself in an ecosystem where technology meets creativity. 
+                From <span className="text-cyan-400 font-semibold">coding marathons</span> to <span className="text-cyan-400 font-semibold">robotics showdowns</span>, immerse yourself in an ecosystem where technology meets creativity. 
                 Join us as we redefine the boundaries of what's possible.
               </p>
             </div>
             
-            {/* Bottom gradient line */}
-            <div className="absolute bottom-0 left-0 w-full h-[3px] bg-linear-to-r from-pink-500 via-purple-500 to-cyan-500"></div>
+            {/* Bottom line */}
+            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400/30"></div>
           </div>
 
           {/* Stats Grid */}

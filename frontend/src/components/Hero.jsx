@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import MagneticButton from './MagneticButton';
 
@@ -29,24 +29,24 @@ const Hero = ({ startAnimation }) => {
       
       {/* Overlay Content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center items-center pointer-events-none px-4">
-        <div ref={textRef} className="text-center mb-8 mix-blend-screen flex flex-col md:block py-4"> {/* Added py-4 to prevent cutoff */}
-          <h1 className="text-7xl md:text-9xl font-display font-black italic tracking-tighter text-white inline-block drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+        <div ref={textRef} className="text-center mb-8 flex flex-col md:block py-4">
+          <h1 className="text-7xl md:text-9xl font-display font-black italic tracking-tighter text-white inline-block drop-shadow-[0_0_40px_rgba(255,255,255,0.4)]">
             SYNCHRONIZE
           </h1>
-          <h1 className="text-7xl md:text-9xl font-display font-black italic tracking-tighter text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-600 inline-block md:ml-6 filter drop-shadow-[0_0_20px_rgba(0,242,255,0.5)] pb-2 pr-2"> {/* Added padding to fix cutoff */}
+          <h1 className="text-7xl md:text-9xl font-display font-black italic tracking-tighter text-cyan-400 inline-block md:ml-6 drop-shadow-[0_0_30px_rgba(0,242,255,0.6)] pb-2 pr-2">
             4.0
           </h1>
         </div>
         
-        <p ref={subTextRef} className="text-xl md:text-3xl text-gray-200 max-w-3xl mx-auto font-light tracking-[0.2em] text-center uppercase drop-shadow-lg font-sans">
+        <p ref={subTextRef} className="text-xl md:text-3xl text-gray-300 max-w-3xl mx-auto font-light tracking-[0.2em] text-center uppercase drop-shadow-lg font-sans">
           Beyond the Horizon
         </p>
 
         <div className="mt-16 flex flex-col md:flex-row gap-8 pointer-events-auto">
-          <MagneticButton className="cursor-pointer px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          <MagneticButton className="cursor-pointer px-10 py-4 bg-cyan-400 text-black font-bold rounded-full hover:bg-cyan-50 transition-all shadow-[0_0_20px_rgba(255,255,255,0.4)]">
             REGISTER NOW
           </MagneticButton>
-          <MagneticButton className="cursor-pointer px-10 py-4 border border-white text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
+          <MagneticButton className="cursor-pointer px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full hover:bg-cyan-400/10 transition-all backdrop-blur-sm shadow-[0_0_15px_rgba(0,242,255,0.3)]">
             EXPLORE EVENTS
           </MagneticButton>
         </div>

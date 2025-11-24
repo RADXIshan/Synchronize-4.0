@@ -32,11 +32,13 @@ const Layout = ({ children }) => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-dark-bg text-white selection:bg-cyan-500 selection:text-black">
       <Background />
-      <Navbar />
-      <main className="relative z-10 flex flex-col">
-        {children}
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Navbar />
+        <main className="relative flex flex-col">
+          {children}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -53,23 +53,23 @@ const Timeline = () => {
     <section id="schedule" ref={sectionRef} className="py-20 relative min-h-screen bg-dark-bg z-10">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-6xl font-display font-bold text-center mb-20 text-white">
-          Event <span className="text-purple-500">Schedule</span>
+          Event <span className="text-cyan-400">Schedule</span>
         </h2>
 
         <div id="timeline-container" className="relative max-w-3xl mx-auto">
           {/* Central Line */}
           <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-1 bg-white/10 -translate-x-1/2"></div>
-          <div ref={lineRef} className="absolute left-[19px] md:left-1/2 top-0 w-1 bg-linear-to-b from-cyan-500 to-purple-500 -translate-x-1/2 origin-top"></div>
+          <div ref={lineRef} className="absolute left-[19px] md:left-1/2 top-0 w-1 bg-linear-to-b from-cyan-400/80 to-cyan-500/40 -translate-x-1/2 origin-top shadow-[0_0_15px_rgba(0,242,255,0.5)]"></div>
 
           {scheduleData.map((item, index) => (
             <div key={index} className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               {/* Dot */}
-              <div className="absolute left-[19px] md:left-1/2 w-4 h-4 bg-black border-2 border-cyan-400 rounded-full -translate-x-1/2 z-10 shadow-[0_0_10px_rgba(0,242,255,0.5)]"></div>
+              <div className="absolute left-[19px] md:left-1/2 w-4 h-4 bg-black border-2 border-cyan-400 rounded-full -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(0,242,255,0.8)]"></div>
               
               {/* Content */}
               <div className="ml-12 md:ml-0 md:w-1/2 md:px-12">
-                <div className={`glass-card p-6 rounded-xl hover:border-cyan-500/30 transition-colors ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                  <span className="text-cyan-400 font-mono text-sm">{item.time}</span>
+                <div className={`glass-card p-6 rounded-xl hover:border-cyan-400/30 hover:shadow-[0_0_20px_rgba(0,242,255,0.15)] transition-all ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                  <span className="text-cyan-400/80 font-mono text-sm">{item.time}</span>
                   <h3 className="text-xl font-bold text-white mt-1 mb-2">{item.title}</h3>
                   <p className="text-gray-400 text-sm">{item.description}</p>
                 </div>
