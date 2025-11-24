@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
+import toast from 'react-hot-toast';
 import api from '../utils/api';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -93,15 +94,19 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const toastId = toast.loading('Sending your message...');
+
     try {
       const response = await api.post('/mail/contact', formData);
       
       if (response.data.success) {
+        toast.success('Message sent successfully! We\'ll get back to you soon.', { id: toastId });
         setSubmitStatus({ type: 'success', message: 'Message sent successfully!' });
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Failed to send message. Please try again.';
+      toast.error(errorMessage, { id: toastId });
       setSubmitStatus({ type: 'error', message: errorMessage });
     } finally {
       setIsSubmitting(false);
@@ -262,15 +267,29 @@ const Contact = () => {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="relative w-full py-4 bg-linear-to-r from-cyan-400 to-cyan-500 text-black font-bold rounded-xl overflow-hidden group/button transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="cursor-pointer relative w-full py-4 bg-linear-to-r from-cyan-400 to-cyan-500 text-black font-bold rounded-xl overflow-hidden group/button transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                    <Mail className="w-5 h-5 transform group-hover/button:translate-x-1 transition-transform" />
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Mail className="w-5 h-5 transform group-hover/button:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </span>
                   
                   {/* Button shine effect */}
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/button:translate-x-full transition-transform duration-700" />
+                  {!isSubmitting && (
+                    <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/button:translate-x-full transition-transform duration-700" />
+                  )}
                 </button>
               </div>
             </form>

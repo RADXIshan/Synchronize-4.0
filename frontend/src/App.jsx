@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -53,6 +54,31 @@ function App() {
   return (
     <Router>
       <ScrollToHash />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#1a1a1a',
+            color: '#fff',
+            border: '1px solid rgba(0, 242, 255, 0.3)',
+            borderRadius: '12px',
+            padding: '16px',
+          },
+          success: {
+            iconTheme: {
+              primary: '#00f2ff',
+              secondary: '#1a1a1a',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#1a1a1a',
+            },
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<Home loading={loading} setLoading={setLoading} />} />
         <Route path="/team" element={

@@ -26,7 +26,7 @@ app.use(express.json());
 app.use("/api/mail", mailRoutes);
 
 app.get("/", (_, res) => {
-  res.sendStatus(200).json("Server Live!");
+  res.json({ message: "Server Live!" });
 });
 
 app.listen(PORT, () => {

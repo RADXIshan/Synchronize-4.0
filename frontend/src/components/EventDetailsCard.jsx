@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const EventDetailsCard = ({ event, onClose }) => {
   const scrollContainerRef = useRef(null);
@@ -192,12 +191,21 @@ const EventDetailsCard = ({ event, onClose }) => {
           </div>
 
           {/* Register Button */}
-          <button className="w-full bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/50 mb-6">
-            <span className="flex items-center justify-center gap-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="cursor-pointer group relative w-full bg-linear-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-400/60 mb-6 overflow-hidden">
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/30 to-transparent"></div>
+            
+            {/* Glow effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-r from-cyan-400/20 to-blue-500/20 blur-xl"></div>
+            
+            <span className="relative flex items-center justify-center gap-2 group-hover:gap-3 transition-all duration-300">
+              <svg className="w-5 h-5 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Register Now
+              <span className="group-hover:tracking-wider transition-all duration-300">Register Now</span>
+              <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </span>
           </button>
 
