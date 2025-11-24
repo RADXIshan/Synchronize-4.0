@@ -155,23 +155,6 @@ const TeamPage = () => {
         </div>
       </div>
 
-        <style jsx>{`
-          @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.5; }
-          }
-          @keyframes gradient-text {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-          .animate-pulse-slow {
-            animation: pulse-slow 4s ease-in-out infinite;
-          }
-          .animate-gradient-text {
-            background-size: 200% 200%;
-            animation: gradient-text 3s ease infinite;
-          }
-        `}</style>
       </div>
     </>
   );

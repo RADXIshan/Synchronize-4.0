@@ -9,7 +9,7 @@ const EventDetailsCard = ({ event, onClose }) => {
     // Get the Lenis instance from window (if it exists)
     const lenis = window.lenis;
     
-    // Save current scroll position BEFORE any changes
+    // Save current scroll position
     const scrollY = window.scrollY || window.pageYOffset;
     
     // Stop Lenis smooth scrolling
@@ -17,22 +17,9 @@ const EventDetailsCard = ({ event, onClose }) => {
       lenis.stop();
     }
 
-    // Disable all ScrollTrigger instances
-    ScrollTrigger.getAll().forEach(trigger => trigger.disable());
-
     // Lock body scroll when modal is open
     const originalOverflow = document.body.style.overflow;
-    const originalPosition = document.body.style.position;
-    const originalWidth = document.body.style.width;
-    const originalTop = document.body.style.top;
-    
-    // Apply fixed positioning to prevent scroll
     document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.left = '0';
-    document.body.style.right = '0';
 
     gsap.fromTo('.modal-overlay', 
       { opacity: 0 },
@@ -48,12 +35,7 @@ const EventDetailsCard = ({ event, onClose }) => {
     if (!scrollContainer) {
       // Restore everything if scrollContainer is not available
       document.body.style.overflow = originalOverflow;
-      document.body.style.position = originalPosition;
-      document.body.style.top = originalTop;
-      document.body.style.width = originalWidth;
-      window.scrollTo(0, scrollY);
       if (lenis) lenis.start();
-      ScrollTrigger.getAll().forEach(trigger => trigger.enable());
       return;
     }
 
@@ -79,25 +61,11 @@ const EventDetailsCard = ({ event, onClose }) => {
       
       // Restore body styles
       document.body.style.overflow = originalOverflow;
-      document.body.style.position = originalPosition;
-      document.body.style.top = originalTop;
-      document.body.style.width = originalWidth;
-      document.body.style.left = '';
-      document.body.style.right = '';
       
-      // Restore scroll position immediately
-      window.scrollTo(0, scrollY);
-      
-      // Re-enable Lenis with a small delay to ensure scroll position is set
+      // Re-enable Lenis
       if (lenis) {
-        requestAnimationFrame(() => {
-          window.scrollTo(0, scrollY);
-          lenis.start();
-        });
+        lenis.start();
       }
-      
-      // Re-enable all ScrollTrigger instances
-      ScrollTrigger.getAll().forEach(trigger => trigger.enable());
     };
   }, []);
 

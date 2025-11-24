@@ -11,7 +11,7 @@ const LoadingAnimation = ({ loaderRef }) => {
     // Animate percentage from 0 to 100
     gsap.to({ value: 0 }, {
       value: 100,
-      duration: 1.5,
+      duration: 3,
       ease: "power2.inOut",
       onUpdate: function() {
         setPercentage(Math.floor(this.targets()[0].value));
@@ -247,16 +247,6 @@ const LoadingAnimation = ({ loaderRef }) => {
         </p>
       </div>
 
-      <style jsx>{`
-        @keyframes gradient-shift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        @keyframes nebula-pulse {
-          0%, 100% { transform: scale(1); opacity: 0.2; }
-          50% { transform: scale(1.1); opacity: 0.3; }
-        }
-      `}</style>
     </div>
   );
 };
