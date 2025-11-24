@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import EventDetailsCard from '../components/EventDetailsCard';
+import LoadingAnimation from '../components/LoadingAnimation';
 
 const eventsData = {
   flagship: [
@@ -150,6 +151,11 @@ const eventsData = {
 
 
 const EventCard = ({ event, onClick }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick();
+  };
   const handleMouseMove = (e) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -186,7 +192,7 @@ const EventCard = ({ event, onClick }) => {
       style={{ transformStyle: 'preserve-3d' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="relative h-64 overflow-hidden">
         <img
@@ -217,8 +223,10 @@ const EventCard = ({ event, onClick }) => {
 };
 
 const EventsPage = () => {
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const loaderRef = useRef(null);
 
   const categories = [
     { id: 'all', name: 'All Events' },
@@ -237,14 +245,34 @@ const EventsPage = () => {
   };
 
   useEffect(() => {
-    gsap.fromTo('.event-card',
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out' }
-    );
-  }, [selectedCategory]);
+    window.scrollTo(0, 0);
+
+    const loaderTimeline = gsap.timeline({
+      onComplete: () => setLoading(false)
+    });
+
+    loaderTimeline.to(loaderRef.current, {
+      opacity: 0,
+      duration: 0.5,
+      delay: 1,
+      ease: "power2.inOut"
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      gsap.fromTo('.event-card',
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out' }
+      );
+    }
+  }, [selectedCategory, loading]);
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32 pb-20">
+    <>
+      {loading && <LoadingAnimation loaderRef={loaderRef} />}
+
+      <div className="min-h-screen bg-black text-white pt-32 pb-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">
@@ -283,7 +311,8 @@ const EventsPage = () => {
       {selectedEvent && (
         <EventDetailsCard event={selectedEvent} onClose={() => setSelectedEvent(null)} />
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

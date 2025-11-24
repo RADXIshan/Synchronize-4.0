@@ -1,21 +1,68 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import EventDetailsCard from './EventDetailsCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const eventsData = [
-  { title: "Hackathon", category: "Coding", image: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=600", link: "/events/hackathon" },
-  { title: "RoboWars", category: "Robotics", image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600", link: "/events/robowars" },
-  { title: "Code Relay", category: "Coding", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600", link: "/events/code-relay" },
-  { title: "Gaming", category: "Esports", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600", link: "/events/gaming" },
-  { title: "Design Derby", category: "Creative", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600", link: "/events/design-derby" },
+  { 
+    title: "Hackathon", 
+    category: "Coding", 
+    image: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=600",
+    description: "Join us for an intense 24-hour coding marathon where innovation meets creativity. Build groundbreaking solutions to real-world problems.",
+    date: "March 15-16, 2024",
+    venue: "Tech Hub, Main Campus",
+    prize: "₹50,000",
+    poc: { name: "John Doe", email: "john@xim.edu.in" }
+  },
+  { 
+    title: "RoboWars", 
+    category: "Robotics", 
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600",
+    description: "Battle it out with your custom-built robots in an epic arena showdown. May the best bot win!",
+    date: "March 17, 2024",
+    venue: "Arena Ground",
+    prize: "₹40,000",
+    poc: { name: "Jane Smith", email: "jane@xim.edu.in" }
+  },
+  { 
+    title: "Code Relay", 
+    category: "Coding", 
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600",
+    description: "A team-based coding competition where speed and accuracy matter. Pass the baton and solve challenges together.",
+    date: "March 18, 2024",
+    venue: "Computer Lab A",
+    prize: "₹30,000",
+    poc: { name: "Mike Johnson", email: "mike@xim.edu.in" }
+  },
+  { 
+    title: "Gaming", 
+    category: "Esports", 
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600",
+    description: "Compete in popular esports titles and prove your gaming prowess. Multiple tournaments across different games.",
+    date: "March 19-20, 2024",
+    venue: "Gaming Arena",
+    prize: "₹60,000",
+    poc: { name: "Sarah Williams", email: "sarah@xim.edu.in" }
+  },
+  { 
+    title: "Design Derby", 
+    category: "Creative", 
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600",
+    description: "Showcase your creative design skills in UI/UX, graphic design, and digital art competitions.",
+    date: "March 21, 2024",
+    venue: "Design Studio",
+    prize: "₹35,000",
+    poc: { name: "Alex Brown", email: "alex@xim.edu.in" }
+  },
 ];
 
 const Events = () => {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
   const progressRef = useRef(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
@@ -82,11 +129,16 @@ const Events = () => {
     });
   };
 
-  const handleCardClick = () => {
-    window.location.href = '/events';
+  const handleCardClick = (e, event) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setSelectedEvent(event);
   };
 
   return (
+    <>
     <section id="events" ref={sectionRef} className="h-screen overflow-hidden relative flex flex-col justify-center z-20">
       <div className="container mx-auto px-6 mb-10 flex justify-between items-end">
         <div>
@@ -114,7 +166,7 @@ const Events = () => {
             style={{ transformStyle: 'preserve-3d' }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            onClick={handleCardClick}
+            onClick={(e) => handleCardClick(e, event)}
           >
             <img 
               src={event.image} 
@@ -143,6 +195,14 @@ const Events = () => {
         ))}
       </div>
     </section>
+    
+    {selectedEvent && (
+      <EventDetailsCard 
+        event={selectedEvent} 
+        onClose={() => setSelectedEvent(null)} 
+      />
+    )}
+    </>
   );
 };
 

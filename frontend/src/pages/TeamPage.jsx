@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Linkedin, Twitter, Github, ArrowLeft } from 'lucide-react';
+import LoadingAnimation from '../components/LoadingAnimation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,21 +63,7 @@ const TeamPage = () => {
 
   return (
     <>
-      {loading && (
-        <div 
-          ref={loaderRef}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black"
-        >
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-4 h-4 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
-              <div className="w-4 h-4 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-              <div className="w-4 h-4 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
-            </div>
-            <p className="text-white text-lg font-display">Loading Team...</p>
-          </div>
-        </div>
-      )}
+      {loading && <LoadingAnimation loaderRef={loaderRef} />}
 
       <div className="min-h-screen pt-24 pb-12 px-6 relative z-10 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" />

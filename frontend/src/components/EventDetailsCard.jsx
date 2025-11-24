@@ -9,6 +9,9 @@ const EventDetailsCard = ({ event, onClose }) => {
     // Get the Lenis instance from window (if it exists)
     const lenis = window.lenis;
     
+    // Save current scroll position BEFORE any changes
+    const scrollY = window.scrollY || window.pageYOffset;
+    
     // Stop Lenis smooth scrolling
     if (lenis) {
       lenis.stop();
@@ -21,9 +24,15 @@ const EventDetailsCard = ({ event, onClose }) => {
     const originalOverflow = document.body.style.overflow;
     const originalPosition = document.body.style.position;
     const originalWidth = document.body.style.width;
+    const originalTop = document.body.style.top;
+    
+    // Apply fixed positioning to prevent scroll
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
 
     gsap.fromTo('.modal-overlay', 
       { opacity: 0 },
@@ -40,7 +49,9 @@ const EventDetailsCard = ({ event, onClose }) => {
       // Restore everything if scrollContainer is not available
       document.body.style.overflow = originalOverflow;
       document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
       document.body.style.width = originalWidth;
+      window.scrollTo(0, scrollY);
       if (lenis) lenis.start();
       ScrollTrigger.getAll().forEach(trigger => trigger.enable());
       return;
@@ -66,14 +77,23 @@ const EventDetailsCard = ({ event, onClose }) => {
     return () => {
       scrollContainer.removeEventListener('wheel', handleWheel);
       
-      // Restore body scroll when modal closes
+      // Restore body styles
       document.body.style.overflow = originalOverflow;
       document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
       document.body.style.width = originalWidth;
+      document.body.style.left = '';
+      document.body.style.right = '';
       
-      // Re-enable Lenis
+      // Restore scroll position immediately
+      window.scrollTo(0, scrollY);
+      
+      // Re-enable Lenis with a small delay to ensure scroll position is set
       if (lenis) {
-        lenis.start();
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollY);
+          lenis.start();
+        });
       }
       
       // Re-enable all ScrollTrigger instances
@@ -81,7 +101,12 @@ const EventDetailsCard = ({ event, onClose }) => {
     };
   }, []);
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
     gsap.to('.modal-content', {
       scale: 0.8,
       opacity: 0,
@@ -109,7 +134,7 @@ const EventDetailsCard = ({ event, onClose }) => {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-red-500/20 border border-white/20 hover:border-red-500 transition-all duration-300 group"
+          className="cursor-pointer absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-red-500/20 border border-white/20 hover:border-red-500 transition-all duration-300 group"
         >
           <svg className="w-5 h-5 text-white group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
