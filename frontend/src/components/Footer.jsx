@@ -129,7 +129,7 @@ const Footer = () => {
                 <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 group-hover:bg-cyan-400/10 transition-all duration-300">
                   <Mail className="w-5 h-5 text-cyan-400" />
                 </div>
-                <span className="text-sm">contact@synchronize.in</span>
+                <span className="text-sm">techfest-scse@xim.edu.in</span>
               </li>
               <li className="group flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer">
                 <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 group-hover:bg-cyan-400/10 transition-all duration-300">

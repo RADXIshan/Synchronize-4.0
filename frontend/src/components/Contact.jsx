@@ -119,7 +119,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Email</p>
-                    <span className="text-white font-medium">contact@synchronize.in</span>
+                    <span className="text-white font-medium">techfest-scse@xim.edu.in</span>
                   </div>
                 </div>
                 
