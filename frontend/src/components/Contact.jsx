@@ -97,7 +97,7 @@ const Contact = () => {
     const toastId = toast.loading('Sending your message...');
 
     try {
-      const response = await api.post('/mail/contact', formData);
+      const response = await api.post('api/mail/contact', formData);
       
       if (response.data.success) {
         toast.success('Message sent successfully! We\'ll get back to you soon.', { id: toastId });

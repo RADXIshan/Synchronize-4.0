@@ -39,20 +39,20 @@ export const contactTeam = async(req, res) => {
     const mailOptions = {
         from: {
             name: "Ishan Roy",
-            address: "trickster10ishan@gmail.com"
+            address: process.env.EMAIL
         },
         to: "ishanroy3118107@gmail.com",
-        subject: "Sent from Portfolio website",
+        subject: "Sent from Synchronize 4.0 website",
         text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`,
     };
     const confirmationMail = {
         from: {
             name: "Ishan Roy",
-            address: "trickster10ishan@gmail.com"
+            address: process.env.EMAIL
         },
         to: req.body.email,
-        subject: "Portfolio Message Received",
-        text: `Hi ${req.body.name},\n\nThank you for reaching out to Ishan Roy. He will get back to you shortly.`,
+        subject: "Synchronize Query Message Received",
+        text: `Hi ${req.body.name},\n\nThank you for reaching out to the Synchronize Team. We will get back to you shortly.`,
     };    
 
     try {
