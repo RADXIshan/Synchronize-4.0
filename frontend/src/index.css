@@ -33,15 +33,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Hardware acceleration for animations */
-  .will-change-transform {
-    will-change: transform;
-  }
-
-  .will-change-opacity {
-    will-change: opacity;
-  }
-
   /* Smooth scrolling with offset for fixed navbar */
   section {
     scroll-margin-top: 80px;
@@ -59,145 +50,35 @@
   .text-glow {
     text-shadow: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3);
   }
-  
-  .border-glow {
-    box-shadow: 0 0 10px rgba(0, 242, 255, 0.2), inset 0 0 10px rgba(0, 242, 255, 0.1);
-  }
-
-  /* Glitch Effect */
-  .glitch {
-    position: relative;
-  }
-  
-  .glitch::before,
-  .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .glitch::before {
-    left: 2px;
-    text-shadow: -1px 0 #00f2ff;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim-1 5s infinite linear alternate-reverse;
-  }
-  
-  .glitch::after {
-    left: -2px;
-    text-shadow: -1px 0 #bc13fe;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim-2 5s infinite linear alternate-reverse;
-  }
-  
-  @keyframes glitch-anim-1 {
-    0% { clip: rect(30px, 9999px, 10px, 0); }
-    5% { clip: rect(70px, 9999px, 90px, 0); }
-    10% { clip: rect(50px, 9999px, 20px, 0); }
-    15% { clip: rect(10px, 9999px, 80px, 0); }
-    20% { clip: rect(90px, 9999px, 40px, 0); }
-    25% { clip: rect(20px, 9999px, 60px, 0); }
-    30% { clip: rect(60px, 9999px, 30px, 0); }
-    35% { clip: rect(80px, 9999px, 10px, 0); }
-    40% { clip: rect(40px, 9999px, 70px, 0); }
-    45% { clip: rect(10px, 9999px, 50px, 0); }
-    50% { clip: rect(50px, 9999px, 90px, 0); }
-    55% { clip: rect(90px, 9999px, 20px, 0); }
-    60% { clip: rect(20px, 9999px, 80px, 0); }
-    65% { clip: rect(70px, 9999px, 40px, 0); }
-    70% { clip: rect(30px, 9999px, 60px, 0); }
-    75% { clip: rect(80px, 9999px, 10px, 0); }
-    80% { clip: rect(40px, 9999px, 70px, 0); }
-    85% { clip: rect(60px, 9999px, 30px, 0); }
-    90% { clip: rect(10px, 9999px, 50px, 0); }
-    95% { clip: rect(50px, 9999px, 90px, 0); }
-    100% { clip: rect(90px, 9999px, 20px, 0); }
-  }
-  
-  @keyframes glitch-anim-2 {
-    0% { clip: rect(60px, 9999px, 30px, 0); }
-    5% { clip: rect(20px, 9999px, 80px, 0); }
-    10% { clip: rect(90px, 9999px, 20px, 0); }
-    15% { clip: rect(50px, 9999px, 90px, 0); }
-    20% { clip: rect(10px, 9999px, 50px, 0); }
-    25% { clip: rect(40px, 9999px, 70px, 0); }
-    30% { clip: rect(80px, 9999px, 10px, 0); }
-    35% { clip: rect(30px, 9999px, 60px, 0); }
-    40% { clip: rect(70px, 9999px, 40px, 0); }
-    45% { clip: rect(20px, 9999px, 80px, 0); }
-    50% { clip: rect(90px, 9999px, 20px, 0); }
-    55% { clip: rect(50px, 9999px, 90px, 0); }
-    60% { clip: rect(10px, 9999px, 50px, 0); }
-    65% { clip: rect(40px, 9999px, 70px, 0); }
-    70% { clip: rect(80px, 9999px, 10px, 0); }
-    75% { clip: rect(30px, 9999px, 60px, 0); }
-    80% { clip: rect(70px, 9999px, 40px, 0); }
-    85% { clip: rect(20px, 9999px, 80px, 0); }
-    90% { clip: rect(60px, 9999px, 30px, 0); }
-    95% { clip: rect(10px, 9999px, 50px, 0); }
-    100% { clip: rect(50px, 9999px, 90px, 0); }
-  }
-
-  /* Marquee Animation */
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-33.333%); }
-  }
-
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-  }
-
-  .pause-marquee:hover {
-    animation-play-state: paused;
-  }
-
-  /* Sponsors Marquee with Pause on Hover */
-  .animate-marquee-sponsors {
-    animation: marquee 30s linear infinite;
-  }
-
-  .animate-marquee-sponsors:has(.sponsor-card:hover) {
-    animation-play-state: paused;
-  }
 
   /* Custom Scrollbar Styles */
   .scrollbar-custom {
+    -webkit-overflow-scrolling: touch;
+    touch-action: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 242, 255, 0.5) rgba(255, 255, 255, 0.05);
+    scrollbar-color: rgba(148, 163, 184, 0.6) rgba(15, 23, 42, 0.2);
   }
 
   .scrollbar-custom::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   .scrollbar-custom::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+    background: transparent;
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: rgba(0, 242, 255, 0.5);
-    border-radius: 10px;
-    transition: background 0.3s ease;
+    background: rgba(148, 163, 184, 0.25);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
   }
 
-  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 242, 255, 0.7);
-  }
-
-  /* Animations from components */
+  /* Animations */
   @keyframes gradient-text {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
-  }
-  
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
   }
   
   @keyframes ping-slow {
@@ -209,24 +90,15 @@
     0%, 100% { transform: scale(1); opacity: 0.3; }
     50% { transform: scale(1.05); opacity: 0.5; }
   }
-  
-  @keyframes nebula-pulse {
-    0%, 100% { transform: scale(1); opacity: 0.2; }
-    50% { transform: scale(1.1); opacity: 0.3; }
-  }
 
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  @keyframes gradient-flow {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
   }
 
   .animate-gradient-text {
     background-size: 200% 200%;
     animation: gradient-text 3s ease infinite;
-  }
-  
-  .animate-shimmer {
-    animation: shimmer 2s ease-in-out infinite;
   }
   
   .animate-ping-slow {
@@ -237,43 +109,10 @@
     animation: pulse-slow 4s ease-in-out infinite;
   }
 
-  @keyframes gradient-flow {
-    0% { background-position: 100% 0; }
-    100% { background-position: -100% 0; }
-  }
-
   .animate-gradient-flow {
     background-size: 200% 100%;
     animation: gradient-flow 3s linear infinite;
   }
-}
-/* Make sure this file is loaded globally (e.g. import in root layout) */
-
-/* Smooth touch scrolling for iOS */
-.scrollbar-custom {
-  -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
-  touch-action: auto;                /* allow touch scroll inside element */
-}
-
-/* Optional: visual custom scrollbar for modern browsers */
-.scrollbar-custom {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(148, 163, 184, 0.6) rgba(15, 23, 42, 0.2);
-}
-
-/* WebKit scrollbar styles */
-.scrollbar-custom::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-.scrollbar-custom::-webkit-scrollbar-track {
-  background: transparent;
-}
-.scrollbar-custom::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.25);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
 }
 
 /* Prevent parent/body scroll on overscroll for inner container */
@@ -281,7 +120,7 @@
   overscroll-behavior: contain;
 }
 
-/* If you want a tiny drop shadow on the modal overlay */
+/* Modal overlay tap highlight */
 .modal-overlay {
   -webkit-tap-highlight-color: transparent;
 }
