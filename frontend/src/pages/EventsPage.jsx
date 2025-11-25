@@ -14,6 +14,7 @@ const eventsData = {
       date: "March 15-17, 2025",
       venue: "Main Auditorium",
       prize: "₹1,00,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Rahul Sharma", email: "rahul.sharma@techfest.com" }
     },
     {
@@ -25,6 +26,7 @@ const eventsData = {
       date: "March 16, 2025",
       venue: "Innovation Hub",
       prize: "₹75,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Priya Patel", email: "priya.patel@techfest.com" }
     }
   ],
@@ -38,6 +40,7 @@ const eventsData = {
       date: "March 15-16, 2025",
       venue: "Computer Lab A",
       prize: "₹50,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Arjun Mehta", email: "arjun.mehta@techfest.com" }
     },
     {
@@ -49,6 +52,7 @@ const eventsData = {
       date: "March 17, 2025",
       venue: "Computer Lab B",
       prize: "₹30,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Sneha Reddy", email: "sneha.reddy@techfest.com" }
     },
     {
@@ -60,6 +64,7 @@ const eventsData = {
       date: "March 16, 2025",
       venue: "Workshop Hall",
       prize: "Certificates",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Vikram Singh", email: "vikram.singh@techfest.com" }
     }
   ],
@@ -73,6 +78,7 @@ const eventsData = {
       date: "March 17, 2025",
       venue: "Arena Ground",
       prize: "₹60,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Aditya Kumar", email: "aditya.kumar@techfest.com" }
     },
     {
@@ -84,6 +90,7 @@ const eventsData = {
       date: "March 16, 2025",
       venue: "Robotics Lab",
       prize: "₹25,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Ananya Desai", email: "ananya.desai@techfest.com" }
     },
     {
@@ -95,6 +102,7 @@ const eventsData = {
       date: "March 15, 2025",
       venue: "Open Ground",
       prize: "₹40,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Rohan Gupta", email: "rohan.gupta@techfest.com" }
     }
   ],
@@ -108,6 +116,7 @@ const eventsData = {
       date: "March 15-17, 2025",
       venue: "Gaming Arena",
       prize: "₹45,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Karan Malhotra", email: "karan.malhotra@techfest.com" }
     },
     {
@@ -119,6 +128,7 @@ const eventsData = {
       date: "March 16, 2025",
       venue: "Gaming Zone",
       prize: "₹20,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Ishita Joshi", email: "ishita.joshi@techfest.com" }
     }
   ],
@@ -132,6 +142,7 @@ const eventsData = {
       date: "March 16, 2025",
       venue: "Design Studio",
       prize: "₹35,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Meera Kapoor", email: "meera.kapoor@techfest.com" }
     },
     {
@@ -143,6 +154,7 @@ const eventsData = {
       date: "March 15-17, 2025",
       venue: "Campus Wide",
       prize: "₹15,000",
+      registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Siddharth Rao", email: "siddharth.rao@techfest.com" }
     }
   ]

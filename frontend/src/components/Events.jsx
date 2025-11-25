@@ -14,6 +14,7 @@ const eventsData = [
     date: "March 15-16, 2024",
     venue: "Tech Hub, Main Campus",
     prize: "₹50,000",
+    registrationLink: "https://forms.google.com/placeholder",
     poc: { name: "John Doe", email: "john@xim.edu.in" }
   },
   { 
@@ -24,6 +25,7 @@ const eventsData = [
     date: "March 17, 2024",
     venue: "Arena Ground",
     prize: "₹40,000",
+    registrationLink: "https://forms.google.com/placeholder",
     poc: { name: "Jane Smith", email: "jane@xim.edu.in" }
   },
   { 
@@ -34,6 +36,7 @@ const eventsData = [
     date: "March 18, 2024",
     venue: "Computer Lab A",
     prize: "₹30,000",
+    registrationLink: "https://forms.google.com/placeholder",
     poc: { name: "Mike Johnson", email: "mike@xim.edu.in" }
   },
   { 
@@ -44,6 +47,7 @@ const eventsData = [
     date: "March 19-20, 2024",
     venue: "Gaming Arena",
     prize: "₹60,000",
+    registrationLink: "https://forms.google.com/placeholder",
     poc: { name: "Sarah Williams", email: "sarah@xim.edu.in" }
   },
   { 
@@ -54,6 +58,7 @@ const eventsData = [
     date: "March 21, 2024",
     venue: "Design Studio",
     prize: "₹35,000",
+    registrationLink: "https://forms.google.com/placeholder",
     poc: { name: "Alex Brown", email: "alex@xim.edu.in" }
   },
 ];
