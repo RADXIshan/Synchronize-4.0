@@ -326,8 +326,11 @@ const EventsPage = () => {
     <>
       {loading && <LoadingAnimation loaderRef={loaderRef} loadingText="Preparing Events..." />}
 
-      <div className="min-h-screen bg-black text-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="min-h-screen text-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 relative z-10 overflow-hidden">
+        <div className="absolute top-20 right-4 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-20 left-4 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
+        
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4 sm:mb-6">
             Our <span className="text-cyan-400">Events</span>

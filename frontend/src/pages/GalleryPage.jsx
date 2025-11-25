@@ -99,13 +99,13 @@ const GalleryPage = () => {
             
             <Link 
               to="/" 
-              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-400/30 rounded-full text-white hover:border-purple-400 hover:bg-purple-400/10 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base"
+              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-cyan-400/30 rounded-full text-white hover:border-cyan-400 hover:bg-cyan-400/10 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:-translate-x-1 transition-transform" />
                 Back to Home
               </span>
-              <div className="absolute inset-0 bg-linear-to-r from-transparent via-purple-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <div className="absolute inset-0 bg-linear-to-r from-transparent via-cyan-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             </Link>
           </div>
 
