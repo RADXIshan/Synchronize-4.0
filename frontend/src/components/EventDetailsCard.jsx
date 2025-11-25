@@ -64,8 +64,7 @@ const EventDetailsCard = ({ event, onClose }) => {
       role="dialog"
     >
       <div
-        // NOTE: h-[95vh] ensures the inner flex child can overflow and be scrollable
-        className="modal-content relative w-full max-w-4xl h-[95vh] sm:h-[90vh] bg-linear-to-br from-gray-900 via-black to-gray-900 rounded-xl sm:rounded-2xl border border-cyan-400/30 shadow-2xl shadow-cyan-400/20 flex flex-col"
+        className="modal-content relative w-full max-w-4xl h-[85vh] sm:h-[90vh] bg-linear-to-br from-gray-900 via-black to-gray-900 rounded-xl sm:rounded-2xl border border-cyan-400/30 shadow-2xl shadow-cyan-400/20 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
