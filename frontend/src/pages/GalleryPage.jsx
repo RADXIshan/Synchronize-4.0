@@ -1,36 +1,37 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ArrowLeft, ZoomIn, X } from 'lucide-react';
+import { ArrowLeft, X, RotateCcw } from 'lucide-react';
 import LoadingAnimation from '../components/LoadingAnimation';
 
 const GalleryPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [draggedPositions, setDraggedPositions] = useState({});
   const titleRef = useRef(null);
-  const imagesRef = useRef([]);
+  const polaroidsRef = useRef([]);
   const loaderRef = useRef(null);
+  const dragState = useRef({});
 
   const galleryImages = [
-    { id: 1, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600", title: "Opening Ceremony", category: "Events", height: "h-64" },
-    { id: 2, url: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=1000", title: "Tech Workshop", category: "Workshops", height: "h-80" },
-    { id: 3, url: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=1200", title: "Hackathon", category: "Competition", height: "h-96" },
-    { id: 4, url: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=700", title: "Team Building", category: "Activities", height: "h-72" },
-    { id: 5, url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600", title: "Keynote Speech", category: "Events", height: "h-64" },
-    { id: 6, url: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=900", title: "Networking", category: "Social", height: "h-80" },
-    { id: 7, url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=1100", title: "Awards Night", category: "Events", height: "h-96" },
-    { id: 8, url: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&h=650", title: "Cultural Show", category: "Entertainment", height: "h-72" },
-    { id: 9, url: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=800", title: "Code Sprint", category: "Competition", height: "h-80" },
-    { id: 10, url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600", title: "Collaboration", category: "Activities", height: "h-64" },
-    { id: 11, url: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=1000", title: "Innovation Hub", category: "Workshops", height: "h-96" },
-    { id: 12, url: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&h=700", title: "Team Spirit", category: "Activities", height: "h-72" },
-    { id: 13, url: "https://images.unsplash.com/photo-1559223607-a43c990c2e3a?w=800&h=650", title: "Tech Talks", category: "Events", height: "h-64" },
-    { id: 14, url: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&h=1100", title: "Coding Marathon", category: "Competition", height: "h-96" },
-    { id: 15, url: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=750", title: "Brainstorming", category: "Workshops", height: "h-80" },
-    { id: 16, url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600", title: "Presentations", category: "Events", height: "h-64" },
-    { id: 17, url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=900", title: "Team Huddle", category: "Activities", height: "h-80" },
-    { id: 18, url: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=1000", title: "Innovation", category: "Workshops", height: "h-96" },
+    { id: 1, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600", caption: "Opening Ceremony", date: "Jan 2024" },
+    { id: 2, url: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=1000", caption: "Tech Workshop", date: "Jan 2024" },
+    { id: 3, url: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=1200", caption: "Hackathon Night", date: "Jan 2024" },
+    { id: 4, url: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=700", caption: "Team Building", date: "Jan 2024" },
+    { id: 5, url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600", caption: "Keynote Speech", date: "Jan 2024" },
+    { id: 6, url: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=900", caption: "Networking", date: "Jan 2024" },
+    { id: 7, url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=1100", caption: "Awards Night", date: "Jan 2024" },
+    { id: 8, url: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&h=650", caption: "Cultural Show", date: "Jan 2024" },
+    { id: 9, url: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=800", caption: "Code Sprint", date: "Jan 2024" },
+    { id: 10, url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600", caption: "Collaboration", date: "Jan 2024" },
+    { id: 11, url: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=1000", caption: "Innovation Hub", date: "Jan 2024" },
+    { id: 12, url: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&h=700", caption: "Team Spirit", date: "Jan 2024" },
   ];
+
+  const getRandomRotation = (index) => {
+    const rotations = [-8, -5, -3, 3, 5, 8, -6, 4, -4, 6, -7, 7];
+    return rotations[index % rotations.length];
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,20 +55,81 @@ const GalleryPage = () => {
         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
       );
 
-      gsap.fromTo(imagesRef.current,
-        { opacity: 0, scale: 0.8, y: 30 },
+      gsap.fromTo(polaroidsRef.current,
+        { opacity: 0, scale: 0.5, y: 50 },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.6,
-          stagger: 0.05,
-          ease: "back.out(1.2)",
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "back.out(1.4)",
           delay: 0.2
         }
       );
     }
   }, [loading]);
+
+  const handleMouseDown = (e, id, index) => {
+    if (e.target.closest('.polaroid-image-wrapper')) return;
+    
+    e.preventDefault();
+    const element = polaroidsRef.current[index];
+    const rect = element.getBoundingClientRect();
+    
+    dragState.current[id] = {
+      isDragging: true,
+      startX: e.clientX,
+      startY: e.clientY,
+      currentX: draggedPositions[id]?.x || 0,
+      currentY: draggedPositions[id]?.y || 0,
+      element: element
+    };
+
+    element.style.cursor = 'grabbing';
+    element.style.zIndex = '1000';
+  };
+
+  const handleMouseMove = (e) => {
+    Object.keys(dragState.current).forEach(id => {
+      const state = dragState.current[id];
+      if (state?.isDragging) {
+        const deltaX = e.clientX - state.startX;
+        const deltaY = e.clientY - state.startY;
+        
+        setDraggedPositions(prev => ({
+          ...prev,
+          [id]: {
+            x: state.currentX + deltaX,
+            y: state.currentY + deltaY
+          }
+        }));
+      }
+    });
+  };
+
+  const handleMouseUp = (id) => {
+    if (dragState.current[id]) {
+      dragState.current[id].element.style.cursor = 'grab';
+      dragState.current[id].element.style.zIndex = '';
+      dragState.current[id].isDragging = false;
+    }
+  };
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => handleMouseMove(e);
+    const handleGlobalMouseUp = () => {
+      Object.keys(dragState.current).forEach(id => handleMouseUp(id));
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+
+    return () => {
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [draggedPositions]);
 
   const openLightbox = (image) => {
     setSelectedImage(image);
@@ -81,13 +143,21 @@ const GalleryPage = () => {
     document.body.classList.remove('modal-open');
   };
 
+  const resetPositions = () => {
+    setDraggedPositions({});
+    gsap.fromTo(polaroidsRef.current,
+      { scale: 0.8 },
+      { scale: 1, duration: 0.5, ease: "back.out(1.4)", stagger: 0.03 }
+    );
+  };
+
   return (
     <>
-      {loading && <LoadingAnimation loaderRef={loaderRef} loadingText="Preparing Gallery..." />}
+      {loading && <LoadingAnimation loaderRef={loaderRef} loadingText="Loading Gallery..." />}
 
-      <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 relative z-10 overflow-hidden">
-        <div className="absolute top-20 right-4 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-20 left-4 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
+      <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 overflow-hidden">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
         
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 sm:mb-16 gap-4 sm:gap-6">
@@ -96,69 +166,83 @@ const GalleryPage = () => {
                 Event <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-cyan-400 to-purple-400 animate-gradient-text">Gallery</span>
                 <div className="absolute -bottom-3 sm:-bottom-4 left-0 w-24 sm:w-32 h-0.5 sm:h-1 bg-linear-to-r from-purple-400 to-cyan-400 rounded-full" />
               </h1>
-              <p className="text-gray-400 mt-6 sm:mt-8 text-base sm:text-lg">Capturing moments from Synchronize 4.0</p>
+              <p className="text-gray-400 mt-6 sm:mt-8 text-base sm:text-lg">Drag the photos around • Click to view</p>
             </div>
             
-            <Link 
-              to="/" 
-              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-cyan-400/30 rounded-full text-white hover:border-cyan-400 hover:bg-cyan-400/10 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:-translate-x-1 transition-transform" />
-                Back to Home
-              </span>
-              <div className="absolute inset-0 bg-linear-to-r from-transparent via-cyan-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            </Link>
+            <div className="flex gap-3">
+              <button
+                onClick={resetPositions}
+                className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-400/30 rounded-full text-white hover:border-purple-400 hover:bg-purple-400/10 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:rotate-180 transition-transform duration-500" />
+                  Reset
+                </span>
+              </button>
+              
+              <Link 
+                to="/" 
+                className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-cyan-400/30 rounded-full text-white hover:border-cyan-400 hover:bg-cyan-400/10 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:-translate-x-1 transition-transform" />
+                  Back
+                </span>
+              </Link>
+            </div>
           </div>
 
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
-            {galleryImages.map((image, index) => (
-              <div 
-                key={image.id}
-                ref={el => imagesRef.current[index] = el}
-                className="group relative cursor-pointer overflow-hidden rounded-xl md:rounded-2xl glass-card border border-white/5 hover:border-purple-400/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] transition-all duration-500 break-inside-avoid mb-3 md:mb-4"
-                onClick={() => openLightbox(image)}
-              >
-                <div className={`relative w-full overflow-hidden ${image.height}`}>
-                  <img 
-                    src={image.url} 
-                    alt={image.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-                  
-                  <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 md:p-5">
-                    <span className="text-[10px] md:text-xs uppercase tracking-wider text-purple-400 font-semibold mb-1">{image.category}</span>
-                    <h3 className="text-sm md:text-lg lg:text-xl font-display font-bold text-white leading-tight">{image.title}</h3>
-                  </div>
-
-                  <div className="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:bg-purple-500/80">
-                    <ZoomIn className="w-4 h-4 md:w-5 md:h-5 text-white" />
-                  </div>
-
-                  <div className="absolute top-2 left-2 md:top-3 md:left-3 px-2 py-1 md:px-3 md:py-1.5 bg-black/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <span className="text-[10px] md:text-xs text-white font-semibold">{image.category}</span>
+          {/* Polaroid Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 max-w-7xl mx-auto py-8">
+            {galleryImages.map((image, index) => {
+              const position = draggedPositions[image.id] || { x: 0, y: 0 };
+              return (
+                <div
+                  key={image.id}
+                  ref={el => polaroidsRef.current[index] = el}
+                  className="polaroid-container"
+                  style={{
+                    transform: `rotate(${getRandomRotation(index)}deg) translate(${position.x}px, ${position.y}px)`,
+                    cursor: 'grab',
+                    touchAction: 'none',
+                  }}
+                  onMouseDown={(e) => handleMouseDown(e, image.id, index)}
+                >
+                  <div className="polaroid group">
+                    <div 
+                      className="polaroid-image-wrapper cursor-pointer"
+                      onClick={() => openLightbox(image)}
+                    >
+                      <img 
+                        src={image.url} 
+                        alt={image.caption}
+                        className="polaroid-image"
+                        draggable="false"
+                      />
+                    </div>
+                    <div className="polaroid-caption">
+                      <p className="text-gray-800 font-handwriting text-lg">{image.caption}</p>
+                      <p className="text-gray-500 text-sm mt-1">{image.date}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
+        {/* Lightbox Modal */}
         {selectedImage && (
           <div 
             className="fixed inset-0 z-100 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
             onClick={closeLightbox}
             style={{ isolation: 'isolate' }}
           >
-
-
             <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
               <div className="relative w-fit mx-auto">
                 <img 
                   src={selectedImage.url} 
-                  alt={selectedImage.title}
+                  alt={selectedImage.caption}
                   className="max-h-[70vh] sm:max-h-[85vh] w-auto rounded-xl sm:rounded-2xl shadow-2xl object-contain"
                 />
                 <button
@@ -170,14 +254,86 @@ const GalleryPage = () => {
                 </button>
               </div>
               <div className="mt-4 sm:mt-6 text-center px-4">
-                <span className="text-xs sm:text-sm uppercase tracking-wider text-purple-400 font-semibold">{selectedImage.category}</span>
-                <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mt-2">{selectedImage.title}</h3>
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">{selectedImage.caption}</h3>
+                <p className="text-gray-400 mt-2">{selectedImage.date}</p>
               </div>
             </div>
           </div>
         )}
-
       </div>
+
+      <style jsx>{`
+        .polaroid-container {
+          transition: transform 0.1s ease-out, z-index 0s;
+          user-select: none;
+        }
+
+        .polaroid-container:hover {
+          z-index: 10;
+        }
+
+        .polaroid-container:active {
+          cursor: grabbing !important;
+        }
+
+        .polaroid {
+          background: white;
+          padding: 16px;
+          padding-bottom: 60px;
+          box-shadow: 
+            0 4px 6px rgba(0, 0, 0, 0.1),
+            0 10px 20px rgba(0, 0, 0, 0.15),
+            0 0 0 1px rgba(0, 0, 0, 0.05);
+          transition: all 0.3s ease;
+          position: relative;
+          pointer-events: auto;
+        }
+
+        .polaroid:hover {
+          box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 30px 60px rgba(0, 0, 0, 0.2);
+          transform: scale(1.02);
+        }
+
+        .polaroid-image-wrapper {
+          width: 100%;
+          aspect-ratio: 1;
+          overflow: hidden;
+          background: #f5f5f5;
+          position: relative;
+        }
+
+        .polaroid-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+          pointer-events: none;
+        }
+
+        .polaroid-image-wrapper:hover .polaroid-image {
+          transform: scale(1.05);
+        }
+
+        .polaroid-caption {
+          position: absolute;
+          bottom: 16px;
+          left: 16px;
+          right: 16px;
+          text-align: center;
+          pointer-events: none;
+        }
+
+        @font-face {
+          font-family: 'Handwriting';
+          src: local('Bradley Hand'), local('Comic Sans MS'), local('Segoe Print');
+        }
+
+        .font-handwriting {
+          font-family: 'Handwriting', cursive;
+        }
+      `}</style>
     </>
   );
 };
