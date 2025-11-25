@@ -204,7 +204,7 @@ const GalleryPage = () => {
             <div className="flex gap-3">
               <button
                 onClick={resetPositions}
-                className="group px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-purple-500/10 to-pink-500/10 border-2 border-purple-400/30 rounded-full text-white hover:border-purple-400 hover:from-purple-500/20 hover:to-pink-500/20 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base shadow-lg hover:shadow-purple-500/50"
+                className="cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-purple-500/10 to-pink-500/10 border-2 border-purple-400/30 rounded-full text-white hover:border-purple-400 hover:from-purple-500/20 hover:to-pink-500/20 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base shadow-lg hover:shadow-purple-500/50"
               >
                 <span className="relative z-10 flex items-center gap-2 font-semibold">
                   <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:rotate-180 transition-transform duration-500" />
