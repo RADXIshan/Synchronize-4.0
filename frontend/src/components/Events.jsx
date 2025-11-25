@@ -9,9 +9,10 @@ const eventsData = [
   { 
     title: "Hackathon", 
     category: "Coding", 
-    image: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "Join us for an intense 24-hour coding marathon where innovation meets creativity. Build groundbreaking solutions to real-world problems.",
     date: "March 15-16, 2024",
+    day: [1, 2],
     venue: "Tech Hub, Main Campus",
     prize: "₹50,000",
     registrationLink: "https://forms.google.com/placeholder",
@@ -23,6 +24,7 @@ const eventsData = [
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600",
     description: "Battle it out with your custom-built robots in an epic arena showdown. May the best bot win!",
     date: "March 17, 2024",
+    day: 3,
     venue: "Arena Ground",
     prize: "₹40,000",
     registrationLink: "https://forms.google.com/placeholder",
@@ -34,6 +36,7 @@ const eventsData = [
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600",
     description: "A team-based coding competition where speed and accuracy matter. Pass the baton and solve challenges together.",
     date: "March 18, 2024",
+    day: 3,
     venue: "Computer Lab A",
     prize: "₹30,000",
     registrationLink: "https://forms.google.com/placeholder",
@@ -45,6 +48,7 @@ const eventsData = [
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600",
     description: "Compete in popular esports titles and prove your gaming prowess. Multiple tournaments across different games.",
     date: "March 19-20, 2024",
+    day: [1, 2, 3],
     venue: "Gaming Arena",
     prize: "₹60,000",
     registrationLink: "https://forms.google.com/placeholder",
@@ -56,6 +60,7 @@ const eventsData = [
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600",
     description: "Showcase your creative design skills in UI/UX, graphic design, and digital art competitions.",
     date: "March 21, 2024",
+    day: 2,
     venue: "Design Studio",
     prize: "₹35,000",
     registrationLink: "https://forms.google.com/placeholder",
@@ -67,6 +72,21 @@ const Events = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedDay, setSelectedDay] = useState('all');
+
+  const getFilteredEvents = () => {
+    if (selectedDay === 'all') {
+      return eventsData;
+    }
+    
+    const dayNumber = parseInt(selectedDay);
+    return eventsData.filter(event => {
+      if (Array.isArray(event.day)) {
+        return event.day.includes(dayNumber);
+      }
+      return event.day === dayNumber;
+    });
+  };
 
   useEffect(() => {
     const cards = cardsRef.current;
@@ -105,7 +125,7 @@ const Events = () => {
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
-  }, []);
+  }, [selectedDay]);
 
   const handleCardClick = (e, event) => {
     if (e) {
@@ -119,23 +139,35 @@ const Events = () => {
     <>
     <section id="events" ref={sectionRef} className="relative py-20 z-20">
       <div className="container mx-auto px-4 sm:px-6 mb-12 sm:mb-16 sticky top-20 z-30 pb-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
-          <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-3 sm:mb-4">
+        <div className="flex flex-col justify-center items-center gap-4">
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-3 sm:mb-4">
               Featured <span className="text-cyan-400">Events</span>
             </h2>
-            <button 
-              onClick={() => window.location.href = '/events'}
-              className="cursor-pointer px-4 sm:px-6 py-2 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105"
-            >
-              View All Events →
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <select
+                value={selectedDay}
+                onChange={(e) => setSelectedDay(e.target.value)}
+                className="cursor-pointer px-4 py-2 sm:px-6 sm:py-3 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 backdrop-blur-sm"
+              >
+                <option value="all" className="bg-black text-cyan-400">All Days</option>
+                <option value="1" className="bg-black text-cyan-400">Day 1</option>
+                <option value="2" className="bg-black text-cyan-400">Day 2</option>
+                <option value="3" className="bg-black text-cyan-400">Day 3</option>
+              </select>
+              <button 
+                onClick={() => window.location.href = '/events'}
+                className="cursor-pointer px-4 py-2 sm:px-6 sm:py-3 bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400 text-cyan-400 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105"
+              >
+                View All Events →
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 space-y-8">
-        {eventsData.map((event, index) => (
+        {getFilteredEvents().map((event, index) => (
           <div 
             key={index}
             ref={(el) => (cardsRef.current[index] = el)}

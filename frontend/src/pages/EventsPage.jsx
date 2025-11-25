@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ChevronDown } from 'lucide-react';
 import EventDetailsCard from '../components/EventDetailsCard';
 import LoadingAnimation from '../components/LoadingAnimation';
 
@@ -12,6 +13,7 @@ const eventsData = {
       description: "The biggest tech event of the year featuring keynote speakers, workshops, and networking opportunities with industry leaders.",
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
       date: "March 15-17, 2025",
+      day: [1, 2, 3],
       venue: "Main Auditorium",
       prize: "₹1,00,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -24,6 +26,7 @@ const eventsData = {
       description: "Present your innovative ideas and prototypes to a panel of judges. Best innovation wins funding and mentorship.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800",
       date: "March 16, 2025",
+      day: 2,
       venue: "Innovation Hub",
       prize: "₹75,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -36,8 +39,9 @@ const eventsData = {
       title: "Hackathon 2025",
       category: "Coding",
       description: "24-hour coding marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
-      image: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       date: "March 15-16, 2025",
+      day: [1, 2],
       venue: "Computer Lab A",
       prize: "₹50,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -50,6 +54,7 @@ const eventsData = {
       description: "Team-based competitive programming event. Solve algorithmic challenges in a relay format against the clock.",
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
       date: "March 17, 2025",
+      day: 3,
       venue: "Computer Lab B",
       prize: "₹30,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -62,6 +67,7 @@ const eventsData = {
       description: "Learn modern web development techniques from industry experts. Build a full-stack application from scratch.",
       image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?auto=format&fit=crop&q=80&w=800",
       date: "March 16, 2025",
+      day: 2,
       venue: "Workshop Hall",
       prize: "Certificates",
       registrationLink: "https://forms.google.com/placeholder",
@@ -76,6 +82,7 @@ const eventsData = {
       description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
       date: "March 17, 2025",
+      day: 3,
       venue: "Arena Ground",
       prize: "₹60,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -88,6 +95,7 @@ const eventsData = {
       description: "Design autonomous robots that can navigate complex paths. Fastest and most accurate robot wins.",
       image: "https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&q=80&w=800",
       date: "March 16, 2025",
+      day: 2,
       venue: "Robotics Lab",
       prize: "₹25,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -100,6 +108,7 @@ const eventsData = {
       description: "Race your custom-built drones through obstacle courses. Speed and precision are key to victory.",
       image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=800",
       date: "March 15, 2025",
+      day: 1,
       venue: "Open Ground",
       prize: "₹40,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -114,6 +123,7 @@ const eventsData = {
       description: "Compete in popular esports titles including Valorant, CS:GO, and more. Solo and team events available.",
       image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
       date: "March 15-17, 2025",
+      day: [1, 2, 3],
       venue: "Gaming Arena",
       prize: "₹45,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -126,6 +136,7 @@ const eventsData = {
       description: "Battle it out in mobile gaming tournaments featuring BGMI, COD Mobile, and Clash Royale.",
       image: "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=800",
       date: "March 16, 2025",
+      day: 2,
       venue: "Gaming Zone",
       prize: "₹20,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -140,6 +151,7 @@ const eventsData = {
       description: "Showcase your design skills in UI/UX, graphic design, and digital art competitions.",
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
       date: "March 16, 2025",
+      day: 2,
       venue: "Design Studio",
       prize: "₹35,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -152,6 +164,7 @@ const eventsData = {
       description: "Capture the essence of technology and innovation through your lens. Multiple categories available.",
       image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&q=80&w=800",
       date: "March 15-17, 2025",
+      day: [1, 2, 3],
       venue: "Campus Wide",
       prize: "₹15,000",
       registrationLink: "https://forms.google.com/placeholder",
@@ -237,8 +250,11 @@ const EventCard = ({ event, onClick }) => {
 const EventsPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedDay, setSelectedDay] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const loaderRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const categories = [
     { id: 'all', name: 'All Events' },
@@ -250,10 +266,25 @@ const EventsPage = () => {
   ];
 
   const getFilteredEvents = () => {
+    let events = [];
     if (selectedCategory === 'all') {
-      return Object.values(eventsData).flat();
+      events = Object.values(eventsData).flat();
+    } else {
+      events = eventsData[selectedCategory] || [];
     }
-    return eventsData[selectedCategory] || [];
+    
+    // Filter by day if a specific day is selected
+    if (selectedDay !== 'all') {
+      const dayNumber = parseInt(selectedDay);
+      events = events.filter(event => {
+        if (Array.isArray(event.day)) {
+          return event.day.includes(dayNumber);
+        }
+        return event.day === dayNumber;
+      });
+    }
+    
+    return events;
   };
 
   useEffect(() => {
@@ -278,7 +309,18 @@ const EventsPage = () => {
         { y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out' }
       );
     }
-  }, [selectedCategory, loading]);
+  }, [selectedCategory, selectedDay, loading]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -300,7 +342,7 @@ const EventsPage = () => {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
+              className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 cursor-pointer ${
                 selectedCategory === category.id
                   ? 'bg-cyan-400 text-black shadow-lg shadow-cyan-400/50'
                   : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
@@ -309,6 +351,49 @@ const EventsPage = () => {
               {category.name}
             </button>
           ))}
+        </div>
+
+        {/* Day Filter Dropdown */}
+        <div className="flex justify-center mb-8 sm:mb-12 px-4">
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="cursor-pointer px-6 sm:px-8 md:px-10 pr-12 sm:pr-14 md:pr-16 py-3 sm:py-2.5 md:py-3 bg-purple-400/10 hover:bg-purple-400/20 border-2 border-purple-400 text-purple-400 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400/50 backdrop-blur-sm shadow-lg shadow-purple-400/20 relative flex items-center gap-2"
+            >
+              <span>
+                {selectedDay === 'all' ? 'All Days' : `Day ${selectedDay}`}
+              </span>
+              <ChevronDown 
+                className={`absolute right-4 sm:right-5 md:right-6 w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+
+            {isDropdownOpen && (
+              <div className="absolute top-full mt-2 w-full min-w-[200px] bg-black/95 backdrop-blur-md border-2 border-purple-400/50 rounded-2xl shadow-2xl shadow-purple-400/30 overflow-hidden z-50 animate-fadeIn">
+                {[
+                  { value: 'all', label: 'All Days' },
+                  { value: '1', label: 'Day 1' },
+                  { value: '2', label: 'Day 2' },
+                  { value: '3', label: 'Day 3' }
+                ].map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => {
+                      setSelectedDay(option.value);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`cursor-pointer w-full px-6 py-3 text-left transition-all duration-200 ${
+                      selectedDay === option.value
+                        ? 'bg-purple-400/20 text-purple-300 font-semibold'
+                        : 'text-purple-400 hover:bg-purple-400/10 hover:text-purple-300'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

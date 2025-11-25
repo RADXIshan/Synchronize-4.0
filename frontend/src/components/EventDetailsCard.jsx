@@ -87,9 +87,17 @@ const EventDetailsCard = ({ event, onClose }) => {
           />
           <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 right-12 sm:right-16">
-            <span className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 bg-cyan-400/20 border border-cyan-400 text-cyan-400 text-[10px] sm:text-xs uppercase tracking-wider rounded-full mb-1 sm:mb-2">
-              {event.category}
-            </span>
+            <div className="flex flex-wrap items-center gap-2 mb-1 sm:mb-2">
+              <span className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 bg-cyan-400/20 border border-cyan-400 text-cyan-400 text-[10px] sm:text-xs uppercase tracking-wider rounded-full">
+                {event.category}
+              </span>
+              <span className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 bg-purple-400/20 border border-purple-400 text-purple-400 text-[10px] sm:text-xs uppercase tracking-wider rounded-full">
+                {Array.isArray(event.day) 
+                  ? `Day ${Math.min(...event.day)}-${Math.max(...event.day)}`
+                  : `Day ${event.day}`
+                }
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white text-glow">
               {event.title}
             </h2>
