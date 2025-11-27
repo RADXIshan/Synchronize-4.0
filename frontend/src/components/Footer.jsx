@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Linkedin, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
+import { Instagram, Github, Linkedin, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
 
@@ -38,9 +38,9 @@ const Footer = () => {
             
             <div className="flex space-x-2 sm:space-x-3">
               {[
-                { icon: Instagram, color: 'from-pink-500 to-purple-500', href: '#' },
-                { icon: Twitter, color: 'from-cyan-400 to-blue-500', href: '#' },
-                { icon: Linkedin, color: 'from-blue-600 to-cyan-500', href: '#' }
+                { icon: Instagram, color: 'from-cyan-400 to-blue-500', href: '#' },
+                { icon: Github, color: 'from-cyan-400 to-blue-500', href: 'https://github.com/RADXIshan/Synchronize-4.0' },
+                { icon: Linkedin, color: 'from-cyan-400 to-blue-500', href: '#' }
               ].map((social, i) => {
                 const Icon = social.icon;
                 return (

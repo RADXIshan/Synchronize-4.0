@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Github, Instagram, Linkedin } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../utils/api';
 
@@ -185,21 +185,21 @@ const Contact = () => {
 
               {/* Social links */}
               <div className="flex space-x-3 sm:space-x-4 pt-2 sm:pt-4">
-                <div 
+                <a href='https://github.com/RADXIshan/Synchronize-4.0' target='_blank' 
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] transition-all cursor-pointer transform hover:scale-110"
                 >
-                  <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
-                <div 
+                  <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+                <a 
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] transition-all cursor-pointer transform hover:scale-110"
                 >
                   <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
-                <div 
+                </a>
+                <a 
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] transition-all cursor-pointer transform hover:scale-110"
                 >
                   <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
+                </a>
               </div>
             </div>
 

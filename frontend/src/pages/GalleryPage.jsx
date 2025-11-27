@@ -8,7 +8,7 @@ const GalleryPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
   const [draggedPositions, setDraggedPositions] = useState({});
-  const [hoveredId, setHoveredId] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   const titleRef = useRef(null);
   const polaroidsRef = useRef([]);
   const loaderRef = useRef(null);
@@ -37,6 +37,14 @@ const GalleryPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    // Check if mobile on mount and on resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const loaderTimeline = gsap.timeline({
       onComplete: () => setLoading(false)
     });
@@ -47,6 +55,10 @@ const GalleryPage = () => {
       delay: 2.2,
       ease: "power2.inOut"
     });
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   useEffect(() => {
@@ -73,6 +85,7 @@ const GalleryPage = () => {
   }, [loading]);
 
   const handleMouseDown = (e, id, index) => {
+    if (isMobile) return; // Disable dragging on mobile
     if (e.target.closest('.polaroid-image-wrapper')) return;
     
     e.preventDefault();
@@ -198,20 +211,24 @@ const GalleryPage = () => {
                 Event <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-cyan-400 to-purple-400 animate-gradient-text">Gallery</span>
                 <div className="absolute -bottom-3 sm:-bottom-4 left-0 w-24 sm:w-32 h-0.5 sm:h-1 bg-linear-to-r from-purple-400 to-cyan-400 rounded-full" />
               </h1>
-              <p className="text-gray-400 mt-6 sm:mt-8 text-base sm:text-lg">Drag photos around • Click to enlarge</p>
+              <p className="text-gray-400 mt-6 sm:mt-8 text-base sm:text-lg">
+                {isMobile ? 'Click to enlarge' : 'Drag photos around • Click to enlarge'}
+              </p>
             </div>
             
             <div className="flex gap-3">
-              <button
-                onClick={resetPositions}
-                className="cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-purple-500/10 to-pink-500/10 border-2 border-purple-400/30 rounded-full text-white hover:border-purple-400 hover:from-purple-500/20 hover:to-pink-500/20 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base shadow-lg hover:shadow-purple-500/50"
-              >
-                <span className="relative z-10 flex items-center gap-2 font-semibold">
-                  <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:rotate-180 transition-transform duration-500" />
-                  Reset
-                </span>
-                <div className="absolute inset-0 bg-linear-to-r from-purple-400/0 via-purple-400/20 to-purple-400/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              </button>
+              {!isMobile && (
+                <button
+                  onClick={resetPositions}
+                  className="cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-purple-500/10 to-pink-500/10 border-2 border-purple-400/30 rounded-full text-white hover:border-purple-400 hover:from-purple-500/20 hover:to-pink-500/20 transition-all backdrop-blur-sm relative overflow-hidden text-sm sm:text-base shadow-lg hover:shadow-purple-500/50"
+                >
+                  <span className="relative z-10 flex items-center gap-2 font-semibold">
+                    <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:rotate-180 transition-transform duration-500" />
+                    Reset
+                  </span>
+                  <div className="absolute inset-0 bg-linear-to-r from-purple-400/0 via-purple-400/20 to-purple-400/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                </button>
+              )}
               
               <Link 
                 to="/" 
@@ -230,7 +247,6 @@ const GalleryPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 max-w-7xl mx-auto py-8">
             {galleryImages.map((image, index) => {
               const position = draggedPositions[image.id] || { x: 0, y: 0 };
-              const isHovered = hoveredId === image.id;
               
               return (
                 <div
@@ -239,12 +255,10 @@ const GalleryPage = () => {
                   className="polaroid-container"
                   style={{
                     transform: `rotate(${getRandomRotation(index)}deg) translate(${position.x}px, ${position.y}px)`,
-                    cursor: 'grab',
+                    cursor: isMobile ? 'default' : 'grab',
                     touchAction: 'none',
                   }}
-                  onMouseDown={(e) => handleMouseDown(e, image.id, index)}
-                  onMouseEnter={() => setHoveredId(image.id)}
-                  onMouseLeave={() => setHoveredId(null)}
+                  onMouseDown={(e) => !isMobile && handleMouseDown(e, image.id, index)}
                 >
                   <div className="polaroid group">
                     {/* Glow effect */}
