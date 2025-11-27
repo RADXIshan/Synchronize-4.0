@@ -256,7 +256,7 @@ const GalleryPage = () => {
                   style={{
                     transform: `rotate(${getRandomRotation(index)}deg) translate(${position.x}px, ${position.y}px)`,
                     cursor: isMobile ? 'default' : 'grab',
-                    touchAction: 'none',
+                    touchAction: isMobile ? 'auto' : 'none',
                   }}
                   onMouseDown={(e) => !isMobile && handleMouseDown(e, image.id, index)}
                 >
