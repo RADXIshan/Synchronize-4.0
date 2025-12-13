@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import MagneticButton from './MagneticButton';
 import { Images } from 'lucide-react';
+import HeroVideo from '../assets/hero-video-temp.mp4';
 
 const Hero = ({ startAnimation }) => {
   const containerRef = useRef(null);
@@ -28,6 +29,21 @@ const Hero = ({ startAnimation }) => {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-transparent">
+      
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-80"
+        >
+          <source src={HeroVideo} type="video/mp4" />
+        </video>
+        {/* Overlay gradient to ensure text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
       
       {/* Overlay Content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center items-center pointer-events-none px-4">
