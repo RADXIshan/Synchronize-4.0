@@ -98,9 +98,6 @@ const HomePage = () => {
       // Timeline -> Sponsors
       createSectionTransition(timelineRef, sponsorsRef);
 
-      // Timeline -> Sponsors
-      createSectionTransition(timelineRef, sponsorsRef);
-
       // Sponsors -> Contact
       createSectionTransition(sponsorsRef, contactRef);
 
