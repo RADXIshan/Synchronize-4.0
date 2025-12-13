@@ -106,18 +106,20 @@ const About = () => {
       );
 
       // Cards stagger animation
-      gsap.from(".about-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".cards-grid",
-          start: "top 85%",
-          end: "top 60%",
-          scrub: 1
-        }
+      ScrollTrigger.batch(".about-card", {
+        start: "top 85%",
+        once: true, // Animate only once creates a stable experience
+        onEnter: batch => gsap.fromTo(batch, 
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power3.out",
+            overwrite: true
+          }
+        )
       });
 
       // Animate particles randomly (floating effect) + parallax mixed
@@ -146,7 +148,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" ref={containerRef} className="relative h-screen overflow-hidden bg-black flex items-center justify-center">
+    <section id="about" ref={containerRef} className="relative min-h-screen overflow-hidden bg-black flex items-center justify-center py-20 lg:py-0">
       
       {/* Comic Background with Parallax */}
       <div ref={bgRef} className="absolute inset-0">
