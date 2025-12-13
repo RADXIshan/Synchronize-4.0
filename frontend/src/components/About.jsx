@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Code, Cpu, Globe, Zap, Trophy, Users, Shield, Crown, Star, Sparkles } from 'lucide-react';
+import AboutBg from '../assets/backgrounds/about-bg.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -174,6 +175,11 @@ const About = () => {
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
+        <img 
+            src={AboutBg} 
+            alt="About Background" 
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+        />
         {/* Wakanda Tech Grid */}
         <div className="absolute inset-0 opacity-20">
           <div 

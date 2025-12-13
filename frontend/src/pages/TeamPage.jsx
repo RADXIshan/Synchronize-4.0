@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Linkedin, Twitter, Github, ArrowLeft } from 'lucide-react';
-import LoadingAnimation from '../components/LoadingAnimation';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,7 +63,7 @@ const TeamPage = () => {
 
   return (
     <>
-      {loading && <LoadingAnimation loaderRef={loaderRef} loadingText="Preparing Team..." />}
+
 
       <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 relative z-10 overflow-hidden">
         <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" />

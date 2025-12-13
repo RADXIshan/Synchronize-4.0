@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import EventDetailsCard from './EventDetailsCard';
+import EventsBg from '../assets/backgrounds/events-bg.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,12 +139,18 @@ const Events = () => {
   return (
     <>
     {/* Iron Man Theme Section */}
-    <section id="events" ref={sectionRef} className="relative py-20 z-20 bg-linear-to-b from-black to-[#1a0000] overflow-hidden">
+    <section id="events" ref={sectionRef} className="relative py-20 z-20 bg-gradient-to-b from-black to-[#1a0000] overflow-hidden">
       
       {/* Background Decor - Mech Lines */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-[repeating-linear-gradient(-45deg,#AA0505,#AA0505_2px,transparent_2px,transparent_40px)]"></div>
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <img 
+            src={EventsBg} 
+            alt="Events Background" 
+            className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity"
+        />
+        <div className="absolute right-0 top-0 w-1/2 h-full bg-[repeating-linear-gradient(-45deg,#AA0505,#AA0505_2px,transparent_2px,transparent_40px)] opacity-50"></div>
         <div className="absolute left-0 bottom-0 w-1/3 h-1/2 bg-[radial-gradient(circle_at_center,#FFD700_0%,transparent_70%)] opacity-10 mix-blend-screen"></div>
+        <div className="absolute inset-0 halftone-pattern opacity-10 pointer-events-none"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 mb-12 sm:mb-16 sticky top-20 z-30 pb-8 pointer-events-none">
@@ -152,16 +159,16 @@ const Events = () => {
             {/* HUD Element Graphic */}
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-1 bg-[#AA0505] shadow-[0_0_10px_#FFD700]"></div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-3 sm:mb-4 italic tracking-tighter" style={{ WebkitTextStroke: '2px #AA0505' }}>
-              STARK <span className="text-iron-gold drop-shadow-[4px_4px_0px_#AA0505]" style={{ WebkitTextStroke: '2px black' }}>EXPO</span>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-3 sm:mb-4 italic tracking-tighter" style={{ WebkitTextStroke: '2px black', textShadow: '4px 4px 0px #AA0505' }}>
+              STARK <span className="text-iron-gold" style={{ WebkitTextStroke: '2px black', textShadow: '4px 4px 0px #AA0505' }}>EXPO</span>
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6">
               <button 
                 onClick={() => window.location.href = '/events'}
-                className="cursor-pointer group relative px-8 py-3 bg-[#AA0505] text-iron-gold font-black text-lg skew-x-[-10deg] border-2 border-iron-gold hover:bg-iron-gold hover:text-[#AA0505] hover:border-[#AA0505] transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] uppercase tracking-wider"
+                className="cursor-pointer group relative px-8 py-3 bg-[#AA0505] text-white font-black text-lg border-4 border-black hover:bg-white hover:text-[#AA0505] transition-all duration-300 shadow-[4px_4px_0px_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#fff] uppercase tracking-wider"
               >
-                <span className="skew-x-10 inline-block">View All Events →</span>
+                <span className="inline-block">View All Events →</span>
               </button>
             </div>
           </div>
@@ -173,11 +180,11 @@ const Events = () => {
           <div 
             key={index}
             ref={(el) => (cardsRef.current[index] = el)}
-            className="w-full max-w-5xl mx-auto h-[70vh] sm:h-[75vh] relative group overflow-hidden rounded-xl border-4 border-[#AA0505] cursor-pointer bg-black"
+            className="w-full max-w-5xl mx-auto h-[70vh] sm:h-[75vh] relative group overflow-hidden border-4 border-black cursor-pointer bg-black"
             style={{ 
               transformStyle: 'preserve-3d',
               perspective: '1000px',
-              boxShadow: '0 0 0 2px #000, 8px 8px 0px #FFD700'
+              boxShadow: '12px 12px 0px #AA0505'
             }}
             onClick={(e) => handleCardClick(e, event)}
           >
@@ -191,33 +198,39 @@ const Events = () => {
               className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:saturate-150"
             />
             {/* JARVIS Overlay Tint */}
-            <div className="absolute inset-0 bg-[#AA0505] mix-blend-multiply opacity-40 group-hover:opacity-20 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-[#AA0505] mix-blend-multiply opacity-20 group-hover:opacity-10 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            {/* Halftone on Image */}
+             <div className="absolute inset-0 halftone-pattern opacity-10 pointer-events-none z-10"></div>
             
             {/* Scanned Grid Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.1)_1px,transparent_1px)] bg-size-[40px_40px] opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.1)_1px,transparent_1px)] bg-size-[40px_40px] opacity-10 pointer-events-none group-hover:opacity-30 transition-opacity"></div>
             
             {/* Content Container */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12 z-20">
               <div className="transform transition-all duration-500 group-hover:translate-y-[-10px]">
                 
                 {/* Category Chip */}
-                <div className="inline-block px-3 py-1 bg-iron-gold text-black font-black text-xs uppercase tracking-widest mb-3 skew-x-[-10deg] border-2 border-black">
-                  <span className="skew-x-10 inline-block">{event.category}</span>
+                <div className="inline-block px-3 py-1 bg-iron-gold text-black font-black text-xs uppercase tracking-widest mb-3 border-2 border-black transform -skew-x-12 shadow-[4px_4px_0px_#000]">
+                  <span className="skew-x-12 inline-block">{event.category}</span>
                 </div>
 
-                <h3 className="text-4xl sm:text-5xl md:text-7xl font-display font-black text-white mb-3 sm:mb-4 transition-all duration-300 italic" style={{ WebkitTextStroke: '1px black', textShadow: '4px 4px 0px #AA0505' }}>
+                <h3 className="text-4xl sm:text-5xl md:text-7xl font-display font-black text-white mb-3 sm:mb-4 transition-all duration-300 italic" style={{ WebkitTextStroke: '2px black', textShadow: '4px 4px 0px #AA0505' }}>
                   {event.title}
                 </h3>
                 
-                <p className="text-iron-gold text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-2xl font-mono opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100 bg-black/50 p-2 border-l-4 border-iron-gold">
-                  {`>> ${event.description}`}
-                </p>
+                {/* Comic Description Box */}
+                <div className="bg-white border-2 border-black p-3 shadow-[6px_6px_0px_#000] relative max-w-xl transform rotate-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-black text-sm sm:text-base font-bold font-comic">
+                       <span className="text-[#AA0505] font-black uppercase mr-2">JARVIS:</span>
+                       {event.description}
+                    </p>
+                </div>
                 
-                <div className="flex items-center gap-3 text-white transition-all duration-300 group-hover:gap-5">
-                  <span className="text-lg font-bold uppercase tracking-widest text-iron-gold">View Specs</span>
-                  <div className="w-8 h-8 rounded-full border-2 border-iron-gold flex items-center justify-center bg-[#AA0505]">
-                    <svg className="w-4 h-4 text-white font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3 text-white transition-all duration-300 group-hover:gap-5 mt-6">
+                  <span className="text-lg font-bold uppercase tracking-widest text-iron-gold drop-shadow-[2px_2px_0px_#000]">View Specs</span>
+                  <div className="w-10 h-10 rounded-full border-2 border-black flex items-center justify-center bg-[#AA0505] shadow-[2px_2px_0px_#000]">
+                    <svg className="w-5 h-5 text-white font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </div>
@@ -228,8 +241,8 @@ const Events = () => {
             {/* Arc Reactor / Card Number Indicator */}
             <div className="absolute top-6 right-6 sm:top-8 sm:right-8 z-20">
               <div className="relative flex items-center justify-center w-24 h-24">
-                 <div className="absolute inset-0 rounded-full border-4 border-marvel-red  animate-pulse"></div>
-                 <span className="text-4xl font-display font-black text-marvel-red drop-shadow-[0_0_10px_#111]">
+                 <div className="absolute inset-0 rounded-full border-4 border-[#AA0505] shadow-[0_0_15px_#AA0505] bg-black/50"></div>
+                 <span className="text-4xl font-display font-black text-white italic drop-shadow-[2px_2px_0px_#AA0505]" style={{ WebkitTextStroke: '1px black' }}>
                    0{index + 1}
                  </span>
               </div>

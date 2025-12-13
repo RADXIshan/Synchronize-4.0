@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import TeamPage from './pages/TeamPage';
 import GalleryPage from './pages/GalleryPage';
 import EventsPage from './pages/EventsPage';
+import PageTransition from './components/PageTransition';
 
 // Scroll to hash component
 function ScrollToHash() {
@@ -59,24 +60,26 @@ function App() {
           },
         }}
       />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/team" element={
-          <Layout>
-            <TeamPage />
-          </Layout>
-        } />
-        <Route path="/gallery" element={
-          <Layout>
-            <GalleryPage />
-          </Layout>
-        } />
-        <Route path="/events" element={
-          <Layout>
-            <EventsPage />
-          </Layout>
-        } />
-      </Routes>
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/team" element={
+            <Layout>
+              <TeamPage />
+            </Layout>
+          } />
+          <Route path="/gallery" element={
+            <Layout>
+              <GalleryPage />
+            </Layout>
+          } />
+          <Route path="/events" element={
+            <Layout>
+              <EventsPage />
+            </Layout>
+          } />
+        </Routes>
+      </PageTransition>
     </Router>
   );
 }

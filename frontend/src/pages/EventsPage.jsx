@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ChevronDown } from 'lucide-react';
 import EventDetailsCard from '../components/EventDetailsCard';
-import LoadingAnimation from '../components/LoadingAnimation';
+
 
 const eventsData = {
   flagship: [
@@ -324,7 +324,7 @@ const EventsPage = () => {
 
   return (
     <>
-      {loading && <LoadingAnimation loaderRef={loaderRef} loadingText="Preparing Events..." />}
+
 
       <div className="min-h-screen text-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 relative z-10 overflow-hidden">
         <div className="absolute top-20 right-4 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" />

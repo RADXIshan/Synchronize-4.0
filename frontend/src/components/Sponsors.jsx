@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SponsorsBg from '../assets/backgrounds/sponsors-bg.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,7 @@ const Sponsors = () => {
           opacity: 1,
           duration: 1,
           stagger: 0.2,
-          ease: "power3.out",
+          ease: "back.out(1.7)", // More "pop" effect
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
@@ -41,35 +42,63 @@ const Sponsors = () => {
   }, []);
 
   return (
-    <section id="sponsors" ref={sectionRef} className="py-16 sm:py-20 relative overflow-hidden">
+    <section id="sponsors" ref={sectionRef} className="py-20 relative overflow-hidden bg-black">
+      {/* Halftone Pattern BackgroundOverlay */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+          <img src={SponsorsBg} alt="Sponsors Background" className="w-full h-full object-cover" />
+      </div>
+      <div className="absolute inset-0 halftone-pattern opacity-20 pointer-events-none"></div>
+      
+      {/* Diagonal Speed Lines */}
+      <div className="absolute inset-0 speed-lines opacity-10 pointer-events-none"></div>
+
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white">
-            Our <span className="text-cyan-400">Sponsors</span>
-          </h2>
+        
+        {/* Comic Header */}
+        <div className="text-center mb-16 relative">
+          <div className="inline-block relative">
+            <h2 className="text-5xl md:text-7xl font-display font-black text-white italic tracking-tighter transform -skew-x-6 text-shadow-comic">
+              OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600">ALLIES</span>
+            </h2>
+            {/* Speech Bubble Decoration */}
+            <div className="absolute -top-12 -right-12 hidden md:block">
+              <div className="speech-bubble p-3 transform rotate-12 animate-bounce-slow">
+                <span className="font-bold text-black text-sm uppercase">Powered By!</span>
+              </div>
+            </div>
+          </div>
+          <div className="h-2 w-32 bg-yellow-400 mx-auto mt-4 transform -skew-x-12 border-2 border-black shadow-[4px_4px_0px_black]"></div>
         </div>
         
-        {/* Infinite Scroll Marquee Container */}
-        <div className="relative w-full overflow-hidden">
+        {/* Infinite Scroll Marquee Container - Comic Strip Style */}
+        <div className="relative w-full overflow-hidden border-y-4 border-black bg-white/5 backdrop-blur-sm py-8 comic-shadow">
+          <div className="absolute top-0 left-0 w-full h-1 bg-yellow-400 z-20"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-yellow-400 z-20"></div>
+          
           <div className="flex animate-infinite-scroll">
             {duplicatedSponsors.map((sponsor, index) => (
               <div 
                 key={index} 
-                className="shrink-0 mx-4 sm:mx-6 md:mx-8 glass-card p-4 sm:p-6 rounded-lg sm:rounded-xl flex items-center justify-center h-24 w-36 sm:h-28 sm:w-40 md:h-32 md:w-48 hover:bg-white/10 transition-all duration-300 sponsor-card group"
+                className="shrink-0 mx-6 md:mx-10 comic-panel p-6 bg-white rotate-1 hover:rotate-0 transition-all duration-300 w-48 h-32 flex items-center justify-center group cursor-pointer"
               >
                 <img 
                   src={sponsor.logo} 
                   alt={sponsor.name} 
-                  className="max-h-8 sm:max-h-10 md:max-h-12 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
+                  className="max-h-16 w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110"
                 />
+                
+                {/* Comic Corner Fold/Detail */}
+                <div className="absolute top-1 right-1 w-2 h-2 bg-black rounded-full opacity-20"></div>
+                <div className="absolute bottom-1 left-1 w-2 h-2 bg-black rounded-full opacity-20"></div>
               </div>
             ))}
           </div>
         </div>
       </div>
       
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* Decorative Comic Elements */}
+      <div className="absolute top-20 left-10 text-6xl text-white/5 font-black hidden lg:block -rotate-12">BOOM!</div>
+      <div className="absolute bottom-20 right-10 text-6xl text-white/5 font-black hidden lg:block rotate-12">ZAP!</div>
 
       <style>{`
         @keyframes infinite-scroll {
@@ -82,11 +111,20 @@ const Sponsors = () => {
         }
         
         .animate-infinite-scroll {
-          animation: infinite-scroll 30s linear infinite;
+          animation: infinite-scroll 40s linear infinite;
         }
         
         .animate-infinite-scroll:hover {
           animation-play-state: paused;
+        }
+
+        .text-shadow-comic {
+          text-shadow: 4px 4px 0px #000;
+          -webkit-text-stroke: 2px #000;
+        }
+        
+        .animate-bounce-slow {
+          animation: bounce 3s infinite;
         }
       `}</style>
     </section>

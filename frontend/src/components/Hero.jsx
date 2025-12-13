@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import MagneticButton from './MagneticButton';
 import { Images, Star, Shield } from 'lucide-react'; // Added Star
-import HeroVideo from '../assets/hero-video-temp.mp4';
+import HeroBg from '../assets/backgrounds/hero-bg.png';
 import { Canvas } from '@react-three/fiber';
 import { Environment, Float, PerspectiveCamera } from '@react-three/drei';
 import { CapShield } from './3d/CapShield'; // Swapped for Shield
@@ -148,18 +148,12 @@ const Hero = () => {
       {/* 1. Background Visuals: Patriot Style */}
       <div className="absolute inset-0 z-0">
         {/* Blue Multiply to tint the video Captain America Blue */}
-        <div className="absolute inset-0 bg-[#001D4A] mix-blend-hard-light opacity-90 z-10" />
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-60"
-        >
-          <source src={HeroVideo} type="video/mp4" />
-        </video>
-        
-
+        <div className="absolute inset-0 bg-[#001D4A] mix-blend-multiply opacity-80 z-10" />
+        <img
+          src={HeroBg}
+          alt="Hero Background"
+          className="w-full h-full object-cover"
+        />
         
         {/* Speed Lines from center (Impact effect) */}
         {/* <div className="absolute inset-0 bg-[repeating-conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_10deg,rgba(255,255,255,0.05)_10deg,rgba(255,255,255,0.05)_20deg)] animate-[spin_60s_linear_infinite] pointer-events-none z-10"></div> */}

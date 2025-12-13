@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, MapPin, Github, Instagram, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Github, Instagram, Linkedin, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../utils/api';
+import ContactBg from '../assets/backgrounds/contact-bg.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const formRef = useRef(null);
   const titleRef = useRef(null);
-  const canvasRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,66 +20,41 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   useEffect(() => {
-    // Animated background particles
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const ctx = gsap.context(() => {
+      // Title Animation
+      gsap.fromTo(titleRef.current,
+        { opacity: 0, scale: 0.5, y: 100 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 1,
+          ease: "elastic.out(1, 0.5)",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+          }
+        }
+      );
 
-    const particles = Array.from({ length: 30 }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 2 + 0.5,
-      speedX: (Math.random() - 0.5) * 0.5,
-      speedY: (Math.random() - 0.5) * 0.5,
-      opacity: Math.random() * 0.5 + 0.2
-    }));
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      particles.forEach(particle => {
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 242, 255, ${particle.opacity})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = 'rgba(0, 242, 255, 0.5)';
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    // GSAP animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top 60%", // Trigger earlier
-        end: "bottom bottom",
-        toggleActions: "play none none reverse"
-      }
+      // Form Animation
+      gsap.fromTo(formRef.current,
+        { x: 100, opacity: 0, rotationY: 45 },
+        {
+          x: 0,
+          opacity: 1,
+          rotationY: 0,
+          duration: 1.2,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 70%",
+          }
+        }
+      );
     });
 
-    tl.fromTo(titleRef.current,
-      { opacity: 0, y: 100, filter: "blur(20px)", scale: 0.8 },
-      { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.2, ease: "power4.out" }
-    )
-    .fromTo(formRef.current,
-      { opacity: 0, y: 150, scale: 0.9, rotateX: -10 },
-      { opacity: 1, y: 0, scale: 1, rotateX: 0, duration: 1.2, ease: "power3.out" },
-      "-=0.8"
-    );
+    return () => ctx.revert();
   }, []);
 
   const handleChange = (e) => {
@@ -94,211 +69,153 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
-    const toastId = toast.loading('Sending your message...');
+    const toastId = toast.loading('Sending secure transmission...');
 
     try {
       const response = await api.post('api/mail/contact', formData);
-      
       if (response.data.success) {
-        toast.success('Message sent successfully! We\'ll get back to you soon.', { id: toastId });
+        toast.success('Transmission received!', { id: toastId });
         setSubmitStatus({ type: 'success', message: 'Message sent successfully!' });
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
-      const errorMessage = error.response?.data?.error || 'Failed to send message. Please try again.';
-      toast.error(errorMessage, { id: toastId });
-      setSubmitStatus({ type: 'error', message: errorMessage });
+      toast.error('Transmission failed.', { id: toastId });
+      setSubmitStatus({ type: 'error', message: 'Failed to send message.' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-16 sm:py-20 relative overflow-hidden">
-      {/* Animated background canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-30" />
+    <section id="contact" className="min-h-screen py-20 relative overflow-hidden bg-black">
+      {/* Background Overlay */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+          <img src={ContactBg} alt="Contact Background" className="w-full h-full object-cover" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-red-950/20 to-black pointer-events-none z-10"></div>
       
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
-      
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
+      <div className="container mx-auto px-4 z-20 relative">
+        {/* Header */}
+        <div ref={titleRef} className="text-center mb-16">
+          <h2 className="text-6xl md:text-8xl font-display font-black text-white uppercase text-shadow-comic tracking-wider">
+            CONTACT <span className="text-red-600">US</span>
+          </h2>
+          <div className="h-1 w-48 bg-red-600 mx-auto mt-4 shadow-[0_0_20px_#DC2626]"></div>
+          <p className="mt-6 text-xl text-gray-300 font-mono">Secure Channel Open. Transmit Data.</p>
+        </div>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
-          {/* Enhanced Title Section */}
-          <div ref={titleRef} className="text-center mb-12 sm:mb-16">
-            <div className="inline-block relative">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4 text-white relative px-4">
-                Get in <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-purple-400 to-cyan-400 animate-gradient-text">Touch</span>
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-6 -left-4 sm:-top-8 sm:-left-8 w-12 h-12 sm:w-16 sm:h-16 border-2 border-cyan-400/30 rounded-full animate-ping-slow hidden sm:block" />
-                <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-8 w-14 h-14 sm:w-20 sm:h-20 border-2 border-purple-400/30 rounded-full animate-ping-slow hidden sm:block" style={{ animationDelay: '0.5s' }} />
-              </h2>
-              
-              {/* Animated underline */}
-              <div className="h-0.5 sm:h-1 bg-linear-to-r from-transparent via-cyan-400 to-transparent animate-gradient-flow" />
-            </div>
-            
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto px-4">
-              Have questions? Want to sponsor? Or just want to say hi? We'd love to hear from you.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-start">
-            
-            {/* Enhanced Contact Info */}
-            <div className="flex flex-col justify-center space-y-6 sm:space-y-8">
-              
-              {/* Contact cards with hover effects */}
-              <div 
-                className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-linear-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] cursor-pointer transform hover:-translate-y-1"
-              >
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-linear-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/50 group-hover:scale-110 transition-transform shrink-0">
-                    <Mail className="w-5 h-5 sm:w-7 sm:h-7" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mb-1">Email</p>
-                    <span className="text-white font-medium text-sm sm:text-base break-all">techfest-scse@xim.edu.in</span>
-                  </div>
-                </div>
-                
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-linear-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              </div>
-
-              <div className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-linear-to-br from-purple-500/10 to-cyan-500/10 border border-purple-400/20 hover:border-purple-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(138,43,226,0.3)] cursor-pointer transform hover:-translate-y-1">
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-linear-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/50 group-hover:scale-110 transition-transform shrink-0">
-                    <MapPin className="w-5 h-5 sm:w-7 sm:h-7" />
+          <div className="space-y-8">
+             <div className="comic-panel p-8 bg-zinc-900 border-l-8 border-red-600 transform hover:-translate-y-2 transition-transform duration-300 shadow-[0_4px_0_#000]">
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 bg-red-600 flex items-center justify-center rounded-none transform rotate-3 shadow-[4px_4px_0_#000]">
+                    <Mail className="w-8 h-8 text-white -rotate-3" />
                   </div>
                   <div>
-                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mb-1">Location</p>
-                    <span className="text-white font-medium text-sm sm:text-base">XIM UNIVERSITY<br/>Nijigada, Kurki, Plot No:12(A<br/>Harirajpur, Kakudia<br/>Odisha 752050</span>
+                    <h3 className="text-2xl font-black text-white uppercase tracking-wider italic">Email Link</h3>
+                    <p className="text-gray-400 font-mono mt-1">techfest-scse@xim.edu.in</p>
                   </div>
                 </div>
-                
-                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-linear-to-r from-purple-400/0 via-purple-400/10 to-purple-400/0 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              </div>
+             </div>
 
-              {/* Social links */}
-              <div className="flex space-x-3 sm:space-x-4 pt-2 sm:pt-4">
-                <a href='https://github.com/RADXIshan/Synchronize-4.0' target='_blank' 
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] transition-all cursor-pointer transform hover:scale-110"
-                >
-                  <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-                <a 
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] transition-all cursor-pointer transform hover:scale-110"
-                >
-                  <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-                <a 
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] transition-all cursor-pointer transform hover:scale-110"
-                >
-                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-              </div>
+             <div className="comic-panel p-8 bg-zinc-900 border-l-8 border-white transform hover:-translate-y-2 transition-transform duration-300 shadow-[0_4px_0_#000]">
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 bg-white flex items-center justify-center rounded-none transform -rotate-2 shadow-[4px_4px_0_#000]">
+                    <MapPin className="w-8 h-8 text-black rotate-2" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-black text-white uppercase tracking-wider italic">Location</h3>
+                    <p className="text-gray-400 font-mono mt-1">XIM University, Odisha</p>
+                  </div>
+                </div>
+             </div>
+
+             <div className="flex gap-6 mt-8 justify-center md:justify-start">
+               {[
+                 { Icon: Github, color: "hover:text-black hover:bg-white" },
+                 { Icon: Instagram, color: "hover:text-white hover:bg-pink-600" },
+                 { Icon: Linkedin, color: "hover:text-white hover:bg-blue-600" }
+               ].map(({ Icon, color }, i) => (
+                 <a key={i} href="#" className={`w-14 h-14 bg-zinc-900 border-2 border-gray-700 flex items-center justify-center text-gray-400 ${color} transition-all transform hover:scale-110 shadow-[4px_4px_0_#000]`}>
+                   <Icon className="w-8 h-8" />
+                 </a>
+               ))}
+             </div>
+          </div>
+
+          {/* Contact Form */}
+          <div ref={formRef} className="comic-panel bg-zinc-900/90 p-8 md:p-10 border-4 border-red-600 relative backdrop-blur-sm shadow-[12px_12px_0_#000]">
+            <div className="absolute -top-6 -right-6 bg-white text-black font-black px-6 py-2 -rotate-3 border-4 border-black shadow-[4px_4px_0_#000]">
+              TOP SECRET
             </div>
 
-            {/* Enhanced Form */}
-            <form 
-              ref={formRef} 
-              onSubmit={handleSubmit}
-              className="relative p-6 sm:p-8 rounded-xl sm:rounded-2xl space-y-4 sm:space-y-6 border border-cyan-400/20 bg-black/40 backdrop-blur-xl shadow-2xl"
-            >
-
-              
-              <div className="relative z-10 space-y-4 sm:space-y-6">
-                <div className="group/input">
-                  <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2 group-focus-within/input:text-cyan-400 transition-colors">Name</label>
-                  <input 
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:shadow-[0_0_20px_rgba(0,242,255,0.3)] focus:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" 
-                    placeholder="John Doe" 
-                  />
-                </div>
-                
-                <div className="group/input">
-                  <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2 group-focus-within/input:text-cyan-400 transition-colors">Email</label>
-                  <input 
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:shadow-[0_0_20px_rgba(0,242,255,0.3)] focus:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" 
-                    placeholder="john@example.com" 
-                  />
-                </div>
-                
-                <div className="group/input">
-                  <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2 group-focus-within/input:text-cyan-400 transition-colors">Message</label>
-                  <textarea 
-                    rows="4"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:shadow-[0_0_20px_rgba(0,242,255,0.3)] focus:bg-white/10 transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed" 
-                    placeholder="Your message..."
-                  ></textarea>
-                </div>
-
-                {/* Status message */}
-                {submitStatus && (
-                  <div className={`p-4 rounded-xl text-sm font-medium ${
-                    submitStatus.type === 'success' 
-                      ? 'bg-green-500/20 border border-green-500/50 text-green-400' 
-                      : 'bg-red-500/20 border border-red-500/50 text-red-400'
-                  }`}>
-                    {submitStatus.message}
-                  </div>
-                )}
-                
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="cursor-pointer relative w-full py-3 sm:py-4 bg-linear-to-r from-cyan-400 to-cyan-500 text-black font-bold rounded-lg sm:rounded-xl overflow-hidden group/button transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base"
-                >
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    {isSubmitting ? (
-                      <>
-                        <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Send Message</span>
-                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover/button:translate-x-1 transition-transform" />
-                      </>
-                    )}
-                  </span>
-                  
-                  {/* Button shine effect */}
-                  {!isSubmitting && (
-                    <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/button:translate-x-full transition-transform duration-700" />
-                  )}
-                </button>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Agent Name</label>
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Natasha Romanoff"
+                  className="w-full bg-black border-2 border-gray-700 focus:border-red-500 p-4 text-white placeholder-gray-600 outline-none transition-all font-mono"
+                  required
+                />
               </div>
-            </form>
 
+              <div className="space-y-2">
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Secure Email</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="agent@shield.gov"
+                  className="w-full bg-black border-2 border-gray-700 focus:border-red-500 p-4 text-white placeholder-gray-600 outline-none transition-all font-mono"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Mission Report</label>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="4"
+                  placeholder="Enter briefing details..."
+                  className="w-full bg-black border-2 border-gray-700 focus:border-red-500 p-4 text-white placeholder-gray-600 outline-none transition-all font-mono resize-none"
+                  required
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest py-5 border-2 border-black shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2 group"
+              >
+                {isSubmitting ? (
+                  <span className="animate-pulse">Encrypting...</span>
+                ) : (
+                  <>
+                    <span>TRANSMIT</span>
+                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
+              </button>
+            </form>
           </div>
+
         </div>
       </div>
 
+      <style>{`
+        .text-shadow-comic {
+          text-shadow: 4px 4px 0px #000;
+          -webkit-text-stroke: 2px #000;
+        }
+      `}</style>
     </section>
   );
 };

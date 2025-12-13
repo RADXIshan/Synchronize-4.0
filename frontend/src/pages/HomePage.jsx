@@ -96,10 +96,10 @@ const HomePage = () => {
       }
 
       // Timeline -> Sponsors
-      createSectionTransition(timelineRef, sponsorsRef);
+      // createSectionTransition(timelineRef, sponsorsRef); // REMOVED for normal scrolling
 
       // Sponsors -> Contact
-      createSectionTransition(sponsorsRef, contactRef);
+      // createSectionTransition(sponsorsRef, contactRef); // REMOVED for normal scrolling
 
       // About Section Specific Animation (Parallax/Fade) - Keeping internal animation
       // (Internal animation logic is handled inside About.jsx)

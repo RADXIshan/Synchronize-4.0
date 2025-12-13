@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ArrowLeft, X, RotateCcw, Bug, Binary } from 'lucide-react';
-import LoadingAnimation from '../components/LoadingAnimation';
+
 import MagneticButton from '../components/MagneticButton';
 
 import spideyBg from '../assets/spidey_comic_bg.png';
@@ -245,7 +245,7 @@ const GalleryPage = () => {
 
   return (
     <>
-      {loading && <LoadingAnimation loaderRef={loaderRef} loadingText="SENSORS ONLINE..." />}
+
 
       {/* Increased top margin/padding to prevent Navbar overlap: pt-40 sm:pt-48 */}
       <div className="min-h-screen pt-40 sm:pt-48 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 overflow-hidden bg-white">
