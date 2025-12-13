@@ -209,7 +209,7 @@ const Timeline = () => {
              </h2>
              <div className="inline-block bg-white border-4 border-black px-4 py-2 transform -rotate-2 shadow-[6px_6px_0px_#10B981] mb-6 relative">
                  <p className="text-black font-bold tracking-widest text-sm sm:text-base uppercase flex items-center gap-2">
-                    <span className="text-emerald-600 font-extrabold">EDITOR'S NOTE:</span>
+                    <span className="text-emerald-600 font-extrabold">DOCTOR STRANGE:</span>
                     DORMAMMU! I'VE COME TO BARGAIN
                  </p>
                  {/* Speech Bubble Arrow */}

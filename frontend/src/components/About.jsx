@@ -171,7 +171,7 @@ const About = () => {
     <section 
       id="about" 
       ref={containerRef} 
-      className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center"
+      className="relative min-h-[150vh] py-40 overflow-hidden bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
