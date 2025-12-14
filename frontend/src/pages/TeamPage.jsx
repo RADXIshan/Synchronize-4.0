@@ -202,7 +202,10 @@ const TeamMemberCard = ({ member, index, setActiveBg }) => {
   const theme = MARVEL_THEMES[index % MARVEL_THEMES.length];
   const Icon = theme.icon;
 
-  const handleMouseEnter = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleInteractionStart = () => {
+    setIsHovered(true);
     setActiveBg(theme.bg);
     gsap.to(cardRef.current, {
       y: -15,
@@ -211,6 +214,20 @@ const TeamMemberCard = ({ member, index, setActiveBg }) => {
       boxShadow: `16px 16px 0px 0px ${theme.primary}`,
       duration: 0.3,
       ease: "back.out(1.7)",
+    });
+  };
+
+  const handleInteractionEnd = () => {
+    setIsHovered(false);
+    setActiveBg(null); // Reset to default
+    gsap.to(cardRef.current, {
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      borderColor: "black",
+      boxShadow: "8px 8px 0px 0px #000000",
+      duration: 0.3,
+      ease: "power2.out",
     });
   };
 
@@ -230,8 +247,9 @@ const TeamMemberCard = ({ member, index, setActiveBg }) => {
   return (
     <div
       ref={cardRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleInteractionStart}
+      onMouseLeave={handleInteractionEnd}
+      onClick={() => isHovered ? handleInteractionEnd() : handleInteractionStart()} // Toggle for touch
       className="relative bg-white border-4 border-black p-4 group cursor-pointer h-full transition-colors duration-300"
       style={{
         boxShadow: "8px 8px 0px 0px #000000",
@@ -258,14 +276,29 @@ const TeamMemberCard = ({ member, index, setActiveBg }) => {
       {/* Image Container */}
       <div className="relative aspect-square mb-4 border-4 border-black overflow-hidden bg-gray-900 transition-colors duration-300">
         <div
-          className="absolute inset-0 halftone-pattern opacity-40 mix-blend-overlay"
+          className="absolute inset-0 halftone-pattern opacity-40 mix-blend-overlay pointer-events-none"
           style={{ "--color-marvel-red": theme.primary }}
         />
+        {/* Comic Portrait (Default) */}
         <img
           src={member.image}
           alt={member.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2"
+          className="w-full h-full object-cover absolute inset-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2"
         />
+        
+        {/* Real Person Photo (Reveal on Hover) */}
+        <img 
+            src={member.realImage} 
+            alt={`Real photo of ${member.name}`}
+            className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        />
+
+        {/* Comic Speed Lines Overlay on Hover - only over comic image essentially, or maybe both? user said "dont change anything for the background" implying effects might stay? 
+           If I put speed lines *over* the real photo it might look cool/comic-integrated. Let's keep it consistent.
+           Actually, the speed lines are `group-hover:opacity-60`. If `isHovered` is true, we see the real photo.
+           Having speed lines over a real photo might look weird if not styled.
+           I'll keep them as is. They will be on top of the generic real photo.
+        */}
         {/* Comic Speed Lines Overlay on Hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-60 speed-lines transition-opacity duration-300 pointer-events-none" />
 
@@ -354,12 +387,12 @@ const TeamPage = () => {
   const containerRef = useRef(null);
 
   const teamMembers = [
-    { name: "Kaif Khurshid", role: "Lead Organizer", image: portraitIron },
-    { name: "Ishan Roy", role: "Tech Lead", image: portraitCap },
-    { name: "Manish Nanda", role: "Design Head", image: portraitHulk },
-    { name: "Simran Osta", role: "Marketing Lead", image: portraitThor },
-    { name: "Suraj Maharana", role: "Logistics", image: portraitPanther },
-    { name: "Rhea Bachheti", role: "Sponsorships", image: portraitWidow },
+    { name: "Kaif Khurshid", role: "Lead Organizer", image: portraitIron, realImage: "https://placehold.co/400x400/png" },
+    { name: "Ishan Roy", role: "Tech Lead", image: portraitCap, realImage: "https://placehold.co/400x400/png" },
+    { name: "Manish Nanda", role: "Design Head", image: portraitHulk, realImage: "https://placehold.co/400x400/png" },
+    { name: "Simran Osta", role: "Marketing Lead", image: portraitThor, realImage: "https://placehold.co/400x400/png" },
+    { name: "Suraj Maharana", role: "Logistics", image: portraitPanther, realImage: "https://placehold.co/400x400/png" },
+    { name: "Rhea Bachheti", role: "Sponsorships", image: portraitWidow, realImage: "https://placehold.co/400x400/png" },
   ];
 
   useEffect(() => {
@@ -447,7 +480,7 @@ const TeamPage = () => {
             </h1>
             <div className="mt-8 p-6 bg-white border-4 border-black shadow-[8px_8px_0px_#ED1D24] max-w-2xl transform skew-x-6 hover:skew-x-0 transition-transform">
                <p className="text-xl sm:text-2xl font-bold text-black uppercase italic">
-              "Heroes aren't born. They're built, one commit at a time."
+              "Heroes aren't born. They're built,<br/>one commit at a time."
                 </p>
             </div>
             
@@ -457,7 +490,7 @@ const TeamPage = () => {
             to="/"
             className="group relative px-8 py-5 bg-red-600 text-white font-black text-xl uppercase tracking-wider hover:-translate-y-1 hover:shadow-[8px_8px_0px_#000] transition-all duration-200 border-4 border-black self-start md:self-auto"
           >
-            <span className="flex items-center gap-2 relative z-10">
+            <span className="flex items-center gap-2 relative z-10 whitespace-nowrap">
               <ArrowLeft className="w-6 h-6 group-hover:-translate-x-2 transition-transform" />
               HQ Return
             </span>
@@ -484,9 +517,7 @@ const TeamPage = () => {
         </div>
       </div>
       
-      {/* Decorative Floating Elements */}
-      <div className="fixed bottom-10 left-10 w-24 h-24 bg-yellow-400 rounded-full border-4 border-black z-0 opacity-20 animate-bounce delay-700 hidden lg:block"></div>
-      <div className="fixed top-40 right-10 w-16 h-16 bg-red-600 rotate-45 border-4 border-black z-0 opacity-20 animate-pulse hidden lg:block"></div>
+
     </div>
   );
 };
