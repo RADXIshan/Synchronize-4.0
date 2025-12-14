@@ -82,6 +82,7 @@ const Preloader = ({ onComplete }) => {
       
       .to(redBoxRef.current, {
         width: "100%",
+        maxWidth: "100%", // Ensure max-width doesn't constrain it
         height: "100%",
         borderRadius: 0,
         duration: 0.4,
@@ -112,11 +113,11 @@ const Preloader = ({ onComplete }) => {
       {/* Red Marvel-like Box */}
       <div 
         ref={redBoxRef}
-        className="relative flex items-center justify-center text-white overflow-hidden w-[90%] max-w-[400px] md:max-w-[500px] h-[120px] shadow-[10px_10px_0px_0px_rgba(255,255,255,0.2)]"
+        className="relative flex items-center justify-center text-white overflow-hidden w-[90%] max-w-[400px] md:max-w-[600px] lg:max-w-[800px] h-24 sm:h-32 md:h-40 shadow-[5px_5px_0px_0px_rgba(255,255,255,0.2)] sm:shadow-[10px_10px_0px_0px_rgba(255,255,255,0.2)]"
         style={{ backgroundColor: '#ED1D24' }}
       >
         {/* Flipping Text Strip */}
-        <div ref={textStripRef} className="absolute inset-0 flex flex-col items-center justify-center font-black italic tracking-tighter text-2xl sm:text-4xl md:text-5xl uppercase leading-none px-2 sm:px-4 text-center">
+        <div ref={textStripRef} className="absolute inset-0 flex flex-col items-center justify-center font-black italic tracking-tighter text-2xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-none px-2 sm:px-4 text-center">
           <span className="flip-text absolute opacity-0 whitespace-nowrap">XIM UNIVERSITY</span>
           <span className="flip-text absolute opacity-0">PRESENTS</span>
           <span className="flip-text absolute opacity-0">MARVELS</span>
@@ -124,16 +125,16 @@ const Preloader = ({ onComplete }) => {
         </div>
 
         {/* Final Logo Overlay */}
-        <div ref={logoRef} className="absolute z-10 text-center flex flex-col items-center justify-center opacity-0">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black italic tracking-tighter drop-shadow-lg text-white" style={{ fontFamily: "Impact, sans-serif" }}>
+        <div ref={logoRef} className="absolute z-10 text-center flex flex-col items-center justify-center opacity-0 w-full">
+          <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-black italic tracking-tighter drop-shadow-lg text-white w-full" style={{ fontFamily: "Impact, sans-serif" }}>
             SYNCHRONIZE
           </h1>
-          <div className="flex items-center gap-2 sm:gap-4 mt-2">
-            <span className="h-1 w-8 sm:w-12 bg-white"></span>
-            <span className="text-xl sm:text-2xl font-bold tracking-widest text-white">4.0</span>
-            <span className="h-1 w-8 sm:w-12 bg-white"></span>
+          <div className="flex items-center gap-2 sm:gap-4 mt-1 sm:mt-2">
+            <span className="h-0.5 sm:h-1 w-8 sm:w-16 bg-white"></span>
+            <span className="text-xl sm:text-3xl font-bold tracking-widest text-white">4.0</span>
+            <span className="h-0.5 sm:h-1 w-8 sm:w-16 bg-white"></span>
           </div>
-          <p className="mt-4 text-sm font-bold tracking-[0.2em] text-black bg-white px-2 py-1">
+          <p className="mt-2 sm:mt-4 text-[10px] sm:text-sm font-bold tracking-[0.2em] text-black bg-white px-2 py-0.5 sm:py-1">
             XIM UNIVERSITY
           </p>
         </div>
