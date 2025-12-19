@@ -212,11 +212,20 @@ const Navbar = () => {
             id="home-nav"
           >
             <div className="flex items-center gap-2 transform skew-x-6">
-                <img src={ximLogo} alt="XIM Logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                <img 
+                    src={ximLogo} 
+                    alt="XIM Logo" 
+                    className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:scale-125 hover:drop-shadow-[0_4px_8px_rgba(237,29,36,0.5)] transition-all duration-300" 
+                />
                 <div className="flex flex-col items-center">
                     <span className="text-xl sm:text-3xl font-display font-black italic leading-none text-black tracking-tighter transition-all duration-300 group-hover:tracking-widest" style={{ textShadow: '2px 2px 0px #ED1D24' }}>SYNCHRONIZE</span>
                     <span className="text-xs font-black tracking-[0.5em] bg-black text-white px-2 py-0.5 mt-[-4px] -rotate-2 group-hover:rotate-0 transition-transform duration-300">4.0 EDITION</span>
                 </div>
+                <img 
+                    src="/logo.png" 
+                    alt="Logo" 
+                    className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:scale-125 hover:drop-shadow-[0_4px_8px_rgba(237,29,36,0.5)] transition-all duration-300" 
+                />
             </div>
           </Link>
 
