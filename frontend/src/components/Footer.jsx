@@ -3,23 +3,23 @@ import { useNavigate } from 'react-router';
 
 
 const Footer = () => {
-  
+
   const navigate = useNavigate();
 
   return (
     <footer className="bg-[#F0F4F8] border-t-8 border-black pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-10 relative overflow-hidden">
       {/* Comic Book Background Effects */}
       <div className="absolute inset-0 bg-linear-to-br from-[#0055AA] via-[#AA0505] to-iron-gold opacity-10" />
-      
+
       {/* Halftone Pattern Overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
           backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1.5px)',
           backgroundSize: '15px 15px'
         }}
       />
-      
+
       {/* Speed Lines Effect */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0 speed-lines" />
@@ -32,7 +32,7 @@ const Footer = () => {
       <div className="absolute bottom-20 right-20 w-16 h-16 bg-iron-gold rounded-full flex items-center justify-center comic-shadow opacity-30 animate-comic-spin">
         <Zap className="w-6 h-6 text-black fill-current" />
       </div>
-      
+
       {/* Additional Comic Elements */}
       <div className="absolute top-1/2 right-10 transform -translate-y-1/2">
         <div className="bg-white border-4 border-black px-4 py-2 transform -rotate-12 comic-shadow">
@@ -43,7 +43,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16">
-          
+
           {/* Column 1: Brand */}
           <div className="space-y-4 sm:space-y-6">
             {/* Comic Book Title Card */}
@@ -52,7 +52,7 @@ const Footer = () => {
                 SYNCHRONIZE<span className="text-[#AA0505]"> 4.0</span>
               </h2>
             </div>
-            
+
             {/* Speech Bubble Description */}
             <div className="relative bg-white border-4 border-black comic-shadow p-4 rounded-lg">
               <div className="absolute -bottom-2 left-6 w-0 h-0 border-l-10px border-l-transparent border-r-10 border-r-transparent border-t-10 border-t-black" />
@@ -61,7 +61,7 @@ const Footer = () => {
                 "ASSEMBLE FOR THE ULTIMATE TECH ADVENTURE! WHERE HEROES OF CODE UNITE!"
               </p>
             </div>
-            
+
             {/* Comic Book Social Icons */}
             <div className="flex space-x-2 sm:space-x-3">
               {[
@@ -72,8 +72,8 @@ const Footer = () => {
                 const Icon = social.icon;
                 return (
                   <div key={i} className="relative group">
-                    <a 
-                      href={social.href} 
+                    <a
+                      href={social.href}
                       className="relative w-12 h-12 sm:w-14 sm:h-14 border-4 border-black comic-shadow flex items-center justify-center text-white hover:-translate-y-1 hover:scale-105 transition-all duration-200"
                       style={{ backgroundColor: social.color }}
                     >
@@ -89,7 +89,7 @@ const Footer = () => {
             {/* Previous Editions - Comic Style */}
             <div className="pt-4 border-t-4 border-black border-dashed">
               <div className="bg-iron-gold border-2 border-black px-3 py-1 inline-block transform -rotate-1 mb-3">
-                <p className="text-xs text-black font-black">LEGENDARY EDITIONS</p>
+                <p className="text-xs text-black font-black">LEGENDARY VERSIONS</p>
               </div>
               <div className="flex flex-col space-y-2">
                 {[
@@ -122,11 +122,11 @@ const Footer = () => {
                 MISSION CONTROL
               </h3>
             </div>
-            
+
             <ul className="space-y-3">
               {[
                 { name: 'Home', path: '/', icon: '🏠' },
-                { name: 'About Us', path: '/#about', icon: '🛡️'},
+                { name: 'About Us', path: '/#about', icon: '🛡️' },
                 { name: 'Events', path: '/events', icon: '⚡' },
                 { name: 'Schedule', path: '/#schedule', icon: '📅' },
                 { name: 'Sponsors', path: '/#sponsors', icon: '💎' },
@@ -134,9 +134,9 @@ const Footer = () => {
                 { name: 'Gallery', path: '/gallery', icon: '📸' },
                 { name: 'Contact', path: '/#contact', icon: '📞' }
               ].map((link, i) => (
-                <li 
+                <li
                   key={i}
-                  className="group cursor-pointer" 
+                  className="group cursor-pointer"
                   onClick={() => {
                     if (link.path.includes('#')) {
                       const [path, hash] = link.path.split('#');
@@ -172,7 +172,7 @@ const Footer = () => {
                 ASSEMBLE HERE!
               </h3>
             </div>
-            
+
             <div className="space-y-4">
               {/* Location Card */}
               <div className="bg-white border-4 border-black comic-shadow p-4 transform hover:rotate-1 transition-transform duration-200">
@@ -183,8 +183,8 @@ const Footer = () => {
                   <div>
                     <h4 className="font-black text-black text-sm mb-1">HEADQUARTERS</h4>
                     <span className="text-xs text-black font-bold leading-tight">
-                      XIM UNIVERSITY<br/>
-                      Nijigada, Kurki<br/>
+                      XIM UNIVERSITY<br />
+                      Nijigada, Kurki<br />
                       Odisha 752050, India
                     </span>
                   </div>
@@ -231,34 +231,34 @@ const Footer = () => {
                 BATTLE ZONE
               </h3>
             </div>
-            
+
             <div className="relative group">
               {/* Comic Book Map Frame */}
               <div className="w-full h-40 bg-white border-4 border-black comic-shadow overflow-hidden relative transform group-hover:rotate-1 transition-transform duration-300">
-                <iframe 
+                <iframe
                   src={`https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&q=XIM+University+Nijigada+Kurki+Harirajpur+Kakudia+Odisha+752050&zoom=15`}
-                  width="100%" 
-                  height="100%" 
-                  style={{border:0}} 
-                  allowFullScreen="" 
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
                   loading="lazy"
                   className="sepia group-hover:sepia-0 transition-all duration-500"
                   title="Location Map"
                 ></iframe>
-                
+
                 {/* Comic Book Overlay */}
                 <div className="absolute inset-0 bg-linear-to-br from-[#0055AA]/20 via-transparent to-[#AA0505]/20 pointer-events-none" />
-                
+
                 {/* Location Pin Effect */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-marvel-red border-2 border-white rounded-full animate-ping" />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-marvel-red border-2 border-white rounded-full" />
               </div>
             </div>
-            
+
             {/* Comic Book Button */}
-            <a 
-              href="https://www.google.com/maps/dir/?api=1&destination=XIM+University+Nijigada+Kurki+Plot+No+12A+Harirajpur+Kakudia+Odisha+752050" 
-              target="_blank" 
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=XIM+University+Nijigada+Kurki+Plot+No+12A+Harirajpur+Kakudia+Odisha+752050"
+              target="_blank"
               rel="noopener noreferrer"
               className="mt-4 bg-white border-4 border-black comic-shadow p-3 flex items-center gap-2 group hover:translate-y-[-2px] comic-shadow-hover transition-all duration-200 transform hover:-rotate-1"
             >
@@ -267,7 +267,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        
+
         {/* Bottom section - Comic Style */}
         <div className="border-t-4 border-black pt-6 sm:pt-8">
           {/* Main Copyright Banner */}
@@ -281,7 +281,7 @@ const Footer = () => {
                   © {new Date().getFullYear()} SYNCHRONIZE TECHFEST - ALL RIGHTS RESERVED
                 </p>
               </div>
-              
+
               <div className="flex items-center space-x-4">
                 <a href="#" className="bg-white text-black px-3 py-1 border-2 border-black font-black text-xs hover:-translate-y-px transition-transform duration-200">
                   PRIVACY POLICY
