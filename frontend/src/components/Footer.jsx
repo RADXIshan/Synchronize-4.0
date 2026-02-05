@@ -86,32 +86,7 @@ const Footer = () => {
               })}
             </div>
 
-            {/* Previous Editions - Comic Style */}
-            <div className="pt-4 border-t-4 border-black border-dashed">
-              <div className="bg-iron-gold border-2 border-black px-3 py-1 inline-block transform -rotate-1 mb-3">
-                <p className="text-xs text-black font-black">LEGENDARY VERSIONS</p>
-              </div>
-              <div className="flex flex-col space-y-2">
-                {[
-                  { name: 'Synchronize 3.0', url: 'https://synchronizexim.in' },
-                  { name: 'Synchronize 2.0', url: '#' },
-                  { name: 'Synchronize 1.0', url: '#' }
-                ].map((edition, i) => (
-                  <a
-                    key={i}
-                    href={edition.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group text-sm text-black hover:text-[#AA0505] transition-all duration-300 flex items-center gap-2 font-bold"
-                  >
-                    <div className="w-3 h-3 bg-[#AA0505] border border-black transform rotate-45 group-hover:rotate-90 transition-transform duration-300" />
-                    <span className="relative">
-                      {edition.name}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
+
           </div>
 
           {/* Column 2: Quick Links - Comic Style */}
