@@ -13,6 +13,7 @@ import hulkImg from '../assets/hulk.png';
 import blackPantherImg from '../assets/black_panther.png';
 import capAmericaImg from '../assets/captain_america.png';
 import blackWidowImg from '../assets/black_widow.png';
+import doctorStrangeImg from '../assets/doctor_strange_centered.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,52 +22,39 @@ const eventsData = {
   technical: [
     {
       id: 3,
-      title: "Hackathon 2025",
+      title: "24-Hour Hackathon\n(Hybrid Mode)",
       category: "Technical",
       description: "24-hour technical marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
       image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      date: "March 15-16, 2025",
+      date: "February 15-16, 2026",
       day: [1, 2],
-      venue: "Computer Lab A",
+      venue: "Computer Lab A / Online",
       prize: "₹50,000",
       registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Arjun Mehta", email: "arjun.mehta@techfest.com" }
     },
     {
       id: 4,
-      title: "Code Relay",
+      title: "DSA-Based Coding Competition",
       category: "Technical",
       description: "Team-based competitive programming event. Solve algorithmic challenges in a relay format against the clock.",
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
-      date: "March 17, 2025",
+      date: "February 17, 2026",
       day: 3,
       venue: "Computer Lab B",
       prize: "₹30,000",
       registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Sneha Reddy", email: "sneha.reddy@techfest.com" }
-    },
-    {
-      id: 5,
-      title: "Web Dev Workshop",
-      category: "Technical",
-      description: "Learn modern web development techniques from industry experts. Build a full-stack application from scratch.",
-      image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?auto=format&fit=crop&q=80&w=800",
-      date: "March 16, 2025",
-      day: 2,
-      venue: "Workshop Hall",
-      prize: "Certificates",
-      registrationLink: "https://forms.google.com/placeholder",
-      poc: { name: "Vikram Singh", email: "vikram.singh@techfest.com" }
     }
   ],
   robotics: [
     {
       id: 6,
-      title: "RoboWars",
+      title: "Robo War",
       category: "Robotics",
       description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
-      date: "March 17, 2025",
+      date: "February 17, 2026",
       day: 3,
       venue: "Arena Ground",
       prize: "₹60,000",
@@ -75,11 +63,11 @@ const eventsData = {
     },
     {
       id: 7,
-      title: "Line Follower Challenge",
+      title: "Robo Line Follower",
       category: "Robotics",
       description: "Design autonomous robots that can navigate complex paths. Fastest and most accurate robot wins.",
       image: "https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&q=80&w=800",
-      date: "March 16, 2025",
+      date: "February 16, 2026",
       day: 2,
       venue: "Robotics Lab",
       prize: "₹25,000",
@@ -88,11 +76,11 @@ const eventsData = {
     },
     {
       id: 8,
-      title: "Drone Racing",
+      title: "Robo Soccer",
       category: "Robotics",
-      description: "Race your custom-built drones through obstacle courses. Speed and precision are key to victory.",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=800",
-      date: "March 15, 2025",
+      description: "Autonomous or manual robots competing in a soccer match. Score goals to win.",
+      image: "https://images.unsplash.com/photo-1517056417719-755dd8e2s36a?auto=format&fit=crop&q=80&w=800",
+      date: "February 15, 2026",
       day: 1,
       venue: "Open Ground",
       prize: "₹40,000",
@@ -100,55 +88,27 @@ const eventsData = {
       poc: { name: "Rohan Gupta", email: "rohan.gupta@techfest.com" }
     }
   ],
-  esports: [
-    {
-      id: 9,
-      title: "Valorant Tournament",
-      category: "Esports",
-      description: "Compete in popular esports titles including Valorant, CS:GO, and more. Solo and team events available.",
-      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
-      date: "March 15-17, 2025",
-      day: [1, 2, 3],
-      venue: "Gaming Arena",
-      prize: "₹45,000",
-      registrationLink: "https://forms.google.com/placeholder",
-      poc: { name: "Karan Malhotra", email: "karan.malhotra@techfest.com" }
-    },
-    {
-      id: 10,
-      title: "BGMI Championship",
-      category: "Esports",
-      description: "Battle it out in mobile gaming tournaments featuring BGMI, COD Mobile, and Clash Royale.",
-      image: "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=800",
-      date: "March 16, 2025",
-      day: 2,
-      venue: "Gaming Zone",
-      prize: "₹20,000",
-      registrationLink: "https://forms.google.com/placeholder",
-      poc: { name: "Ishita Joshi", email: "ishita.joshi@techfest.com" }
-    }
-  ],
   cultural: [
     {
       id: 11,
-      title: "Battle of Bands",
+      title: "Singing Competition",
       category: "Cultural",
-      description: "Electrifying musical showdown where college bands compete for supremacy.",
-      image: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
-      date: "March 16, 2025",
+      description: "Showcase your vocal talents in this solo and duet singing competition. All genres welcome.",
+      image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&q=80&w=800",
+      date: "February 16, 2026",
       day: 2,
       venue: "Main Stage",
-      prize: "₹35,000",
+      prize: "₹15,000",
       registrationLink: "https://forms.google.com/placeholder",
       poc: { name: "Meera Kapoor", email: "meera.kapoor@techfest.com" }
     },
     {
       id: 12,
-      title: "Fashion Show",
+      title: "Dance Competition",
       category: "Cultural",
-      description: "Walk the ramp and showcase the latest trends and creative designs.",
-      image: "https://images.unsplash.com/photo-1509631179647-b8b92ad0370b?auto=format&fit=crop&q=80&w=800",
-      date: "March 17, 2025",
+      description: "Set the stage on fire with your moves. Solo and group performances allowed.",
+      image: "https://images.unsplash.com/photo-1545959952-4744413158e9?auto=format&fit=crop&q=80&w=800",
+      date: "February 17, 2026",
       day: 3,
       venue: "Auditorium",
       prize: "₹25,000",
@@ -156,60 +116,77 @@ const eventsData = {
       poc: { name: "Siddharth Rao", email: "siddharth.rao@techfest.com" }
     }
   ],
-  sports: [
+  esports: [
     {
-        id: 13,
-        title: "Futsal",
-        category: "Sports",
-        description: "Fast-paced 5v5 football tournament. Show off your skills and teamwork.",
-        image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=800",
-        date: "March 15-16, 2025",
-        day: [1, 2],
-        venue: "Sports Complex",
-        prize: "₹20,000",
-        registrationLink: "https://forms.google.com/placeholder",
-        poc: { name: "Amit Singh", email: "amit.singh@techfest.com" }
+      id: 10,
+      title: "BGMI Championship",
+      category: "Esports",
+      description: "Battle it out in mobile gaming tournaments featuring BGMI. Squad up and win.",
+      image: "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=800",
+      date: "February 16, 2026",
+      day: 2,
+      venue: "Gaming Zone",
+      prize: "₹20,000",
+      registrationLink: "https://forms.google.com/placeholder",
+      poc: { name: "Ishita Joshi", email: "ishita.joshi@techfest.com" }
     },
     {
-        id: 14,
-        title: "Box Cricket",
-        category: "Sports",
-        description: "Intense indoor cricket action. Short boundaries, high excitement.",
-        image: "https://images.unsplash.com/photo-1531415074968-bc23644a8e81?auto=format&fit=crop&q=80&w=800",
-        date: "March 16, 2025",
-        day: 2,
-        venue: "Sports Ground",
-        prize: "₹15,000",
-        registrationLink: "https://forms.google.com/placeholder",
-        poc: { name: "Rajesh Kumar", email: "rajesh.kumar@techfest.com" }
+      id: 9,
+      title: "FIFA Tournament",
+      category: "Esports",
+      description: "Show your football skills on the virtual pitch. 1v1 knockout tournament.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800",
+      date: "February 15, 2026",
+      day: 1,
+      venue: "Gaming Arena",
+      prize: "₹10,000",
+      registrationLink: "https://forms.google.com/placeholder",
+      poc: { name: "Karan Malhotra", email: "karan.malhotra@techfest.com" }
+    }
+  ],
+  sports: [
+    {
+      id: 13,
+      title: "Futsal",
+      category: "Sports",
+      description: "Fast-paced 5v5 football tournament. Show off your skills and teamwork.",
+      image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=800",
+      date: "February 15-16, 2026",
+      day: [1, 2],
+      venue: "Sports Complex",
+      prize: "₹20,000",
+      registrationLink: "https://forms.google.com/placeholder",
+      poc: { name: "Amit Singh", email: "amit.singh@techfest.com" }
     }
   ],
   entrepreneurship: [
       {
         id: 15,
-        title: "Shark Tank",
+        title: "TechTank",
         category: "Entrepreneurship",
-        description: "Pitch your startup idea to a panel of investors and secure funding.",
+        description: "Pitch your innovative startup ideas to a panel of judges and winning funding.",
         image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800",
-        date: "March 17, 2025",
+        date: "February 17, 2026",
         day: 3,
         venue: "Conference Hall",
         prize: "₹50,000 + Funding",
         registrationLink: "https://forms.google.com/placeholder",
         poc: { name: "Anjali Gupta", email: "anjali.gupta@techfest.com" }
-      },
+      }
+  ],
+  "non-technical": [
       {
-        id: 16,
-        title: "Paper Presentation",
-        category: "Entrepreneurship",
-        description: "Present your research papers on cutting-edge technologies and business models.",
-        image: "https://images.unsplash.com/photo-1544531696-fa26a312bb7a?auto=format&fit=crop&q=80&w=800",
-        date: "March 16, 2025",
+        id: 17,
+        title: "Treasure Hunt",
+        category: "Non-Technical",
+        description: "Solve riddles, find clues, and navigate the campus to find the hidden treasure.",
+        image: "https://images.unsplash.com/photo-1585862705417-671ae6ea8925?auto=format&fit=crop&q=80&w=800",
+        date: "February 16, 2026",
         day: 2,
-        venue: "Seminar Room",
+        venue: "Campus Wide",
         prize: "₹10,000",
         registrationLink: "https://forms.google.com/placeholder",
-        poc: { name: "Dr. Vikram", email: "vikram@techfest.com" }
+        poc: { name: "Rahul Verma", email: "rahul.verma@techfest.com" }
       }
   ]
 };
@@ -300,7 +277,7 @@ const categories = [
       gradient: "from-red-800 to-black"
     }
   },
-   { 
+  { 
     id: 'entrepreneurship', 
     name: 'Entrepreneurship',
     character: "Iron Man",
@@ -312,6 +289,20 @@ const categories = [
       shadow: 'shadow-yellow-900/50',
       icon: '💼',
       gradient: "from-yellow-600 to-red-600"
+    }
+  },
+  { 
+    id: 'non-technical', 
+    name: 'Non-Technical',
+    character: "Doctor Strange",
+    bgImage: doctorStrangeImg,
+    theme: {
+      bg: 'bg-gradient-to-br from-black via-green-900 to-yellow-800',
+      border: 'border-yellow-500',
+      accent: 'text-yellow-300',
+      shadow: 'shadow-emerald-400/50',
+      icon: '⏳',
+      gradient: "from-green-500 to-yellow-400"
     }
   }
 ];
@@ -418,7 +409,7 @@ const EventCard = ({ event, onClick }) => {
               </div>
            </div>
            <div className="bg-white px-2 border-2 border-black transform -rotate-2">
-              <span className="text-xs font-black uppercase text-black">Dec 2024</span>
+              <span className="text-xs font-black uppercase text-black">Feb 2026</span>
            </div>
         </div>
 
@@ -444,7 +435,7 @@ const EventCard = ({ event, onClick }) => {
 
           {/* Title on Structure */}
           <div className="absolute bottom-4 left-2 right-2 z-20">
-             <h3 className="text-3xl font-display font-black text-white uppercase italic leading-[0.85] tracking-tighter" 
+             <h3 className="text-3xl font-display font-black text-white uppercase italic leading-[0.85] tracking-tighter whitespace-pre-line" 
                  style={{ 
                     WebkitTextStroke: '1.5px black', 
                     textShadow: `3px 3px 0px ${categoryTheme.accent.replace('text-', '').replace('-500', '') === 'yellow-400' ? '#D2161E' : '#000'}`

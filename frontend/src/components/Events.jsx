@@ -8,65 +8,65 @@ gsap.registerPlugin(ScrollTrigger);
 
 const eventsData = [
   { 
-    title: "Hackathon", 
+    title: "24-Hour Hackathon\n(Hybrid Mode)", 
     category: "Technical", 
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description: "Join us for an intense 24-hour technical marathon where innovation meets creativity. Build groundbreaking solutions to real-world problems.",
-    date: "March 15-16, 2024",
+    description: "24-hour technical marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
+    date: "February 15-16, 2026",
     day: [1, 2],
-    venue: "Tech Hub, Main Campus",
+    venue: "Computer Lab A / Online",
     prize: "₹50,000",
     registrationLink: "https://forms.google.com/placeholder",
-    poc: { name: "John Doe", email: "john@xim.edu.in" }
+    poc: { name: "Arjun Mehta", email: "arjun.mehta@techfest.com" }
   },
   { 
-    title: "RoboWars", 
+    title: "Robo War", 
     category: "Robotics", 
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600",
-    description: "Battle it out with your custom-built robots in an epic arena showdown. May the best bot win!",
-    date: "March 17, 2024",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+    description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
+    date: "February 17, 2026",
     day: 3,
     venue: "Arena Ground",
-    prize: "₹40,000",
-    registrationLink: "https://forms.google.com/placeholder",
-    poc: { name: "Jane Smith", email: "jane@xim.edu.in" }
-  },
-  { 
-    title: "Code Relay", 
-    category: "Technical", 
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600",
-    description: "A team-based technical competition where speed and accuracy matter. Pass the baton and solve challenges together.",
-    date: "March 18, 2024",
-    day: 3,
-    venue: "Computer Lab A",
-    prize: "₹30,000",
-    registrationLink: "https://forms.google.com/placeholder",
-    poc: { name: "Mike Johnson", email: "mike@xim.edu.in" }
-  },
-  { 
-    title: "Esports Arena", 
-    category: "Esports", 
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600",
-    description: "Compete in popular esports titles and prove your gaming prowess. Multiple tournaments across different games.",
-    date: "March 19-20, 2024",
-    day: [1, 2, 3],
-    venue: "Gaming Arena",
     prize: "₹60,000",
     registrationLink: "https://forms.google.com/placeholder",
-    poc: { name: "Sarah Williams", email: "sarah@xim.edu.in" }
+    poc: { name: "Aditya Kumar", email: "aditya.kumar@techfest.com" }
   },
   { 
-    title: "Battle of Bands", 
-    category: "Cultural", 
-    image: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=600",
-    description: "Electrifying musical showdown where college bands compete for supremacy. Rock the stage!",
-    date: "March 21, 2024",
+    title: "BGMI Championship", 
+    category: "Esports", 
+    image: "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=800",
+    description: "Battle it out in mobile gaming tournaments featuring BGMI. Squad up and win.",
+    date: "February 16, 2026",
     day: 2,
-    venue: "Main Stage",
-    prize: "₹35,000",
+    venue: "Gaming Zone",
+    prize: "₹20,000",
     registrationLink: "https://forms.google.com/placeholder",
-    poc: { name: "Alex Brown", email: "alex@xim.edu.in" }
+    poc: { name: "Ishita Joshi", email: "ishita.joshi@techfest.com" }
   },
+  { 
+    title: "Dance Competition", 
+    category: "Cultural", 
+    image: "https://images.unsplash.com/photo-1545959952-4744413158e9?auto=format&fit=crop&q=80&w=800",
+    description: "Set the stage on fire with your moves. Solo and group performances allowed.",
+    date: "February 17, 2026",
+    day: 3,
+    venue: "Auditorium",
+    prize: "₹25,000",
+    registrationLink: "https://forms.google.com/placeholder",
+    poc: { name: "Siddharth Rao", email: "siddharth.rao@techfest.com" }
+  },
+  { 
+    title: "TechTank", 
+    category: "Entrepreneurship", 
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800",
+    description: "Pitch your innovative startup ideas to a panel of judges and winning funding.",
+    date: "February 17, 2026",
+    day: 3,
+    venue: "Conference Hall",
+    prize: "₹50,000 + Funding",
+    registrationLink: "https://forms.google.com/placeholder",
+    poc: { name: "Anjali Gupta", email: "anjali.gupta@techfest.com" }
+  }
 ];
 
 const Events = () => {
