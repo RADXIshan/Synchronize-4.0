@@ -295,7 +295,7 @@ const About = () => {
                 <div className="w-14 h-14 bg-linear-to-br from-yellow-400 to-yellow-600 border-4 border-black flex items-center justify-center mb-4 shadow-[4px_4px_0px_#000] panel-icon">
                   <Trophy className="w-7 h-7 text-black" />
                 </div>
-                <h4 className="text-4xl font-black text-white mb-2 font-display italic comic-text-stroke">₹50K+</h4>
+                <h4 className="text-4xl font-black text-white mb-2 font-display italic comic-text-stroke">₹1L+</h4>
                 <p className="text-yellow-400 text-sm font-black uppercase tracking-widest">TREASURE</p>
               </ComicPanel>
             </div>
@@ -307,7 +307,7 @@ const About = () => {
                   <Cpu className="w-7 h-7 text-white" />
                 </div>
                 <h4 className="text-xl font-black text-white mb-2 font-display italic">CUTTING EDGE</h4>
-                <p className="text-gray-300 text-sm">Advanced tech challenges worthy of Wakanda's finest minds.</p>
+                <p className="text-gray-300 text-sm">Where technology meets its superpower.</p>
               </ComicPanel>
 
               <ComicPanel panelType="feature" className="about-panel p-4 sm:p-6 flex-1 flex flex-col justify-center">
@@ -315,7 +315,7 @@ const About = () => {
                   <Star className="w-7 h-7 text-white" />
                 </div>
                 <h4 className="text-xl font-black text-white mb-2 font-display italic">ELITE MISSION</h4>
-                <p className="text-gray-300 text-sm">Protect and advance the digital frontier with honor.</p>
+                <p className="text-gray-300 text-sm">Built by minds, powered by code.</p>
               </ComicPanel>
             </div>
 
@@ -351,7 +351,7 @@ const About = () => {
                     JOIN THE <span className="text-yellow-400">REVOLUTION</span>
                   </h4>
                   <p className="text-purple-200 text-sm sm:text-base font-black uppercase tracking-wider">
-                    PROVE YOUR WORTH • DEFEND THE FUTURE • WAKANDA AWAITS
+                    ASSEMBLE • INNOVATE • DOMINATE
                   </p>
                 </div>
                 <div className="w-20 h-20 bg-linear-to-br from-yellow-400 to-yellow-600 border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_#000] panel-icon transform rotate-12 hover:rotate-180 transition-transform duration-500">

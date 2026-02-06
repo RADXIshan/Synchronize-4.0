@@ -198,7 +198,7 @@ const Hero = () => {
         
         {/* Floating Tag */}
         <div ref={tagRef} className="mb-4 bg-white border-2 border-black shadow-[4px_4px_0px_#000] px-3 py-1 sm:px-4 sm:py-1 -rotate-2 inline-block opacity-0 transform-gpu">
-            <span className="font-display font-black text-[#AA0505] tracking-widest text-[10px] sm:text-xs md:text-sm">FIRST AVENGER EDITION</span>
+            <span className="font-display font-black text-[#AA0505] tracking-widest text-[10px] sm:text-xs md:text-sm">FIRST MARVEL EDITION</span>
         </div>
 
         <div ref={textRef} className="flex flex-col relative w-full">
