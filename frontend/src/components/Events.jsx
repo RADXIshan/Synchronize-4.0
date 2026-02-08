@@ -12,7 +12,7 @@ const eventsData = [
     category: "Technical", 
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "24-hour technical marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
-    date: "February 15-16, 2026",
+    date: "February 27TH, 2026",
     day: [1, 2],
     venue: "CR 301, 302 3rd Floor NAB ( XIM UNIVERSITY)/ Online",
     prize: "₹20,000",
