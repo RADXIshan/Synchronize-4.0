@@ -17,7 +17,7 @@ const eventsData = [
     venue: "CR 301, 302 3rd Floor NAB ( XIM UNIVERSITY)/ Online",
     prize: "₹20,000",
     registrationLink: "https://forms.gle/t1Prh43tXZpC7Pra9",
-    rulebook: "#",
+    rulebook: "https://drive.google.com/file/d/1giWhOtgZUj6uPEI-7fsBs_q6huo-pjCC/view?usp=sharing",
     poc: { name: "Colin Michael D Rozario", email: "ucse23015@stu.xim.edu.in", phone: "+91 63740 35116" }
   },
   { 
@@ -25,13 +25,13 @@ const eventsData = [
     category: "Robotics", 
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
     description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
-    date: "February 17, 2026",
+    date: "February 26th, 2026",
     day: 3,
-    venue: "Arena Ground",
-    prize: "₹60,000",
-    registrationLink: "https://forms.google.com/placeholder",
+    venue: "Quadrangle, XIM University",
+    prize: "₹7,000",
+    registrationLink: "https://forms.gle/fg7D1SMM4vBr6K2E9",
     rulebook: "#",
-    poc: { name: "Aditya Kumar", email: "aditya.kumar@techfest.com", phone: "+91 90089 398" }
+    poc: { name: "Suraj Maharana", email: "ucse23059@stu.xim.edu.in", phone: "+91  72056 38858" }
   },
   { 
     title: "BGMI Championship", 
@@ -47,17 +47,17 @@ const eventsData = [
     poc: { name: "ADITYA RAH MISRA", email: "ucse24005@stu.xim.edu.in", phone: "+91 7047533803" }
   },
   { 
-    title: "Dance Competition", 
+    title: "Rhythm of Realms", 
     category: "Cultural", 
     image: "https://images.unsplash.com/photo-1545959952-4744413158e9?auto=format&fit=crop&q=80&w=800",
-    description: "Set the stage on fire with your moves. Solo and group performances allowed.",
-    date: "February 17, 2026",
+    description: "The “Icons of Dance” competition celebrates legendary dancers and iconic styles from around the world,offering a platform to showcase creativity, technique, and expression.",
+    date: "February 28th, 2026",
     day: 3,
     venue: "Auditorium",
     prize: "₹25,000",
     registrationLink: "https://forms.google.com/placeholder",
     rulebook: "#",
-    poc: { name: "Siddharth Rao", email: "siddharth.rao@techfest.com", phone: "+91 90089 398" }
+    poc: { name: "Deekhita Bohidar", email: "ucse24020@stu.xim.edu.in", phone: "+91 7847919776" }
   },
   { 
     title: "Innovators Assemble for TechTank", 
