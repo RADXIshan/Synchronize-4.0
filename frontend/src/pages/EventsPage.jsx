@@ -44,7 +44,7 @@ const eventsData = {
       day: 3,
       venue: "Computer Lab 3rd Floor (XIM UNIVERSITY)",
       prize: "₹5,000",
-      registrationLink: "#",
+      registrationLink: "https://forms.gle/ZLLZPvpWt9PVf8yx7",
       rulebook: "#",
       poc: [
         { name: "Koyena Sutradhar", email: "ucse24030@stu.xim.edu.in", phone: "+91 9241016737" },
@@ -77,7 +77,7 @@ const eventsData = {
       day: 2,
       venue: "Robotics Lab",
       prize: "₹6,000",
-      registrationLink: "#",
+      registrationLink: "https://forms.gle/JCW1b5EwXkna69ji6",
       rulebook: "#",
       poc: { name: "Ananya Verma", email: "ucse23006@stu.xim.edu.in", phone: "+91 8899389426" }
     },
@@ -170,7 +170,7 @@ const eventsData = {
       day: [2, 3],
       venue: "Sports Complex",
       prize: "₹20,000",
-      registrationLink: "#",
+      registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfn2DQWpyzadiZzy8QQRbfLTunZYGqoNwwkvyrmatYTEF5eUQ/viewform?usp=header",
       rulebook: "#",
       poc: { name: "Sourav Sekhar Samal", email: "ucse24059@stu.xim.edu.in", phone: "+91 7847958312" }
     }
@@ -202,7 +202,7 @@ const eventsData = {
         day: 2,
         venue: "Campus Wide",
         prize: "Gifts and Rewards",
-        registrationLink: "#",
+        registrationLink: "https://forms.gle/yQRN7T6bmLafXY4X6",
         rulebook: "#",
         poc: [
           { name: "Rahul Verma", email: "rahul.verma@techfest.com", phone: "TBD" },
