@@ -341,7 +341,7 @@ const Navbar = () => {
 
         <div className="flex flex-col items-center gap-6 relative z-10 w-full max-w-2xl px-4">
           <h2
-            className="text-xl font-mono tracking-widest mb-8 border-b-2 pb-2 uppercase transition-colors duration-300"
+            className="hidden lg:block text-xl font-mono tracking-widest mb-8 border-b-2 pb-2 uppercase transition-colors duration-300"
             style={{
               color: hoveredLink !== null ? navLinks[hoveredLink].color : 'var(--marvel-red)',
               borderColor: hoveredLink !== null ? navLinks[hoveredLink].color : 'var(--marvel-red)'
