@@ -320,7 +320,7 @@ const Navbar = () => {
       {/* Full Screen Menu Overlay */}
       <div
         ref={bgRef}
-        className="fixed inset-0 bg-[#0a0a0a] z-90 transform -translate-y-full flex flex-col justify-center items-center overflow-hidden overflow-y-auto"
+        className="fixed inset-0 bg-[#0a0a0a] z-90 transform -translate-y-full flex flex-col justify-center items-center overflow-hidden h-screen"
       >
         {/* Halftone & Action Lines */}
         <div className="absolute inset-0 halftone-pattern opacity-10 pointer-events-none"></div>
@@ -339,9 +339,9 @@ const Navbar = () => {
         <div className="hidden lg:block absolute top-40 left-20 text-6xl font-black text-white/10 rotate-[-15deg] pointer-events-none">POW!</div>
         <div className="hidden lg:block absolute bottom-20 right-20 text-8xl font-black text-white/10 rotate-15 pointer-events-none">BAM!</div>
 
-        <div className="flex flex-col items-center gap-6 relative z-10 w-full max-w-2xl px-4">
+        <div className="flex flex-col items-center gap-2 sm:gap-4 lg:gap-6 relative z-10 w-full max-w-2xl px-4">
           <h2
-            className="hidden lg:block text-xl font-mono tracking-widest mb-8 border-b-2 pb-2 uppercase transition-colors duration-300"
+            className="hidden lg:block text-base sm:text-xl font-mono tracking-widest mb-4 sm:mb-8 border-b-2 pb-2 uppercase transition-colors duration-300"
             style={{
               color: hoveredLink !== null ? navLinks[hoveredLink].color : 'var(--marvel-red)',
               borderColor: hoveredLink !== null ? navLinks[hoveredLink].color : 'var(--marvel-red)'
@@ -357,12 +357,12 @@ const Navbar = () => {
               onClick={() => handleNavigation(link.path)}
               onMouseEnter={() => setHoveredLink(index)}
               onMouseLeave={() => setHoveredLink(null)}
-              className="group relative w-full text-center py-2 cursor-pointer"
+              className="group relative w-full text-center py-1 sm:py-2 cursor-pointer"
             >
               <div className="relative inline-block transform transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2">
                 <div className="absolute -inset-2 bg-white skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity duration-200 border-2 border-black shadow-[4px_4px_0px_#000]"></div>
                 <span
-                  className="relative z-10 text-4xl sm:text-7xl font-display font-black text-transparent bg-clip-text bg-white italic uppercase group-hover:text-black transition-colors duration-200"
+                  className="relative z-10 text-3xl sm:text-5xl lg:text-7xl font-display font-black text-transparent bg-clip-text bg-white italic uppercase group-hover:text-black transition-colors duration-200"
                   style={{ WebkitTextStroke: '2px black' }}
                 >
                   {link.name}
