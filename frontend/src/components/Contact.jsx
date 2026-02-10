@@ -80,8 +80,10 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
-      toast.error('Transmission failed.', { id: toastId });
-      setSubmitStatus({ type: 'error', message: 'Failed to send message.' });
+      console.log(error);
+      const errorMessage = error.response?.data?.error || 'Transmission failed.';
+      toast.error(errorMessage, { id: toastId });
+      setSubmitStatus({ type: 'error', message: errorMessage });
     } finally {
       setIsSubmitting(false);
     }
