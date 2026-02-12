@@ -15,6 +15,20 @@ import capAmericaImg from '../assets/captain_america.png';
 import blackWidowImg from '../assets/black_widow.png';
 import doctorStrangeImg from '../assets/doctor_strange_centered.png';
 
+// Event Image Imports
+import HackathonImg from '../assets/events/hackathon.jpeg';
+import RoboWarImg from '../assets/events/sumo.jpeg';
+import BgmiImg from '../assets/events/bgmi.jpeg';
+import DanceImg from '../assets/events/dance.jpeg';
+import TechTankImg from '../assets/events/sgrup.jpeg';
+import FutsalImg from '../assets/events/futsal.jpeg';
+import ValoFifaImg from '../assets/events/valofifa.jpeg';
+import SingingImg from '../assets/events/sing.jpeg';
+import CodingCompImg from '../assets/events/comp.jpeg';
+import LineFollowerImg from '../assets/events/roborace.JPG';
+import TreasureHuntImg from '../assets/events/dark.jpeg';
+import RoboSoccerImg from '../assets/events/car.jpeg';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const eventsData = {
@@ -25,7 +39,7 @@ const eventsData = {
       title: "24-Hour Hackathon\n(Hybrid Mode)",
       category: "Technical",
       description: "24-hour technical marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: HackathonImg,
       date: "February 27th - 28th, 2026",
       day: [1, 2],
       venue: "CR 301, 302 3rd Floor NAB ( XIM UNIVERSITY)/ Online",
@@ -39,7 +53,7 @@ const eventsData = {
       title: "DSA-Based Coding Competition",
       category: "Technical",
       description: "Team-based competitive programming event. Solve algorithmic challenges in a relay format against the clock.",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+      image: CodingCompImg,
       date: "February 26, 2026",
       day: 1,
       venue: "Computer Lab 3rd Floor NAB (XIM UNIVERSITY)",
@@ -58,7 +72,7 @@ const eventsData = {
       title: "Robo War",
       category: "Robotics",
       description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+      image: RoboWarImg,
       date: "February 26th, 2026",
       day: 1,
       venue: "Quadrangle, XIM University",
@@ -72,7 +86,7 @@ const eventsData = {
       title: "Robo Line Follower",
       category: "Robotics",
       description: "Design autonomous robots that can navigate complex paths. Fastest and most accurate robot wins.",
-      image: "https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&q=80&w=800",
+      image: LineFollowerImg,
       date: "February 27, 2026",
       day: 2,
       venue: "Amphitheatre, XIM University",
@@ -86,7 +100,7 @@ const eventsData = {
       title: "Robo Soccer",
       category: "Robotics",
       description: "Autonomous or manual robots competing in a soccer match. Score goals to win.",
-      image: "https://images.unsplash.com/photo-1517056417719-755dd8e2s36a?auto=format&fit=crop&q=80&w=800",
+      image: RoboSoccerImg,
       date: "February 26, 2026",
       day: 1,
       venue: "Open Ground",
@@ -102,7 +116,7 @@ const eventsData = {
       title: "Rhythm of Realms",
       category: "Cultural",
       description: "The “Icons of Dance” competition celebrates legendary dancers and iconic styles from around the world, offering a platform to showcase creativity, technique, and expression.",
-      image: "https://images.unsplash.com/photo-1545959952-4744413158e9?auto=format&fit=crop&q=80&w=800",
+      image: DanceImg,
       date: "February 28th, 2026",
       day: 3,
       venue: "Mini Auditorium",
@@ -116,7 +130,7 @@ const eventsData = {
       title: "Singing Competition",
       category: "Cultural",
       description: "Showcase your vocal talents in this solo and duet singing competition. All genres welcome.",
-      image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&q=80&w=800",
+      image: SingingImg,
       date: "February 28, 2026",
       day: 3,
       venue: "Mini Auditorium",
@@ -135,7 +149,7 @@ const eventsData = {
       title: "BGMI Championship",
       category: "Esports",
       description: "Battle it out in mobile gaming tournaments featuring BGMI. Squad up and win.",
-      image: "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=800",
+      image: BgmiImg,
       date: "February 27th, 2026",
       day: 2,
       venue: "E.H 2 4th Floor, NAB (XIM UNIVERSITY)",
@@ -149,7 +163,7 @@ const eventsData = {
       title: "FIFA Tournament",
       category: "Esports",
       description: "Show your football skills on the virtual pitch. 1v1 knockout tournament.",
-      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800",
+      image: ValoFifaImg,
       date: "February 27, 2026",
       day: 2,
       venue: "Gaming Arena",
@@ -165,7 +179,7 @@ const eventsData = {
       title: "Futsal",
       category: "Sports",
       description: "Fast-paced 5v5 football tournament. Show off your skills and teamwork.",
-      image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=800",
+      image: FutsalImg,
       date: "February 27-28, 2026",
       day: [2, 3],
       venue: "Sports Complex",
@@ -176,45 +190,45 @@ const eventsData = {
     }
   ],
   entrepreneurship: [
-      {
-        id: 15,
-        title: "Innovators Assemble for TechTank",
-        category: "Entrepreneurship",
-        description: "It is a team entrepreneurship event to pitch technical startup ideas in front of a panel",
-        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800",
-        date: "February 27th, 2026",
-        day: 2,
-        venue: "Seminar Hall",
-        prize: "₹5,000",
-        registrationLink: "https://forms.gle/yQRN7T6bmLafXY4X6",
-        rulebook: "#",
-        poc: { name: "Vrinda Patnaik", email: "ucse23064@stu.xim.edu.in", phone: "+91 7205045510" }
-      }
+    {
+      id: 15,
+      title: "Innovators Assemble for TechTank",
+      category: "Entrepreneurship",
+      description: "It is a team entrepreneurship event to pitch technical startup ideas in front of a panel",
+      image: TechTankImg,
+      date: "February 27th, 2026",
+      day: 2,
+      venue: "Seminar Hall",
+      prize: "₹5,000",
+      registrationLink: "https://forms.gle/yQRN7T6bmLafXY4X6",
+      rulebook: "#",
+      poc: { name: "Vrinda Patnaik", email: "ucse23064@stu.xim.edu.in", phone: "+91 7205045510" }
+    }
   ],
   "non-technical": [
-      {
-        id: 17,
-        title: "Treasure Hunt",
-        category: "Non-Technical",
-        description: "Solve riddles, find clues, and navigate the campus to find the hidden treasure.",
-        image: "https://images.unsplash.com/photo-1585862705417-671ae6ea8925?auto=format&fit=crop&q=80&w=800",
-        date: "February 26, 2026",
-        day: 1,
-        venue: "Campus Wide",
-        prize: "Gifts and Rewards",
-        registrationLink: "https://forms.gle/FaKweSfLLVxs8Xdw7",
-        rulebook: "#",
-        poc: [
-          { name: "Manish Ghatuary", email: "ucse24065@stu.xim.edu.in", phone: "+91 7008650074" },
-          { name: "Papneet Swain", email: "ucse24038@stu.xim.edu.in", phone: "+91 6370607665" }
-        ]
-      }
+    {
+      id: 17,
+      title: "Treasure Hunt",
+      category: "Non-Technical",
+      description: "Solve riddles, find clues, and navigate the campus to find the hidden treasure.",
+      image: TreasureHuntImg,
+      date: "February 26, 2026",
+      day: 1,
+      venue: "Campus Wide",
+      prize: "Gifts and Rewards",
+      registrationLink: "https://forms.gle/FaKweSfLLVxs8Xdw7",
+      rulebook: "#",
+      poc: [
+        { name: "Manish Ghatuary", email: "ucse24065@stu.xim.edu.in", phone: "+91 7008650074" },
+        { name: "Papneet Swain", email: "ucse24038@stu.xim.edu.in", phone: "+91 6370607665" }
+      ]
+    }
   ]
 };
 
 const categories = [
-  { 
-    id: 'all', 
+  {
+    id: 'all',
     name: 'All Events',
     character: "Avengers",
     bgImage: capAmericaImg, // Default hero
@@ -228,8 +242,8 @@ const categories = [
     }
   },
 
-  { 
-    id: 'technical', 
+  {
+    id: 'technical',
     name: 'Technical',
     character: "Spider-Man",
     bgImage: spiderManImg,
@@ -242,8 +256,8 @@ const categories = [
       gradient: "from-red-500 to-blue-600"
     }
   },
-  { 
-    id: 'robotics', 
+  {
+    id: 'robotics',
     name: 'Robotics',
     character: "Thor",
     bgImage: thorImg,
@@ -256,13 +270,13 @@ const categories = [
       gradient: "from-slate-600 to-cyan-400"
     }
   },
-  { 
-    id: 'esports', 
+  {
+    id: 'esports',
     name: 'Esports',
     character: "Hulk",
     bgImage: hulkImg,
     theme: {
-      bg: 'bg-gradient-to-br from-green-700 via-green-500 to-purple-700', 
+      bg: 'bg-gradient-to-br from-green-700 via-green-500 to-purple-700',
       border: 'border-green-900',
       accent: 'text-green-400',
       shadow: 'shadow-green-900/50',
@@ -270,8 +284,8 @@ const categories = [
       gradient: "from-green-700 to-purple-700"
     }
   },
-  { 
-    id: 'cultural', 
+  {
+    id: 'cultural',
     name: 'Cultural',
     character: "Black Panther",
     bgImage: blackPantherImg,
@@ -284,8 +298,8 @@ const categories = [
       gradient: "from-purple-900 to-black"
     }
   },
-  { 
-    id: 'sports', 
+  {
+    id: 'sports',
     name: 'Sports',
     character: "Black Widow",
     bgImage: blackWidowImg,
@@ -298,8 +312,8 @@ const categories = [
       gradient: "from-red-800 to-black"
     }
   },
-  { 
-    id: 'entrepreneurship', 
+  {
+    id: 'entrepreneurship',
     name: 'Entrepreneurship',
     character: "Iron Man",
     bgImage: ironManImg,
@@ -312,8 +326,8 @@ const categories = [
       gradient: "from-yellow-600 to-red-600"
     }
   },
-  { 
-    id: 'non-technical', 
+  {
+    id: 'non-technical',
     name: 'Non-Technical',
     character: "Doctor Strange",
     bgImage: doctorStrangeImg,
@@ -329,39 +343,39 @@ const categories = [
 ];
 
 const HeroBadge = () => {
-    // Generate a random-looking comic badge using SVGs
-    const badges = [
-        // Spider
-        <svg viewBox="0 0 24 24" className="w-full h-full text-white fill-current" key="spider">
-             <path d="M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-1-13h2v4h-2zm-3 3h8v2h-8z"/>
-             <circle cx="12" cy="12" r="3" className="text-red-600 fill-red-600"/>
-        </svg>,
-        // Star
-        <svg viewBox="0 0 24 24" className="w-full h-full text-yellow-400 fill-current" key="star">
-             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="black" strokeWidth="2"/>
-        </svg>,
-        // Bolt
-        <svg viewBox="0 0 24 24" className="w-full h-full text-yellow-400 fill-current" key="bolt">
-             <path d="M11 21v-6H7v-4h3V7h4v4h4v6h-3v4h-4z" stroke="black" strokeWidth="2"/>
-             <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
-        </svg>,
-        // Shield
-        <svg viewBox="0 0 24 24" className="w-full h-full text-blue-600 fill-current" key="shield">
-             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2z" />
-             <path d="M12 4l-8 4v6c0 5.5 4.5 10 10 10s10-4.5 10-10V8l-8-4z" className="text-white fill-white"/>
-             <path d="M12 6l-6 3v5c0 4 3 7 7 7s7-3 7-7V9l-6-3z" className="text-blue-600 fill-blue-600"/>
-             <path d="M12 8l-4 2v3c0 2.5 2 4.5 4 4.5s4-2 4-4.5V10l-4-2z" className="text-white fill-white"/>
-             <path d="M12 10.5l-1.5 0.8V12.5c0 1 0.7 2 1.5 2s1.5-1 1.5-2v-1.2l-1.5-0.8z" className="text-blue-600 fill-blue-600"/>
-        </svg>
-    ];
+  // Generate a random-looking comic badge using SVGs
+  const badges = [
+    // Spider
+    <svg viewBox="0 0 24 24" className="w-full h-full text-white fill-current" key="spider">
+      <path d="M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-1-13h2v4h-2zm-3 3h8v2h-8z" />
+      <circle cx="12" cy="12" r="3" className="text-red-600 fill-red-600" />
+    </svg>,
+    // Star
+    <svg viewBox="0 0 24 24" className="w-full h-full text-yellow-400 fill-current" key="star">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="black" strokeWidth="2" />
+    </svg>,
+    // Bolt
+    <svg viewBox="0 0 24 24" className="w-full h-full text-yellow-400 fill-current" key="bolt">
+      <path d="M11 21v-6H7v-4h3V7h4v4h4v6h-3v4h-4z" stroke="black" strokeWidth="2" />
+      <path d="M7 2v11h3v9l7-12h-4l4-8z" />
+    </svg>,
+    // Shield
+    <svg viewBox="0 0 24 24" className="w-full h-full text-blue-600 fill-current" key="shield">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2z" />
+      <path d="M12 4l-8 4v6c0 5.5 4.5 10 10 10s10-4.5 10-10V8l-8-4z" className="text-white fill-white" />
+      <path d="M12 6l-6 3v5c0 4 3 7 7 7s7-3 7-7V9l-6-3z" className="text-blue-600 fill-blue-600" />
+      <path d="M12 8l-4 2v3c0 2.5 2 4.5 4 4.5s4-2 4-4.5V10l-4-2z" className="text-white fill-white" />
+      <path d="M12 10.5l-1.5 0.8V12.5c0 1 0.7 2 1.5 2s1.5-1 1.5-2v-1.2l-1.5-0.8z" className="text-blue-600 fill-blue-600" />
+    </svg>
+  ];
 
-    const randomBadge = useMemo(() => badges[Math.floor(Math.random() * badges.length)], []);
+  const randomBadge = useMemo(() => badges[Math.floor(Math.random() * badges.length)], []);
 
-    return (
-        <div className="w-10 h-10 drop-shadow-[2px_2px_0px_#000]">
-            {randomBadge}
-        </div>
-    );
+  return (
+    <div className="w-10 h-10 drop-shadow-[2px_2px_0px_#000]">
+      {randomBadge}
+    </div>
+  );
 };
 
 const EventCard = ({ event, onClick }) => {
@@ -371,17 +385,17 @@ const EventCard = ({ event, onClick }) => {
   const handleMouseMove = (e) => {
     const card = cardRef.current;
     if (!card) return;
-    
+
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     const rotateX = ((y - centerY) / centerY) * -8;
     const rotateY = ((x - centerX) / centerX) * 8;
-    
+
     gsap.to(card, {
       rotateX: rotateX,
       rotateY: rotateY,
@@ -414,24 +428,24 @@ const EventCard = ({ event, onClick }) => {
     >
       {/* NEW: Generated Comic Sticker Overlay (Top Left) */}
       <div className="absolute -top-7 -left-8 z-40 w-16 h-16 filter drop-shadow-[5px_5px_0px_rgba(0,0,0,0.5)] transform -rotate-12 hover:scale-110 hover:-rotate-6 transition-all duration-300 pointer-events-none">
-         <ComicSticker />
+        <ComicSticker />
       </div>
 
       {/* Dynamic Sizing for "Comic Book" feel */}
       <div className={`relative h-full bg-white border-4 border-black shadow-[8px_8px_0px_#000] flex flex-col group-hover:shadow-[16px_16px_0px_#000] transition-shadow duration-300 overflow-hidden`}>
-        
+
         {/* Comic Header Strip */}
         <div className="bg-red-600 border-b-4 border-black p-1 flex justify-between items-center relative z-20">
-           <div className="flex items-center gap-2 pl-4"> 
-              {/* OLD LOGO REMOVED from here */}
-              <div className="flex flex-col leading-none">
-                 <span className="text-[10px] font-black uppercase text-white tracking-widest">Marvelous</span>
-                 <span className="text-xs font-black uppercase text-yellow-400 tracking-tighter">Events #00{Array.isArray(event.day) ? event.day[0] : event.day}</span>
-              </div>
-           </div>
-           <div className="bg-white px-2 border-2 border-black transform -rotate-2">
-              <span className="text-xs font-black uppercase text-black">Feb 2026</span>
-           </div>
+          <div className="flex items-center gap-2 pl-4">
+            {/* OLD LOGO REMOVED from here */}
+            <div className="flex flex-col leading-none">
+              <span className="text-[10px] font-black uppercase text-white tracking-widest">Marvelous</span>
+              <span className="text-xs font-black uppercase text-yellow-400 tracking-tighter">Events #00{Array.isArray(event.day) ? event.day[0] : event.day}</span>
+            </div>
+          </div>
+          <div className="bg-white px-2 border-2 border-black transform -rotate-2">
+            <span className="text-xs font-black uppercase text-black">Feb 2026</span>
+          </div>
         </div>
 
         {/* Main Image Area with Cover Art Style */}
@@ -441,65 +455,65 @@ const EventCard = ({ event, onClick }) => {
             alt={event.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:contrast-125"
           />
-          
+
           {/* Cover Overlay Gradients */}
           <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-80"></div>
-          
+
           {/* Halftone / Comic Texture */}
           <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,#000_120%)] opacity-50 mix-blend-multiply"></div>
           <div className="absolute inset-0 halftone-pattern opacity-10 pointer-events-none"></div>
 
           {/* Action Burst Badge (Top Right Image) */}
           <div className="absolute top-4 right-4 z-20 transform rotate-12 group-hover:rotate-20 transition-transform duration-300">
-             <HeroBadge />
+            <HeroBadge />
           </div>
 
           {/* Title on Structure */}
           <div className="absolute bottom-4 left-2 right-2 z-20">
-             <h3 className="text-3xl font-display font-black text-white uppercase italic leading-[0.85] tracking-tighter whitespace-pre-line" 
-                 style={{ 
-                    WebkitTextStroke: '1.5px black', 
-                    textShadow: `3px 3px 0px ${categoryTheme.accent.replace('text-', '').replace('-500', '') === 'yellow-400' ? '#D2161E' : '#000'}`
-                 }}>
-               {event.title}
-             </h3>
+            <h3 className="text-3xl font-display font-black text-white uppercase italic leading-[0.85] tracking-tighter whitespace-pre-line"
+              style={{
+                WebkitTextStroke: '1.5px black',
+                textShadow: `3px 3px 0px ${categoryTheme.accent.replace('text-', '').replace('-500', '') === 'yellow-400' ? '#D2161E' : '#000'}`
+              }}>
+              {event.title}
+            </h3>
           </div>
         </div>
 
         {/* Content Box - "The Story" */}
         <div className="flex-1 bg-white p-4 relative">
-             <div className="absolute top-0 right-0 p-1 bg-black text-white text-[10px] font-bold border-l-2 border-b-2 border-black">
-                VOL. {event.id}
-             </div>
-             
-             {/* Description Bubble */}
-             <div className="mb-4 bg-[#f0f0f0] border-2 border-black p-3 relative rounded-xl rounded-tl-none">
-                 <p className="text-sm font-bold font-comic text-black leading-tight line-clamp-3">
-                    {event.description}
-                 </p>
-                 <div className="absolute top-0 -left-[2px] w-4 h-4 bg-[#f0f0f0] border-l-2 border-t-2 border-black transform -skew-x-12 origin-bottom-right"></div>
-             </div>
+          <div className="absolute top-0 right-0 p-1 bg-black text-white text-[10px] font-bold border-l-2 border-b-2 border-black">
+            VOL. {event.id}
+          </div>
 
-             {/* Stats Grid */}
-             <div className="grid grid-cols-2 gap-2 mt-auto">
-                 <div className="flex items-center gap-1 border-2 border-black p-1 bg-yellow-200 shadow-[2px_2px_0px_#000]">
-                    <Calendar className="w-4 h-4 text-black" />
-                    <span className="text-xs font-black uppercase text-black">{event.date}</span>
-                 </div>
-                 <div className="flex items-center gap-1 border-2 border-black p-1 bg-blue-200 shadow-[2px_2px_0px_#000]">
-                    <MapPin className="w-4 h-4 text-black" />
-                    <span className="text-xs font-black uppercase text-black truncate">{event.venue}</span>
-                 </div>
-             </div>
+          {/* Description Bubble */}
+          <div className="mb-4 bg-[#f0f0f0] border-2 border-black p-3 relative rounded-xl rounded-tl-none">
+            <p className="text-sm font-bold font-comic text-black leading-tight line-clamp-3">
+              {event.description}
+            </p>
+            <div className="absolute top-0 -left-[2px] w-4 h-4 bg-[#f0f0f0] border-l-2 border-t-2 border-black transform -skew-x-12 origin-bottom-right"></div>
+          </div>
 
-             <div className="mt-4 pt-3 border-t-2 border-dashed border-gray-400 flex justify-between items-center group/btn">
-                  <span className="font-black italic text-lg text-black group-hover:text-red-600 transition-colors">
-                     {event.prize}
-                  </span>
-                  <button className="px-4 py-1 bg-black text-white font-black uppercase text-sm border-2 border-transparent hover:bg-red-600 hover:border-black transition-all transform hover:-rotate-2 hover:scale-110 shadow-[2px_2px_0px_#ccc]">
-                      Details
-                  </button>
-             </div>
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 gap-2 mt-auto">
+            <div className="flex items-center gap-1 border-2 border-black p-1 bg-yellow-200 shadow-[2px_2px_0px_#000]">
+              <Calendar className="w-4 h-4 text-black" />
+              <span className="text-xs font-black uppercase text-black">{event.date}</span>
+            </div>
+            <div className="flex items-center gap-1 border-2 border-black p-1 bg-blue-200 shadow-[2px_2px_0px_#000]">
+              <MapPin className="w-4 h-4 text-black" />
+              <span className="text-xs font-black uppercase text-black truncate">{event.venue}</span>
+            </div>
+          </div>
+
+          <div className="mt-4 pt-3 border-t-2 border-dashed border-gray-400 flex justify-between items-center group/btn">
+            <span className="font-black italic text-lg text-black group-hover:text-red-600 transition-colors">
+              {event.prize}
+            </span>
+            <button className="px-4 py-1 bg-black text-white font-black uppercase text-sm border-2 border-transparent hover:bg-red-600 hover:border-black transition-all transform hover:-rotate-2 hover:scale-110 shadow-[2px_2px_0px_#ccc]">
+              Details
+            </button>
+          </div>
         </div>
 
         {/* Corner Art */}
@@ -524,7 +538,7 @@ const EventsPage = () => {
     } else {
       events = eventsData[selectedCategory] || [];
     }
-    
+
     if (selectedDay !== 'all') {
       const dayNumber = parseInt(selectedDay);
       events = events.filter(event => {
@@ -534,7 +548,7 @@ const EventsPage = () => {
         return event.day === dayNumber;
       });
     }
-    
+
     return events;
   };
 
@@ -563,7 +577,7 @@ const EventsPage = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-  
+
   // Background transition logic
   const currentBg = useMemo(() => {
     return categories.find(c => c.id === selectedCategory)?.bgImage || capAmericaImg;
@@ -572,159 +586,159 @@ const EventsPage = () => {
   return (
     <>
       <div className="min-h-screen bg-[#111] pt-24 pb-20 relative overflow-hidden transition-all duration-700">
-        
+
         {/* Dynamic Character Background */}
         <div className="fixed inset-0 z-0">
-             {/* Base Dimmer */}
-             <div className="absolute inset-0 bg-black z-0"></div>
-             
-             {/* Character Image Layer */}
-             <div className="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-40">
-                <img 
-                    src={currentBg} 
-                    alt="Background" 
-                    className="w-full h-full object-cover object-center filter grayscale contrast-125"
-                />
-             </div>
-             
-             {/* Comic Effects Overlay */}
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#000_100%)]"></div>
-             <div className="absolute inset-0 halftone-pattern opacity-10"></div>
-             
-             {/* Tint Overlay based on Category */}
-             <div className={`
+          {/* Base Dimmer */}
+          <div className="absolute inset-0 bg-black z-0"></div>
+
+          {/* Character Image Layer */}
+          <div className="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-40">
+            <img
+              src={currentBg}
+              alt="Background"
+              className="w-full h-full object-cover object-center filter grayscale contrast-125"
+            />
+          </div>
+
+          {/* Comic Effects Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#000_100%)]"></div>
+          <div className="absolute inset-0 halftone-pattern opacity-10"></div>
+
+          {/* Tint Overlay based on Category */}
+          <div className={`
                  absolute inset-0 mix-blend-color opacity-60 transition-all duration-700
                  ${categories.find(c => c.id === selectedCategory)?.theme.bg || 'bg-linear-to-br from-blue-700 via-red-600 to-white'}
              `}></div>
-             
-             {/* Extra Gradient Wash for vibrancy */}
-             <div className={`
+
+          {/* Extra Gradient Wash for vibrancy */}
+          <div className={`
                  absolute inset-0 mix-blend-overlay opacity-40 transition-all duration-700
                  ${categories.find(c => c.id === selectedCategory)?.theme.bg || 'bg-linear-to-br from-blue-700 via-red-600 to-white'}
              `}></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            {/* Header Section - Comic Title */}
-            <div className="text-center mb-10 sm:mb-16 relative">
-                {/* "Stan Lee" Style Intro Box */}
-                <div className="inline-block bg-white border-4 border-black p-2 mb-4 sm:mb-6 transform -rotate-2 shadow-[4px_4px_0px_#000]">
-                   <span className="text-black font-black uppercase tracking-widest text-xs sm:text-sm md:text-base">
-                      Synchronize Presents
-                   </span>
-                </div>
-
-                <div className="relative inline-block px-4">
-                    <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-marvel-red mb-2 tracking-tighter relative z-10 italic leading-none" 
-                        style={{ 
-                            WebkitTextStroke: '2px black', 
-                            textShadow: '4px 4px 0px #000' 
-                        }}>
-                        EVENTS
-                    </h1>
-                </div>
-                
-                <div className="max-w-[90%] sm:max-w-2xl mx-auto mt-4 sm:mt-6 bg-yellow-400 border-2 sm:border-4 border-black p-3 sm:p-4 shadow-[6px_6px_0px_#000] sm:shadow-[8px_8px_0px_#000] transform rotate-1">
-                    <p className="text-black text-sm sm:text-xl font-bold font-comic uppercase tracking-tight leading-tight">
-                        "CHOOSE YOUR ALLIANCE. MASTER YOUR ABILITIES. CONQUER THE CHALLENGE!"
-                    </p>
-                </div>
+          {/* Header Section - Comic Title */}
+          <div className="text-center mb-10 sm:mb-16 relative">
+            {/* "Stan Lee" Style Intro Box */}
+            <div className="inline-block bg-white border-4 border-black p-2 mb-4 sm:mb-6 transform -rotate-2 shadow-[4px_4px_0px_#000]">
+              <span className="text-black font-black uppercase tracking-widest text-xs sm:text-sm md:text-base">
+                Synchronize Presents
+              </span>
             </div>
 
-            {/* Filter Roster - New "Character Card" Style */}
-            {/* Filter Roster - Comic Buttons */}
-            <div className="mb-10 sm:mb-16">
-                <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-                {categories.map((category) => (
-                    <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`
+            <div className="relative inline-block px-4">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-marvel-red mb-2 tracking-tighter relative z-10 italic leading-none"
+                style={{
+                  WebkitTextStroke: '2px black',
+                  textShadow: '4px 4px 0px #000'
+                }}>
+                EVENTS
+              </h1>
+            </div>
+
+            <div className="max-w-[90%] sm:max-w-2xl mx-auto mt-4 sm:mt-6 bg-yellow-400 border-2 sm:border-4 border-black p-3 sm:p-4 shadow-[6px_6px_0px_#000] sm:shadow-[8px_8px_0px_#000] transform rotate-1">
+              <p className="text-black text-sm sm:text-xl font-bold font-comic uppercase tracking-tight leading-tight">
+                "CHOOSE YOUR ALLIANCE. MASTER YOUR ABILITIES. CONQUER THE CHALLENGE!"
+              </p>
+            </div>
+          </div>
+
+          {/* Filter Roster - New "Character Card" Style */}
+          {/* Filter Roster - Comic Buttons */}
+          <div className="mb-10 sm:mb-16">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`
                         px-4 sm:px-8 py-2 sm:py-3 font-black uppercase tracking-wider text-xs sm:text-lg md:text-xl
                         border-2 sm:border-4 border-black shadow-[3px_3px_0px_#000] sm:shadow-[5px_5px_0px_#000]
                         transition-all duration-200 transform clip-path-slant
-                        ${selectedCategory === category.id 
-                            ? `${category.theme.bg} text-white -rotate-2 scale-105 sm:scale-110 z-10 shadow-[6px_6px_0px_#000] sm:shadow-[8px_8px_0px_#000]` 
-                            : 'bg-white text-black hover:bg-black hover:text-white hover:rotate-1 hover:shadow-[6px_6px_0px_#000] sm:hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1'}
+                        ${selectedCategory === category.id
+                      ? `${category.theme.bg} text-white -rotate-2 scale-105 sm:scale-110 z-10 shadow-[6px_6px_0px_#000] sm:shadow-[8px_8px_0px_#000]`
+                      : 'bg-white text-black hover:bg-black hover:text-white hover:rotate-1 hover:shadow-[6px_6px_0px_#000] sm:hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1'}
                     `}
-                    style={{
-                        clipPath: 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)',
-                        textShadow: selectedCategory === category.id ? '2px 2px 0px #000' : 'none'
-                    }}
-                    >
-                        {category.name}
-                    </button>
-                ))}
-                </div>
+                  style={{
+                    clipPath: 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)',
+                    textShadow: selectedCategory === category.id ? '2px 2px 0px #000' : 'none'
+                  }}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Controls Bar */}
+          <div className="flex flex-col md:flex-row justify-between items-center mb-10 bg-black/40 border-y-4 border-black p-4 backdrop-blur-md relative z-1050">
+            <div className="flex items-center gap-2 mb-4 md:mb-0">
+              <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+              <span className="text-white font-mono font-bold uppercase tracking-widest text-sm">
+                Threat Level: <span className="text-red-500">MIDNIGHT</span>
+              </span>
             </div>
 
-            {/* Controls Bar */}
-            <div className="flex flex-col md:flex-row justify-between items-center mb-10 bg-black/40 border-y-4 border-black p-4 backdrop-blur-md relative z-1050">
-                <div className="flex items-center gap-2 mb-4 md:mb-0">
-                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-                    <span className="text-white font-mono font-bold uppercase tracking-widest text-sm">
-                        Threat Level: <span className="text-red-500">MIDNIGHT</span>
-                    </span>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                    <div className="text-white font-display font-black italic text-xl">
-                        <span className="text-yellow-400 text-3xl mr-2">{getFilteredEvents().length}</span>
-                        MISSIONS ACTIVE
-                    </div>
-                    
-                    <div className="h-8 w-0.5 bg-gray-600 mx-2"></div>
-                    
-                    <div className="relative z-1100" ref={dropdownRef}>
-                        <button
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="flex items-center gap-2 px-4 py-2 bg-yellow-400 border-2 border-black font-black uppercase text-black hover:bg-white transition-colors shadow-[4px_4px_0px_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] active:translate-y-0 active:shadow-[2px_2px_0px_#000]"
-                        >
-                            <Calendar className="w-4 h-4 text-black" />
-                            <span>{selectedDay === 'all' ? 'All Days' : `Day ${selectedDay}`}</span>
-                            <ChevronDown className={`w-4 h-4 text-black transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                        </button>
+            <div className="flex items-center gap-4">
+              <div className="text-white font-display font-black italic text-xl">
+                <span className="text-yellow-400 text-3xl mr-2">{getFilteredEvents().length}</span>
+                MISSIONS ACTIVE
+              </div>
 
-                        {isDropdownOpen && (
-                        <div className="absolute right-0 top-full mt-2 w-48 bg-white border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] z-1100">
-                            {[
-                            { value: 'all', label: 'All Days' },
-                            { value: '1', label: 'Day 1' },
-                            { value: '2', label: 'Day 2' },
-                            { value: '3', label: 'Day 3' }
-                            ].map((option) => (
-                            <button
-                                key={option.value}
-                                onClick={() => {
-                                setSelectedDay(option.value);
-                                setIsDropdownOpen(false);
-                                }}
-                                className="w-full text-left px-4 py-3 text-black font-black hover:bg-yellow-400 transition-colors uppercase border-b-2 border-gray-100 last:border-0"
-                            >
-                                {option.label}
-                            </button>
-                            ))}
-                        </div>
-                        )}
-                    </div>
-                </div>
+              <div className="h-8 w-0.5 bg-gray-600 mx-2"></div>
+
+              <div className="relative z-1100" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center gap-2 px-4 py-2 bg-yellow-400 border-2 border-black font-black uppercase text-black hover:bg-white transition-colors shadow-[4px_4px_0px_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] active:translate-y-0 active:shadow-[2px_2px_0px_#000]"
+                >
+                  <Calendar className="w-4 h-4 text-black" />
+                  <span>{selectedDay === 'all' ? 'All Days' : `Day ${selectedDay}`}</span>
+                  <ChevronDown className={`w-4 h-4 text-black transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-48 bg-white border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] z-1100">
+                    {[
+                      { value: 'all', label: 'All Days' },
+                      { value: '1', label: 'Day 1' },
+                      { value: '2', label: 'Day 2' },
+                      { value: '3', label: 'Day 3' }
+                    ].map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => {
+                          setSelectedDay(option.value);
+                          setIsDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-3 text-black font-black hover:bg-yellow-400 transition-colors uppercase border-b-2 border-gray-100 last:border-0"
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
+          </div>
 
-            {/* Events Grid - Comic Page Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-10 pb-20">
+          {/* Events Grid - Comic Page Layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-10 pb-20">
             {getFilteredEvents().map((event) => (
-                <div key={event.id} className="event-card h-full">
+              <div key={event.id} className="event-card h-full">
                 <EventCard event={event} onClick={() => setSelectedEvent(event)} />
-                </div>
+              </div>
             ))}
-            </div>
+          </div>
 
-            {getFilteredEvents().length === 0 && (
-                <div className="text-center py-20 bg-black/50 border-4 border-dashed border-gray-700 rounded-3xl">
-                    <h3 className="text-4xl font-black text-gray-500 italic mb-4">NO MISSIONS DETECTED</h3>
-                    <p className="text-gray-400 font-mono">Try adjusting your filters, Agent.</p>
-                </div>
-            )}
+          {getFilteredEvents().length === 0 && (
+            <div className="text-center py-20 bg-black/50 border-4 border-dashed border-gray-700 rounded-3xl">
+              <h3 className="text-4xl font-black text-gray-500 italic mb-4">NO MISSIONS DETECTED</h3>
+              <p className="text-gray-400 font-mono">Try adjusting your filters, Agent.</p>
+            </div>
+          )}
         </div>
       </div>
 
