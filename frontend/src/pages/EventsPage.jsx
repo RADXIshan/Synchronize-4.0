@@ -378,7 +378,7 @@ const HeroBadge = () => {
   );
 };
 
-const EventCard = ({ event, onClick }) => {
+const EventCard = ({ event, index, onClick }) => {
   const cardRef = useRef(null);
   const categoryTheme = categories.find(c => c.name === event.category)?.theme || categories[0].theme;
 
@@ -473,7 +473,7 @@ const EventCard = ({ event, onClick }) => {
             <h3 className="text-3xl font-display font-black text-white uppercase italic leading-[0.85] tracking-tighter whitespace-pre-line"
               style={{
                 WebkitTextStroke: '1.5px black',
-                textShadow: `3px 3px 0px ${categoryTheme.accent.replace('text-', '').replace('-500', '') === 'yellow-400' ? '#D2161E' : '#000'}`
+                textShadow: '3px 3px 0px #D2161E'
               }}>
               {event.title}
             </h3>
@@ -483,7 +483,7 @@ const EventCard = ({ event, onClick }) => {
         {/* Content Box - "The Story" */}
         <div className="flex-1 bg-white p-4 relative">
           <div className="absolute top-0 right-0 p-1 bg-black text-white text-[10px] font-bold border-l-2 border-b-2 border-black">
-            VOL. {event.id}
+            VOL. {index + 1}
           </div>
 
           {/* Description Bubble */}
@@ -726,9 +726,9 @@ const EventsPage = () => {
 
           {/* Events Grid - Comic Page Layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-10 pb-20">
-            {getFilteredEvents().map((event) => (
+            {getFilteredEvents().map((event, index) => (
               <div key={event.id} className="event-card h-full">
-                <EventCard event={event} onClick={() => setSelectedEvent(event)} />
+                <EventCard event={event} index={index} onClick={() => setSelectedEvent(event)} />
               </div>
             ))}
           </div>

@@ -225,7 +225,7 @@ const Events = () => {
                     <span className="skew-x-12 inline-block">{event.category}</span>
                   </div>
 
-                  <h3 className="text-3xl sm:text-5xl md:text-7xl font-display font-black text-white mb-2 sm:mb-4 transition-all duration-300 italic whitespace-pre-line" style={{ WebkitTextStroke: '1px black', textShadow: '2px 2px 0px #AA0505' }}>
+                  <h3 className="text-3xl sm:text-5xl md:text-7xl font-display font-black text-white mb-2 sm:mb-4 transition-all duration-300 italic whitespace-pre-line" style={{ WebkitTextStroke: '1px black', textShadow: '4px 4px 0px #AA0505' }}>
                     {event.title}
                   </h3>
 
