@@ -120,7 +120,7 @@ const Timeline = () => {
         });
     });
 
-    // Draw the line (Time Stream)
+    // (Time Stream)
     gsap.fromTo(lineRef.current, 
       { height: 0 },
       {
