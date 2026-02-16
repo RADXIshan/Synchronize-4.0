@@ -17,7 +17,7 @@ const eventsData = [
     category: "Technical",
     image: HackathonImg,
     description: "24-hour technical marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
-    date: "February 27TH - 28TH, 2026",
+    date: "February 26TH - 27TH, 2026",
     day: [2, 3],
     venue: "CR 301, 302 3rd Floor NAB ( XIM UNIVERSITY)/ Online",
     prize: "₹20,000",

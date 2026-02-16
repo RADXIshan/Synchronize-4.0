@@ -40,7 +40,7 @@ const eventsData = {
       category: "Technical",
       description: "24-hour technical marathon where teams build innovative solutions to real-world problems. Mentorship and resources provided.",
       image: HackathonImg,
-      date: "February 27th - 28th, 2026",
+      date: "February 26th - 27th, 2026",
       day: [1, 2],
       venue: "CR 301, 302 3rd Floor NAB ( XIM UNIVERSITY)/ Online",
       prize: "₹20,000",
