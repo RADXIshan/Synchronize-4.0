@@ -25,9 +25,9 @@ import FutsalImg from '../assets/events/futsal.jpeg';
 import ValoFifaImg from '../assets/events/valofifa.jpeg';
 import SingingImg from '../assets/events/sing.jpeg';
 import CodingCompImg from '../assets/events/comp.jpeg';
-import LineFollowerImg from '../assets/events/roborace.JPG';
+import LineFollowerImg from '../assets/events/line.png';
 import TreasureHuntImg from '../assets/events/dark.jpeg';
-import RoboSoccerImg from '../assets/events/car.jpeg';
+import RoboSoccerImg from '../assets/events/scr.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,12 +69,12 @@ const eventsData = {
   robotics: [
     {
       id: 6,
-      title: "Robo War",
+      title: "Sumo Robo",
       category: "Robotics",
       description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
       image: RoboWarImg,
-      date: "February 26th, 2026",
-      day: 1,
+      date: "February 27th, 2026",
+      day: 2,
       venue: "Quadrangle, XIM University",
       prize: "₹7,000",
       registrationLink: "https://forms.gle/fg7D1SMM4vBr6K2E9",
@@ -87,7 +87,7 @@ const eventsData = {
       category: "Robotics",
       description: "Design autonomous robots that can navigate complex paths. Fastest and most accurate robot wins.",
       image: LineFollowerImg,
-      date: "February 27, 2026",
+      date: "February 26TH, 2026",
       day: 2,
       venue: "Amphitheatre, XIM University",
       prize: "₹6,000",
@@ -101,8 +101,8 @@ const eventsData = {
       category: "Robotics",
       description: "Autonomous or manual robots competing in a soccer match. Score goals to win.",
       image: RoboSoccerImg,
-      date: "February 26, 2026",
-      day: 1,
+      date: "February 27TH, 2026",
+      day: 2,
       venue: "Open Ground",
       prize: "₹6,000",
       registrationLink: "#",
@@ -131,7 +131,7 @@ const eventsData = {
       category: "Cultural",
       description: "Showcase your vocal talents in this solo and duet singing competition. All genres welcome.",
       image: SingingImg,
-      date: "February 28, 2026",
+      date: "February 28th, 2026",
       day: 3,
       venue: "Mini Auditorium",
       prize: "₹5,000",

@@ -26,11 +26,11 @@ const eventsData = [
     poc: { name: "Colin Michael D Rozario", email: "ucse23015@stu.xim.edu.in", phone: "+91 63740 35116" }
   },
   {
-    title: "Robo War",
+    title: "Sumo Robo",
     category: "Robotics",
     image: RoboWarImg,
     description: "Build combat robots and compete in an arena battle. Last robot standing wins the championship.",
-    date: "February 26th, 2026",
+    date: "February 27th, 2026",
     day: 1,
     venue: "Quadrangle, XIM University",
     prize: "₹7,000",
