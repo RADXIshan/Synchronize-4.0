@@ -78,12 +78,12 @@ const eventsData = {
       venue: "Quadrangle, XIM University",
       prize: "₹7,000",
       registrationLink: "https://forms.gle/fg7D1SMM4vBr6K2E9",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1asdbMwdFXPbrTdjoXgtU3j6DAd1X-6TC/view?usp=drive_link",
       poc: { name: "Suraj Maharana", email: "ucse23059@stu.xim.edu.in", phone: "+91 72056 38858" }
     },
     {
       id: 7,
-      title: "Robo Line Follower",
+      title: "Line Follower",
       category: "Robotics",
       description: "Design autonomous robots that can navigate complex paths. Fastest and most accurate robot wins.",
       image: LineFollowerImg,
@@ -92,7 +92,7 @@ const eventsData = {
       venue: "Amphitheatre, XIM University",
       prize: "₹6,000",
       registrationLink: "https://forms.gle/JCW1b5EwXkna69ji6",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1600E1X53NEBIzcuA0MRgLYetd62kOUKp/view?usp=drive_link",
       poc: { name: "Ananya Verma", email: "ucse23006@stu.xim.edu.in", phone: "+91 8899389426" }
     },
     {
@@ -106,7 +106,7 @@ const eventsData = {
       venue: "Open Ground",
       prize: "₹6,000",
       registrationLink: "#",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/171gDFN9ZUshUPcvt0cvOMc_2hRuIg946/view?usp=drive_link",
       poc: { name: "Abhisekh Dash", email: "ucse23002@stu.xim.edu.in", phone: "+91 8458068464" }
     }
   ],
@@ -127,7 +127,7 @@ const eventsData = {
     },
     {
       id: 12,
-      title: "Singing Competition",
+      title: "Solo Singing Competition",
       category: "Cultural",
       description: "Showcase your vocal talents in this solo and duet singing competition. All genres welcome.",
       image: SingingImg,
@@ -136,7 +136,7 @@ const eventsData = {
       venue: "Mini Auditorium",
       prize: "₹5,000",
       registrationLink: "#",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1qh6uyZrfqvGyRmxtISUbQkBQeFl4UAaJ/view?usp=drive_link",
       poc: [
         { name: "Anjani Kumar", phone: "+91 8960033402", email: "ucse24009@stu.xim.edu.in," },
         { name: "Nilesh Patnaik", phone: "+91 70085 98571", email: "ucse23035@stu.xim.edu.in," }
@@ -155,7 +155,7 @@ const eventsData = {
       venue: "E.H 2 4th Floor, NAB (XIM UNIVERSITY)",
       prize: "₹15,000",
       registrationLink: "https://forms.gle/WeP6kywxrRHzcCS67",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1nmrAsuS-xIiolvasScXmvfLni7rP0fcH/view?usp=drive_link",
       poc: { name: "Aditya Raj Mishra", email: "ucse24005@stu.xim.edu.in", phone: "+91 7047533803" }
     },
     {
@@ -169,7 +169,7 @@ const eventsData = {
       venue: "Gaming Arena",
       prize: "₹3,000",
       registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSeENEEVG4yIJ3a76ft5JoDDEbJEaJOsvsrvDO2jiVyVcYSrGw/viewform",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1LhSVv8KRCz3CmEKiXlmc2pU4MkUj0cZW/view?usp=drive_link",
       poc: { name: "Ishan Roy", email: "ucse23026@stu.xim.edu.in", phone: "+91 9007195462" }
     }
   ],
@@ -185,7 +185,7 @@ const eventsData = {
       venue: "Sports Complex",
       prize: "₹5,000",
       registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfn2DQWpyzadiZzy8QQRbfLTunZYGqoNwwkvyrmatYTEF5eUQ/viewform?usp=header",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/13rnJuVewbEnab8gGUVbpYCtNC7Gw3PAo/view?usp=drive_link",
       poc: { name: "Sourav Sekhar Samal", email: "ucse24059@stu.xim.edu.in", phone: "+91 7847958312" }
     }
   ],
@@ -201,14 +201,14 @@ const eventsData = {
       venue: "Seminar Hall",
       prize: "₹5,000",
       registrationLink: "https://forms.gle/yQRN7T6bmLafXY4X6",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/12Us3WQ4PE0rfwT25hMvT36GpdB-u7mVc/view?usp=drive_link",
       poc: { name: "Vrinda Patnaik", email: "ucse23064@stu.xim.edu.in", phone: "+91 7205045510" }
     }
   ],
   "non-technical": [
     {
       id: 17,
-      title: "Treasure Hunt",
+      title: "Marvel Hidden Legacy",
       category: "Non-Technical",
       description: "Solve riddles, find clues, and navigate the campus to find the hidden treasure.",
       image: TreasureHuntImg,
@@ -217,7 +217,7 @@ const eventsData = {
       venue: "Campus Wide",
       prize: "Gifts and Rewards",
       registrationLink: "https://forms.gle/FaKweSfLLVxs8Xdw7",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1nok880s_7V2CKjxhCj4PE6N6TL0n9m9n/view?usp=drive_link",
       poc: [
         { name: "Manish Ghatuary", email: "ucse24065@stu.xim.edu.in", phone: "+91 7008650074" },
         { name: "Papneet Swain", email: "ucse24038@stu.xim.edu.in", phone: "+91 6370607665" }
