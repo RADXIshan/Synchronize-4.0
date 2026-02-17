@@ -59,7 +59,7 @@ const eventsData = {
       venue: "Computer Lab 3rd Floor NAB (XIM UNIVERSITY)",
       prize: "₹5,000",
       registrationLink: "https://forms.gle/ZLLZPvpWt9PVf8yx7",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1nuPOT3xFr-_ohKeY3kCmi7fAwdOk3R1U/view?usp=drive_link",
       poc: [
         { name: "Koyena Sutradhar", email: "ucse24030@stu.xim.edu.in", phone: "+91 9241016737" },
         { name: "Mrinalee Mishra", email: "ucse24036@stu.xim.edu.in", phone: "+91 8968832665" }
@@ -122,12 +122,12 @@ const eventsData = {
       venue: "Mini Auditorium",
       prize: "₹5,000",
       registrationLink: "https://forms.gle/ME2iBpZysaXRK42K6",
-      rulebook: "#",
+      rulebook: "https://drive.google.com/file/d/1pmUKkDryfRVLBAnhKaRtpfHbz6StHYuV/view?usp=drive_link",
       poc: { name: "Deekhita Bohidar", email: "ucse24020@stu.xim.edu.in", phone: "+91 7847919776" }
     },
     {
       id: 12,
-      title: "Solo Singing Competition",
+      title: "Singing Competition",
       category: "Cultural",
       description: "Showcase your vocal talents in this solo and duet singing competition. All genres welcome.",
       image: SingingImg,
