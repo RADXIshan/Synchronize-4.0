@@ -105,7 +105,7 @@ const eventsData = {
       day: 2,
       venue: "Open Ground",
       prize: "₹6,000",
-      registrationLink: "#",
+      registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfAO0_cnB4WhRyGYomq6ZRd4U48LGw0xfllawuyOKxmeZxEPw/viewform",
       rulebook: "https://drive.google.com/file/d/171gDFN9ZUshUPcvt0cvOMc_2hRuIg946/view?usp=drive_link",
       poc: { name: "Abhisekh Dash", email: "ucse23002@stu.xim.edu.in", phone: "+91 8458068464" }
     }
