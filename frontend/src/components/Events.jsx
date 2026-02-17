@@ -120,15 +120,19 @@ const Events = () => {
               const scale = 1 - (progress * 0.1);
               const yOffset = progress * 40;
               const rotateX = progress * -8;
-              const brightness = 1 - (progress * 0.3);
+              const brightnessOffset = progress * 0.5; // Opacity of the overlay
 
               gsap.set(card, {
                 scale: scale,
                 y: yOffset,
                 rotateX: rotateX,
-                filter: `brightness(${brightness})`,
                 transformPerspective: 1000
               });
+              
+              const overlay = card.querySelector('.brightness-overlay');
+              if (overlay) {
+                  gsap.set(overlay, { opacity: brightnessOffset });
+              }
             }
           }
         });
@@ -176,7 +180,7 @@ const Events = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6">
                 <button
                   onClick={() => window.location.href = '/events'}
-                  className="cursor-pointer group relative px-8 py-3 bg-[#AA0505] text-white font-black text-lg border-4 border-black hover:bg-white hover:text-[#AA0505] transition-all duration-300 shadow-[4px_4px_0px_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#fff] uppercase tracking-wider"
+                  className="cursor-pointer group relative px-8 py-3 bg-[#AA0505] text-white font-black text-lg border-4 border-black hover:bg-white hover:text-[#AA0505] transition-colors duration-300 shadow-[4px_4px_0px_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#fff] uppercase tracking-wider"
                 >
                   <span className="inline-block">View All Events →</span>
                 </button>
@@ -205,11 +209,14 @@ const Events = () => {
               <img
                 src={event.image}
                 alt={event.title}
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:saturate-150"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:saturate-150"
               />
               {/* JARVIS Overlay Tint */}
               <div className="absolute inset-0 bg-[#AA0505] mix-blend-multiply opacity-20 group-hover:opacity-10 transition-opacity duration-500"></div>
               <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent"></div>
+              {/* Brightness Overlay for Scroll Animation */}
+              <div className="brightness-overlay absolute inset-0 bg-black pointer-events-none z-30 opacity-0 transition-opacity duration-100"></div>
+
               {/* Halftone on Image */}
               <div className="absolute inset-0 halftone-pattern opacity-10 pointer-events-none z-10"></div>
 
@@ -218,7 +225,7 @@ const Events = () => {
 
               {/* Content Container */}
               <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-8 md:p-12 z-20">
-                <div className="transform transition-all duration-500 group-hover:translate-y-[-5px] sm:group-hover:translate-y-[-10px]">
+                <div className="transform transition-transform duration-500 group-hover:translate-y-[-5px] sm:group-hover:translate-y-[-10px]">
 
                   {/* Category Chip */}
                   <div className="inline-block px-2 sm:px-3 py-1 bg-iron-gold text-black font-black text-[10px] sm:text-xs uppercase tracking-widest mb-2 sm:mb-3 border-2 border-black transform -skew-x-12 shadow-[3px_3px_0px_#000] sm:shadow-[4px_4px_0px_#000]">

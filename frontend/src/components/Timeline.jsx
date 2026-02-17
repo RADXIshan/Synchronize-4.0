@@ -260,8 +260,7 @@ const Timeline = () => {
               {/* Content Card with Halftone and Comic Styles */}
               <div className="ml-16 sm:ml-16 md:ml-0 md:w-1/2 md:px-12 w-full pr-4 sm:pr-0">
                 <div 
-                  className={`relative bg-white border-2 sm:border-4 border-black p-4 sm:p-8 hover:translate-y-[-4px] transition-all duration-300 group ${index % 2 === 0 ? 'md:text-left shadow-[6px_6px_0px_#10B981] sm:shadow-[8px_8px_0px_#10B981]' : 'md:text-right shadow-[6px_6px_0px_#10B981] sm:shadow-[-8px_8px_0px_#10B981]'} hover:shadow-[10px_10px_0px_#000] sm:hover:shadow-[12px_12px_0px_#000]`}
-                  style={{ transform: `rotate(${index % 2 === 0 ? '1deg' : '-1deg'})` }} 
+                  className={`relative bg-white border-2 sm:border-4 border-black p-4 sm:p-8 hover:-translate-y-1 transition-all duration-300 group ${index % 2 === 0 ? 'rotate-1 md:text-left shadow-[6px_6px_0px_#10B981] sm:shadow-[8px_8px_0px_#10B981]' : '-rotate-1 md:text-right shadow-[6px_6px_0px_#10B981] sm:shadow-[-8px_8px_0px_#10B981]'} hover:shadow-[10px_10px_0px_#000] sm:hover:shadow-[12px_12px_0px_#000]`}
                 >
                   
                   {/* Halftone Pattern Overlay */}
