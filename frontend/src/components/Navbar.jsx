@@ -184,11 +184,11 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/", color: "var(--marvel-red)", image: ironManImg, character: "IRON MAN" },
-    { name: "Events", path: "/events", color: "var(--hulk-green)", image: hulkImg, character: "THE HULK" },
+    { name: "Events", path: "/events#events", color: "var(--hulk-green)", image: hulkImg, character: "THE HULK" },
     { name: "Schedule", path: "/#schedule", color: "var(--iron-gold)", image: thorImg, character: "THOR" },
     { name: "Sponsors", path: "/#sponsors", color: "var(--cap-blue)", image: captainAmericaImg, character: "CAPTAIN AMERICA" },
-    { name: "Team", path: "/team", color: "var(--panther-purple)", image: blackPantherImg, character: "BLACK PANTHER" },
-    { name: "Gallery", path: "/gallery", color: "white", image: blackWidowImg, character: "BLACK WIDOW" },
+    { name: "Team", path: "/team#team", color: "var(--panther-purple)", image: blackPantherImg, character: "BLACK PANTHER" },
+    { name: "Gallery", path: "/gallery#gallery", color: "white", image: blackWidowImg, character: "BLACK WIDOW" },
   ];
 
   // Theme Styles

@@ -585,7 +585,7 @@ const EventsPage = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-[#111] pt-24 pb-20 relative overflow-hidden transition-all duration-700">
+      <div id="events" className="min-h-screen bg-[#111] pt-24 pb-20 relative overflow-hidden transition-all duration-700">
 
         {/* Dynamic Character Background */}
         <div className="fixed inset-0 z-0">

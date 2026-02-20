@@ -19,7 +19,7 @@ const TeamPage = () => {
   */
 
   return (
-    <div className="min-h-screen bg-black pt-20">
+    <div id="team" className="min-h-screen bg-black pt-20">
       <ComingSoon title="THE TEAM" subtitle="Assembling the Avengers..." />
       
       {/* 

@@ -16,7 +16,7 @@ const GalleryPage = () => {
   */
 
   return (
-    <div className="min-h-screen bg-black pt-20 relative overflow-hidden text-white font-sans selection:bg-red-600 selection:text-white">
+    <div id="gallery" className="min-h-screen bg-black pt-20 relative overflow-hidden text-white font-sans selection:bg-red-600 selection:text-white">
         <ComingSoon title="GALLERY" subtitle="Photos developing in the darkroom..." />
 
       {/* 
