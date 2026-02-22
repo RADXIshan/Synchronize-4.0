@@ -135,7 +135,7 @@ const eventsData = {
       day: 3,
       venue: "Mini Auditorium",
       prize: "₹5,000",
-      registrationLink: "#",
+      registrationLink: "https://forms.gle/uusYXgbEUE1CFSiE8",
       rulebook: "https://drive.google.com/file/d/1qh6uyZrfqvGyRmxtISUbQkBQeFl4UAaJ/view?usp=drive_link",
       poc: [
         { name: "Anjani Kumar", phone: "+91 8960033402", email: "ucse24009@stu.xim.edu.in," },
