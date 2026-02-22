@@ -3,11 +3,13 @@ import coordinator1 from '../assets/CORE TEAM PHOTOS/Coordinator.jpg';
 import coordinatorKaif from '../assets/CORE TEAM PHOTOS/Coordinator_Kaifkhurshid .jpg';
 import coverageLead from '../assets/CORE TEAM PHOTOS/CoverageLead_HrisitaMohapatra.jpg';
 import decorLead from '../assets/CORE TEAM PHOTOS/Decor lead.jpg';
+import designLeadAkshat from '../assets/CORE TEAM PHOTOS/Design _Lead _Akshat Sharma.JPG';
 import deputyHospitality1 from '../assets/CORE TEAM PHOTOS/Deputy Hospitality.jpeg';
 import deputyTechLead from '../assets/CORE TEAM PHOTOS/DeputyTechLead.png';
 import dyHospitalitySadhana from '../assets/CORE TEAM PHOTOS/Dy- Hospitality Lead_Sadhana.jpg';
 import dyCoordinatorSrimad from '../assets/CORE TEAM PHOTOS/Dy-Coordinator_Srimad.jpg';
 import eventsLead from '../assets/CORE TEAM PHOTOS/Events_Lead_Manish.jpg';
+import eventLeadPratirupa from '../assets/CORE TEAM PHOTOS/EventLead_PratirupaToppo.jpg';
 import hospitalityLead from '../assets/CORE TEAM PHOTOS/Hospitality Lead.jpg';
 import logisticsLead from '../assets/CORE TEAM PHOTOS/LOGISTICS LEAD_SubhamRout.jpg';
 import mediaPRLead from '../assets/CORE TEAM PHOTOS/Media&PRLead_SnehaGrace.jpg';
@@ -75,19 +77,22 @@ export const teamMembers = [
   { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(0) },
   { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) },
   { name: 'Manish', role: 'Events Lead', image: eventsLead, ...heroProps(1) },
+  { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, ...heroProps(8) },
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) },
-  { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(5) },
-  { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(4) },
+  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, ...heroProps(6) },
   { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, ...heroProps(7) },
   { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, ...heroProps(5) },
   { name: 'Eshani', role: 'Treasurer', image: treasurerEshani, ...heroProps(7) },
-  { name: 'Sadhana', role: 'Deputy Hospitality Lead', image: dyHospitalitySadhana, ...heroProps(5) },
   { name: 'Debolina', role: 'Hospitality Lead', image: hospitalityLead, ...heroProps(9) },
-  { name: 'Deputy Hospitality', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(8) },
+  { name: 'Sadhana', role: 'Deputy Hospitality', image: dyHospitalitySadhana, ...heroProps(5) },
+  { name: 'Ashmit', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(8) },
   { name: 'Decor Lead', role: 'Decor Lead', image: decorLead, ...heroProps(6) },
-  { name: 'Sponsorship Lead', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(2) },
-  { name: 'Creative Head', role: 'Creative Head', image: creativeHead, ...heroProps(9) },
+  { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(2) },
   { name: 'Justin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(1) },
-  { name: 'Volunteer Lead 2', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(3) },
+  { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(3) },
+  { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(5) },
+  { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(4) },
+  { name: 'Creative Head', role: 'Creative Head', image: creativeHead, ...heroProps(9) },
   { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(2) },
+  
 ];

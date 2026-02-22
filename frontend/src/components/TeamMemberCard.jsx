@@ -55,16 +55,16 @@ const TeamMemberCard = ({ member, index, setActiveBg }) => {
             <img 
               src={member.heroPortrait} 
               alt="Hero Avatar" 
-              className="w-full h-full object-cover object-top md:object-[center_10%] transition-all duration-500 origin-bottom group-hover:scale-110 filter contrast-125 saturate-150"
+              className="w-full h-full object-cover object-top transition-transform duration-500 origin-bottom group-hover:scale-105 filter contrast-125 saturate-150 block"
             />
           </div>
 
           {/* Real Person Photo (Always visible on mobile, Hover Reveal on Large) */}
-          <div className="absolute inset-0 w-full h-full sm:z-20 transition-opacity duration-300 ease-in-out sm:opacity-0 sm:group-hover:opacity-100 opacity-100 pointer-events-none">
+          <div className="absolute inset-0 w-full h-full sm:z-20 transition-opacity duration-300 ease-in-out sm:opacity-0 sm:group-hover:opacity-100 opacity-100 pointer-events-none flex items-center justify-center bg-gray-900 overflow-hidden">
             <img 
               src={member.image} 
               alt={member.name} 
-              className="w-full h-full object-cover object-[center_30%] scale-[1.05] transition-transform duration-500 origin-bottom group-hover:scale-110 filter contrast-110 saturate-125"
+              className="w-full h-full object-cover object-top transition-transform duration-500 origin-bottom group-hover:scale-105 filter contrast-110 saturate-125 block"
             />
             {/* Hover Overlay Comic Effect */}
             <div className="absolute inset-0 bg-blue-500 mix-blend-color opacity-20 z-30 pointer-events-none"></div>
