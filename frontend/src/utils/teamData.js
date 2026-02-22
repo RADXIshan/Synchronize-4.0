@@ -86,13 +86,13 @@ export const teamMembers = [
   { name: 'Debolina', role: 'Hospitality Lead', image: hospitalityLead, ...heroProps(9) },
   { name: 'Sadhana', role: 'Deputy Hospitality', image: dyHospitalitySadhana, ...heroProps(5) },
   { name: 'Ashmit', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(8) },
-  { name: 'Decor Lead', role: 'Decor Lead', image: decorLead, ...heroProps(6) },
+  { name: 'Akanshya', role: 'Decor Lead', image: decorLead, ...heroProps(6) },
   { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(2) },
   { name: 'Justin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(1) },
   { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(3) },
   { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(5) },
   { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(4) },
-  { name: 'Creative Head', role: 'Creative Head', image: creativeHead, ...heroProps(9) },
+  { name: 'Prashant', role: 'Creative Head', image: creativeHead, ...heroProps(9) },
   { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(2) },
   
 ];
