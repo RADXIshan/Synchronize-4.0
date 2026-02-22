@@ -80,27 +80,27 @@ const TeamPage = () => {
            
            <div className="max-w-[90%] sm:max-w-2xl mx-auto mt-6 bg-yellow-400 border-2 sm:border-4 border-black p-4 shadow-[8px_8px_0px_#000] transform rotate-1">
              <p className="text-black text-sm sm:text-lg font-bold font-comic uppercase tracking-tight leading-tight">
-               The minds behind the madness. Synchronize 4.0 is brought to you by this league of extraordinary developers.
+               The minds behind the madness. Synchronize 4.0 is brought to you by this league of extraordinary heroes.
              </p>
            </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 gap-y-12 pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 gap-y-16 sm:gap-x-12 px-2 sm:px-6 pt-8 pb-20 justify-items-center">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card h-full">
+            <div key={index} className="team-card w-full max-w-[400px]">
               <TeamMemberCard member={member} index={index} setActiveBg={setActiveBg} />
             </div>
           ))}
         </div>
 
-        <div className="mt-20 text-center relative mb-20 z-20">
+        {/* <div className="mt-20 text-center relative mb-20 z-20">
             <div className="absolute top-1/2 left-0 w-full h-2 bg-black -z-10 transform -translate-y-1/2 shadow-[0px_4px_0px_#D2161E]"></div>
           <div className="inline-block px-12 py-6 bg-blue-600 border-4 border-black shadow-[10px_10px_0px_#000] transform rotate-2 hover:scale-110 hover:-rotate-2 transition-transform cursor-pointer">
             <span className="text-2xl font-black uppercase italic tracking-wider text-white" style={{ textShadow: '2px 2px 0px #000' }}>
               MORE HEROES INCOMING...
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
 
     </div>

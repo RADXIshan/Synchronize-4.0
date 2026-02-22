@@ -45,40 +45,49 @@ import portVision from '../assets/comic_theme/portrait_vision.png';
 import bgVision from '../assets/comic_theme/bg_vision.png';
 
 const heroes = [
-  { p: portCap, b: bgCap },       // 0: Captain America
-  { p: portHulk, b: bgHulk },     // 1: Hulk
-  { p: portIron, b: bgIron },     // 2: Iron Man
-  { p: portPanther, b: bgPanther }, // 3: Black Panther
-  { p: portThor, b: bgThor },     // 4: Thor
-  { p: portWidow, b: bgWidow },   // 5: Black Widow
-  { p: portSpidey, b: bgSpidey }, // 6: Spider-Man
-  { p: portScarlet, b: bgScarlet }, // 7: Scarlet Witch
-  { p: portStrange, b: bgStrange }, // 8: Doctor Strange
-  { p: portVision, b: bgVision }  // 9: Vision
+  { p: portCap, b: bgCap, cardBg: 'bg-blue-400', roleBg: 'bg-red-400', textColor: 'text-black', roleTextColor: 'text-black' },       // 0: Captain America
+  { p: portHulk, b: bgHulk, cardBg: 'bg-green-400', roleBg: 'bg-yellow-300', textColor: 'text-black', roleTextColor: 'text-black' },     // 1: Hulk
+  { p: portIron, b: bgIron, cardBg: 'bg-red-500', roleBg: 'bg-yellow-400', textColor: 'text-white', roleTextColor: 'text-black' },     // 2: Iron Man
+  { p: portPanther, b: bgPanther, cardBg: 'bg-indigo-400', roleBg: 'bg-fuchsia-400', textColor: 'text-black', roleTextColor: 'text-black' }, // 3: Black Panther
+  { p: portThor, b: bgThor, cardBg: 'bg-cyan-400', roleBg: 'bg-yellow-400', textColor: 'text-black', roleTextColor: 'text-black' },     // 4: Thor
+  { p: portWidow, b: bgWidow, cardBg: 'bg-rose-500', roleBg: 'bg-neutral-800', textColor: 'text-white', roleTextColor: 'text-white' },   // 5: Black Widow (Black tag -> White text)
+  { p: portSpidey, b: bgSpidey, cardBg: 'bg-red-500', roleBg: 'bg-blue-400', textColor: 'text-white', roleTextColor: 'text-black' }, // 6: Spider-Man
+  { p: portScarlet, b: bgScarlet, cardBg: 'bg-pink-500', roleBg: 'bg-red-400', textColor: 'text-white', roleTextColor: 'text-black' }, // 7: Scarlet Witch
+  { p: portStrange, b: bgStrange, cardBg: 'bg-teal-400', roleBg: 'bg-orange-400', textColor: 'text-black', roleTextColor: 'text-black' }, // 8: Doctor Strange
+  { p: portVision, b: bgVision, cardBg: 'bg-fuchsia-400', roleBg: 'bg-emerald-300', textColor: 'text-black', roleTextColor: 'text-black' }  // 9: Vision
 ];
 
+const heroProps = (index) => ({
+  heroPortrait: heroes[index].p,
+  heroBg: heroes[index].b,
+  cardBg: heroes[index].cardBg,
+  roleBg: heroes[index].roleBg,
+  textColor: heroes[index].textColor,
+  roleTextColor: heroes[index].roleTextColor,
+});
+
 export const teamMembers = [
-  { name: 'Secretary', role: 'Secretary', image: secretary, heroPortrait: heroes[4].p, heroBg: heroes[4].b },
-  { name: 'Kaif Khurshid', role: 'Coordinator', image: coordinatorKaif, heroPortrait: heroes[0].p, heroBg: heroes[0].b },
-  { name: 'Coordinator', role: 'Coordinator', image: coordinator1, heroPortrait: heroes[5].p, heroBg: heroes[5].b },
-  { name: 'Ishan Roy', role: 'Tech Lead', image: techLeadIshan, heroPortrait: heroes[2].p, heroBg: heroes[2].b },
-  { name: 'Aditya Raj Mishra', role: 'Operations Lead', image: operationsLead, heroPortrait: heroes[0].p, heroBg: heroes[0].b },
-  { name: 'Srimad Nayak', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, heroPortrait: heroes[8].p, heroBg: heroes[8].b },
-  { name: 'Manish Nanda', role: 'Events Lead', image: eventsLead, heroPortrait: heroes[1].p, heroBg: heroes[1].b },
-  { name: 'Subham Rout', role: 'Logistics Lead', image: logisticsLead, heroPortrait: heroes[3].p, heroBg: heroes[3].b },
-  { name: 'Ananya Verma', role: 'Robotics Head', image: roboticsAnanya, heroPortrait: heroes[5].p, heroBg: heroes[5].b },
-  { name: 'Ankit Choudhury', role: 'Robotics Head', image: roboticsAnkit, heroPortrait: heroes[4].p, heroBg: heroes[4].b },
-  { name: 'Sneha Grace', role: 'Media & PR Lead', image: mediaPRLead, heroPortrait: heroes[7].p, heroBg: heroes[7].b },
-  { name: 'Hrisita Mohapatra', role: 'Coverage Lead', image: coverageLead, heroPortrait: heroes[5].p, heroBg: heroes[5].b },
-  { name: 'Eshani Misra', role: 'Treasurer', image: treasurerEshani, heroPortrait: heroes[7].p, heroBg: heroes[7].b },
-  { name: 'Sadhana', role: 'Deputy Hospitality Lead', image: dyHospitalitySadhana, heroPortrait: heroes[5].p, heroBg: heroes[5].b },
-  { name: 'Hospitality Lead', role: 'Hospitality Lead', image: hospitalityLead, heroPortrait: heroes[9].p, heroBg: heroes[9].b },
-  { name: 'Deputy Hospitality', role: 'Deputy Hospitality', image: deputyHospitality1, heroPortrait: heroes[8].p, heroBg: heroes[8].b },
-  { name: 'Decor Lead', role: 'Decor Lead', image: decorLead, heroPortrait: heroes[6].p, heroBg: heroes[6].b },
-  { name: 'Sponsorship Lead', role: 'Sponsorship Lead', image: sponsorshipLead, heroPortrait: heroes[2].p, heroBg: heroes[2].b },
-  { name: 'Creative Head', role: 'Creative Head', image: creativeHead, heroPortrait: heroes[9].p, heroBg: heroes[9].b },
-  { name: 'Deputy Tech Lead', role: 'Deputy Tech Lead', image: deputyTechLead, heroPortrait: heroes[6].p, heroBg: heroes[6].b },
-  { name: 'Volunteer Lead 1', role: 'Volunteer Lead', image: volunteerLead, heroPortrait: heroes[1].p, heroBg: heroes[1].b },
-  { name: 'Volunteer Lead 2', role: 'Volunteer Lead', image: volunteerLead1, heroPortrait: heroes[3].p, heroBg: heroes[3].b },
-  { name: 'Cam Ops', role: 'Cam Ops', image: camOps, heroPortrait: heroes[2].p, heroBg: heroes[2].b },
+  { name: 'Sidhant', role: 'Secretary', image: secretary, ...heroProps(4) },
+  { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, ...heroProps(0) },
+  { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) },
+  { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, ...heroProps(8) },
+  { name: 'Ishan', role: 'Tech Lead', image: techLeadIshan, ...heroProps(2) },
+  { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(0) },
+  { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) },
+  { name: 'Manish', role: 'Events Lead', image: eventsLead, ...heroProps(1) },
+  { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) },
+  { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(5) },
+  { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(4) },
+  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, ...heroProps(7) },
+  { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, ...heroProps(5) },
+  { name: 'Eshani', role: 'Treasurer', image: treasurerEshani, ...heroProps(7) },
+  { name: 'Sadhana', role: 'Deputy Hospitality Lead', image: dyHospitalitySadhana, ...heroProps(5) },
+  { name: 'Debolina', role: 'Hospitality Lead', image: hospitalityLead, ...heroProps(9) },
+  { name: 'Deputy Hospitality', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(8) },
+  { name: 'Decor Lead', role: 'Decor Lead', image: decorLead, ...heroProps(6) },
+  { name: 'Sponsorship Lead', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(2) },
+  { name: 'Creative Head', role: 'Creative Head', image: creativeHead, ...heroProps(9) },
+  { name: 'Justin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(1) },
+  { name: 'Volunteer Lead 2', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(3) },
+  { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(2) },
 ];
