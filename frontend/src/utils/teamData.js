@@ -151,7 +151,7 @@ export const teamMembers = [
   { name: 'Sidhant', role: 'Secretary', image: secretary, ...heroProps(4) }, // Thor
   { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, ...heroProps(0) }, // Captain America
   { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) }, // Black Widow
-  { name: 'Rhea', role: 'Coordinator', image: coordinatorRhea, imagePosition: 'center 50%', ...heroProps(26) }, // Captain Marvel
+  { name: 'Rhea', role: 'Deputy Coordinator', image: coordinatorRhea, imagePosition: 'center 50%', ...heroProps(26) }, // Captain Marvel
   { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(8) }, // Doctor Strange
   { name: 'Ishan', role: 'Tech Lead', image: techLeadIshan, imagePosition: 'center 40%', ...heroProps(2) }, // Iron Man
   { name: 'Colin', role: 'Tech Lead', image: techLeadColin, imagePosition: 'center 40%', ...heroProps(27) }, // Groot
