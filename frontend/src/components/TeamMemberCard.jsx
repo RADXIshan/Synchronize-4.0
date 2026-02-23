@@ -64,7 +64,11 @@ const TeamMemberCard = ({ member, index, setActiveBg }) => {
             <img 
               src={member.image} 
               alt={member.name} 
-              className="w-full h-full object-cover object-top transition-transform duration-500 origin-bottom group-hover:scale-105 filter contrast-110 saturate-125 block"
+              className="w-full h-full object-cover origin-bottom filter contrast-110 saturate-125 block transition-all duration-500 ease-in-out group-hover:scale-[1.05]!"
+              style={{ 
+                objectPosition: member.imagePosition || 'top',
+                transform: `scale(${member.imageScale || 1})`
+              }}
             />
             {/* Hover Overlay Comic Effect */}
             <div className="absolute inset-0 bg-blue-500 mix-blend-color opacity-20 z-30 pointer-events-none"></div>
