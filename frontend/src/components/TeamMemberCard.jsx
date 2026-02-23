@@ -110,8 +110,11 @@ const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
         className="sm:hidden w-full h-full"
         style={{
           transformStyle: 'preserve-3d',
+          WebkitTransformStyle: 'preserve-3d',
           transition: 'transform 0.6s cubic-bezier(0.4,0.2,0.2,1)',
+          WebkitTransition: 'transform 0.6s cubic-bezier(0.4,0.2,0.2,1)',
           transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          WebkitTransform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
           position: 'relative',
         }}
       >
@@ -129,7 +132,7 @@ const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
               <span className="text-xl font-black uppercase text-white tracking-tighter w-fit drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Team Sync 4.0</span>
             </div>
             <div className="px-3 py-1 border-[3px] border-black transform rotate-3 bg-red-600 shadow-[3px_3px_0px_#000] z-10">
-              <span className="text-[10px] font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
+              <span className="text-sm font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
             </div>
           </div>
 
@@ -194,7 +197,7 @@ const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
               <span className="text-xl font-black uppercase text-white tracking-tighter w-fit drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Team Sync 4.0</span>
             </div>
             <div className="px-3 py-1 border-[3px] border-black transform rotate-3 bg-red-600 shadow-[3px_3px_0px_#000] z-10">
-              <span className="text-[10px] font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
+              <span className="text-sm font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
             </div>
           </div>
 
