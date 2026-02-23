@@ -152,11 +152,11 @@ export const teamMembers = [
   { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, ...heroProps(0) }, // Captain America
   { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) }, // Black Widow
   { name: 'Rhea', role: 'Coordinator', image: coordinatorRhea, imagePosition: 'center 50%', ...heroProps(26) }, // Captain Marvel
-  { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(1) }, // Hulk
+  { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(8) }, // Doctor Strange
   { name: 'Ishan', role: 'Tech Lead', image: techLeadIshan, imagePosition: 'center 40%', ...heroProps(2) }, // Iron Man
   { name: 'Colin', role: 'Tech Lead', image: techLeadColin, imagePosition: 'center 40%', ...heroProps(27) }, // Groot
   { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) }, // Spider-Man
-  { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(9) }, // Vision
+  { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(1) }, // Hulk
   { name: 'Manish', role: 'Events Lead', image: eventsLead, imagePosition: 'center 20%', ...heroProps(20) }, // Daredevil
   { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, imagePosition: 'center 40%', ...heroProps(14) }, // Wasp
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) }, // Black Panther
@@ -174,6 +174,6 @@ export const teamMembers = [
   { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(21) }, // She-Hulk
   { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(19) }, // Storm
   { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(12) }, // Star-Lord
-  { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(8) }, // Doctor Strange
+  { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(9) }, // Vision
   { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(22) }, // Shuri
 ];
