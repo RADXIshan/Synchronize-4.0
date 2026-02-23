@@ -260,7 +260,7 @@ const Footer = () => {
                   <Shield className="w-3 h-3 text-black fill-current" />
                 </div>
                 <p className="font-black text-sm md:text-base pop-art-text">
-                  © {new Date().getFullYear()} SYNCHRONIZE TECHFEST - ALL RIGHTS RESERVED
+                  © {new Date().getFullYear()} SYNCHRONIZE XIM TECHFEST - ALL RIGHTS RESERVED
                 </p>
               </div>
 
