@@ -156,7 +156,7 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Agent Name</label>
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Name</label>
                 <input 
                   type="text" 
                   name="name"
@@ -169,20 +169,20 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Secure Email</label>
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Email</label>
                 <input 
                   type="email" 
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="agent@shield.gov"
+                  placeholder="natasha@gmail.com"
                   className="w-full bg-black border-2 border-gray-700 focus:border-red-500 p-4 text-white placeholder-gray-600 outline-none transition-all font-mono"
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Secure Line</label>
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Phone Number</label>
                 <input 
                   type="tel" 
                   name="phone"
@@ -195,13 +195,13 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Mission Report</label>
+                <label className="text-red-500 font-black uppercase tracking-widest text-sm">Message</label>
                 <textarea 
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
-                  placeholder="Enter briefing details..."
+                  placeholder="Enter query details..."
                   className="w-full bg-black border-2 border-gray-700 focus:border-red-500 p-4 text-white placeholder-gray-600 outline-none transition-all font-mono resize-none"
                   required
                 ></textarea>

@@ -1,10 +1,13 @@
 import { Instagram, Linkedin, MapPin, Mail, Phone, ArrowRight, Shield, Star, Zap, Youtube } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import Modal from './Modal';
 
 
 const Footer = () => {
 
   const navigate = useNavigate();
+  const [activeModal, setActiveModal] = useState(null);
 
   return (
     <footer className="bg-[#F0F4F8] border-t-8 border-black pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-10 relative overflow-hidden">
@@ -262,13 +265,19 @@ const Footer = () => {
               </div>
 
               <div className="flex items-center space-x-4">
-                <a href="#" className="bg-white text-black px-3 py-1 border-2 border-black font-black text-xs hover:-translate-y-px transition-transform duration-200">
+                <button 
+                  onClick={(e) => { e.preventDefault(); setActiveModal('privacy'); }}
+                  className="bg-white text-black px-3 py-1 border-2 border-black font-black text-xs hover:-translate-y-px transition-transform duration-200 cursor-pointer"
+                >
                   PRIVACY POLICY
-                </a>
+                </button>
                 <span className="text-white font-black">•</span>
-                <a href="#" className="bg-white text-black px-3 py-1 border-2 border-black font-black text-xs hover:-translate-y-px transition-transform duration-200">
+                <button 
+                  onClick={(e) => { e.preventDefault(); setActiveModal('terms'); }}
+                  className="bg-white text-black px-3 py-1 border-2 border-black font-black text-xs hover:-translate-y-px transition-transform duration-200 cursor-pointer"
+                >
                   TERMS OF SERVICE
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -287,6 +296,34 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      <Modal isOpen={activeModal === 'privacy'} onClose={() => setActiveModal(null)} title="PRIVACY POLICY">
+        <div className="space-y-4 font-bold text-black text-left">
+          <p><strong>Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong></p>
+          <p>Welcome to SYNCHRONIZE 4.0. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights.</p>
+          <h3 className="text-lg font-black text-[#0055AA] uppercase mt-6 mb-2">1. Information We Collect</h3>
+          <p>We may collect, use, store and transfer different kinds of personal data about you, including Identity Data, Contact Data, and Technical Data when you register for events or contact us.</p>
+          <h3 className="text-lg font-black text-[#AA0505] uppercase mt-6 mb-2">2. How We Use Your Data</h3>
+          <p>We will only use your personal data for the purpose of organizing and managing the SYNCHRONIZE techfest, communicating with you regarding events, and ensuring a safe environment for all participants.</p>
+          <h3 className="text-lg font-black text-iron-gold uppercase mt-6 mb-2">3. Data Security</h3>
+          <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed.</p>
+          <p className="mt-6 pt-4 border-t-2 border-dashed border-black">For any privacy-related questions, contact us at techfest-scse@xim.edu.in</p>
+        </div>
+      </Modal>
+
+      <Modal isOpen={activeModal === 'terms'} onClose={() => setActiveModal(null)} title="TERMS OF SERVICE">
+        <div className="space-y-4 font-bold text-black text-left">
+          <p><strong>Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong></p>
+          <p>Welcome to SYNCHRONIZE 4.0. By accessing this website and registering for our events, you agree to be bound by these Terms of Service.</p>
+          <h3 className="text-lg font-black text-[#0055AA] uppercase mt-6 mb-2">1. Event Registration</h3>
+          <p>All participants must provide accurate information during registration. We reserve the right to verify student credentials and cancel registrations that violate our policies.</p>
+          <h3 className="text-lg font-black text-[#AA0505] uppercase mt-6 mb-2">2. Code of Conduct</h3>
+          <p>Participants are expected to maintain professional behavior throughout the techfest. Harassment, cheating, or disruptive behavior will result in immediate disqualification and removal from the premises.</p>
+          <h3 className="text-lg font-black text-iron-gold uppercase mt-6 mb-2">3. Intellectual Property</h3>
+          <p>Any code, designs, or projects created during the competitions remain the intellectual property of the creators, but SYNCHRONIZE retains the right to use them for promotional purposes.</p>
+          <p className="mt-6 pt-4 border-t-2 border-dashed border-black">By closing this window, you acknowledge that you have read and agree to these terms.</p>
+        </div>
+      </Modal>
 
       <style>{`
         @keyframes comic-float {
