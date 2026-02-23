@@ -199,7 +199,6 @@ const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
           {/* "Hover to reveal" hint – visible by default, fades on hover */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 pointer-events-none
                           transition-opacity duration-300 opacity-100 group-hover:opacity-0">
-            <span className="text-xl">🖱️</span>
             <span
               className="bg-yellow-400 border-[3px] border-black text-black font-black uppercase text-[10px] tracking-widest px-3 py-1 shadow-[3px_3px_0px_#000] transform -rotate-1 whitespace-nowrap"
             >
