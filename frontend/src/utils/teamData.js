@@ -79,7 +79,8 @@ import portWolverine from '../assets/comic_theme/portrait_wolverine.png';
 import bgWolverine from '../assets/comic_theme/bg_wolverine.png';
 import portGamora from '../assets/comic_theme/portrait_gamora.png';
 import bgGamora from '../assets/comic_theme/bg_gamora.png';
-
+import portCaptainMarvel from '../assets/comic_theme/portrait_captainmarvel.png';
+import bgCaptainMarvel from '../assets/comic_theme/bg_captainmarvel.png';
 // ── Hero registry ─────────────────────────────────────────────────────────────
 const heroes = [
   // Original 10
@@ -111,6 +112,7 @@ const heroes = [
   { p: portJeanGrey, b: bgJeanGrey, cardBg: 'bg-red-400', roleBg: 'bg-yellow-500', textColor: 'text-white', roleTextColor: 'text-black' }, // 23: Jean Grey
   { p: portWolverine, b: bgWolverine, cardBg: 'bg-yellow-400', roleBg: 'bg-blue-600', textColor: 'text-black', roleTextColor: 'text-white' }, // 24: Wolverine
   { p: portGamora, b: bgGamora, cardBg: 'bg-green-600', roleBg: 'bg-fuchsia-700', textColor: 'text-white', roleTextColor: 'text-white' }, // 25: Gamora
+  { p: portCaptainMarvel, b: bgCaptainMarvel, cardBg: 'bg-red-500', roleBg: 'bg-blue-600', textColor: 'text-white', roleTextColor: 'text-white' }, // 26: Captain Marvel
 ];
 
 const heroProps = (index) => ({
@@ -134,7 +136,7 @@ export const teamMembers = [
   { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, ...heroProps(14) }, // Wasp
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) }, // Black Panther
   { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, ...heroProps(18) }, // Deadpool
-  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, ...heroProps(10) }, // White Widow
+  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, ...heroProps(26) }, // Captain Marvel
   { name: 'Prashant', role: 'Creative Head', image: creativeHead, ...heroProps(16) }, // Ant-Man
   { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(13) }, // Hawkeye
   { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, ...heroProps(11) }, // Rouge
