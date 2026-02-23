@@ -9,6 +9,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TeamPage = () => {
   const [activeBg, setActiveBg] = useState(null);
+  const [flippedIndex, setFlippedIndex] = useState(null);
+
+  // Toggle flip: only one card open at a time
+  const handleFlip = (index, heroBg) => {
+    if (flippedIndex === index) {
+      // clicking the already-open card → flip it back
+      setFlippedIndex(null);
+      setActiveBg(null);
+    } else {
+      // flip new card, auto-close any previously open one
+      setFlippedIndex(index);
+      setActiveBg(heroBg);
+    }
+  };
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -88,7 +102,13 @@ const TeamPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 gap-y-16 sm:gap-x-12 px-2 sm:px-6 pt-8 pb-20 justify-items-center">
           {teamMembers.map((member, index) => (
             <div key={index} className="team-card w-full max-w-[400px]">
-              <TeamMemberCard member={member} index={index} setActiveBg={setActiveBg} />
+              <TeamMemberCard
+                member={member}
+                index={index}
+                setActiveBg={setActiveBg}
+                flipped={flippedIndex === index}
+                onFlip={() => handleFlip(index, member.heroBg)}
+              />
             </div>
           ))}
         </div>

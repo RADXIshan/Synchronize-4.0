@@ -141,7 +141,7 @@ export const teamMembers = [
   { name: 'Colin', role: 'Tech Lead', image: techLeadColin, imagePosition: 'center 40%', ...heroProps(27) }, // Groot
   { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) }, // Spider-Man
   { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(9) }, // Vision
-  { name: 'Manish', role: 'Events Lead', image: eventsLead, ...heroProps(20) }, // Daredevil
+  { name: 'Manish', role: 'Events Lead', image: eventsLead, imagePosition: 'center 20%', ...heroProps(20) }, // Daredevil
   { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, imageScale: 1.5, ...heroProps(14) }, // Wasp
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) }, // Black Panther
   { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, imagePosition: 'center 10%', imageScale: 1.8, ...heroProps(24) }, // Wolverine
