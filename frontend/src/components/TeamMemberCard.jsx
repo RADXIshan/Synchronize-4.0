@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const colors = [
   "bg-yellow-400",
@@ -8,6 +8,132 @@ const colors = [
   "bg-orange-400",
   "bg-indigo-300",
 ];
+
+// ─────────────────────────────────────────────────────────────────
+// MobileFlipCard — iOS-safe flip
+//
+// iOS Safari has a well-known bug where backface-visibility: hidden
+// on children of a preserve-3d container doesn't always hide the
+// back face, so you see both faces stacked. The fix: instead of two
+// absolutely-positioned faces relying on backface-visibility, we
+// use ONE card face whose CONTENT (front vs. back portrait) is
+// swapped at the exact midpoint of the rotation animation by a
+// React state + setTimeout. No backface-visibility needed at all.
+// ─────────────────────────────────────────────────────────────────
+const FLIP_DURATION = 600; // ms — must match the CSS transition below
+
+const MobileFlipCard = ({ member, index, cardColor, roleBg, flipped, onFlip }) => {
+  // showBack lags flipped by half the animation so the swap happens
+  // while the card is edge-on and invisible to the user.
+  const [showBack, setShowBack] = useState(false);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setShowBack(flipped);
+    }, FLIP_DURATION / 2);
+    return () => clearTimeout(timerRef.current);
+  }, [flipped]);
+
+  return (
+    <div
+      className="sm:hidden w-full h-full"
+      style={{ perspective: '1200px' }}
+      onClick={onFlip}
+    >
+      {/* Single card div that rotates — no backface-visibility needed */}
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          transition: `transform ${FLIP_DURATION}ms cubic-bezier(0.4,0.2,0.2,1)`,
+          WebkitTransition: `transform ${FLIP_DURATION}ms cubic-bezier(0.4,0.2,0.2,1)`,
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          WebkitTransform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+        className={`${cardColor} border-[6px] border-black shadow-[10px_10px_0px_#000]`}
+      >
+        {/* Top strip — same on both faces */}
+        <div className={`border-b-[6px] border-black p-2 flex justify-between items-center relative ${cardColor} overflow-hidden flex-none`}>
+          <div className="absolute inset-0 halftone-pattern opacity-[0.10] pointer-events-none"></div>
+          <div className="flex flex-col leading-none z-10">
+            <span className="text-base font-black uppercase text-black tracking-widest bg-yellow-400 px-1 border-2 border-black inline-block transform -skew-x-12 w-fit mb-1">Issue #{index + 1}</span>
+            <span className="text-xl font-black uppercase text-white tracking-tighter w-fit drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Team Sync 4.0</span>
+          </div>
+          <div className="px-3 py-1 border-[3px] border-black transform rotate-3 bg-red-600 shadow-[3px_3px_0px_#000] z-10">
+            <span className="text-sm font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
+          </div>
+        </div>
+
+        {/* Image area — content swaps at flip midpoint */}
+        <div className="relative flex-1 border-b-[6px] border-black bg-gray-900 overflow-hidden">
+          <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,#fff_10px,#fff_20px)] mix-blend-overlay pointer-events-none"></div>
+          <div className="absolute inset-0 halftone-pattern opacity-40 z-0 pointer-events-none"></div>
+
+          {showBack ? (
+            /* ── BACK: Hero Portrait ── */
+            <>
+              <img
+                src={member.heroPortrait}
+                alt="Hero Avatar"
+                className="absolute inset-0 w-full h-full object-cover object-top filter contrast-125 saturate-150 block z-10"
+              />
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 pointer-events-none">
+                <span className="bg-white border-[3px] border-black text-black font-black uppercase text-[10px] tracking-widest px-3 py-1 shadow-[3px_3px_0px_#000] transform rotate-1 whitespace-nowrap">
+                  Tap again to flip back
+                </span>
+              </div>
+            </>
+          ) : (
+            /* ── FRONT: Real person photo ── */
+            <>
+              <img
+                src={member.image}
+                alt={member.name}
+                className="absolute inset-0 w-full h-full object-cover filter contrast-110 saturate-125 block z-10"
+                style={{
+                  objectPosition: member.imagePosition || 'top',
+                  transform: `scale(${member.imageScale || 1})`,
+                  transformOrigin: 'top center',
+                }}
+              />
+              <div className="absolute inset-0 bg-blue-500 mix-blend-color opacity-20 z-20 pointer-events-none"></div>
+              <div className="absolute inset-0 halftone-pattern opacity-20 z-20 pointer-events-none"></div>
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 pointer-events-none">
+                <span className="bg-yellow-400 border-[3px] border-black text-black font-black uppercase text-[11px] tracking-widest px-3 py-1 shadow-[3px_3px_0px_#000] transform -rotate-1 whitespace-nowrap">
+                  Tap to reveal character!
+                </span>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Bottom info — same on both faces */}
+        <div className={`p-3 relative flex-none h-[110px] flex items-center overflow-hidden ${cardColor}`}>
+          <div className="absolute inset-0 halftone-pattern opacity-[0.05] pointer-events-none"></div>
+          <div className="absolute -top-10 -right-10 w-32 h-32 bg-gray-100 rounded-full blur-xl opacity-50 z-0"></div>
+          <div className="flex flex-col flex-1 relative z-10 min-w-0 pr-2 w-full max-w-full">
+            <h3 className="font-display font-black text-3xl uppercase tracking-tighter text-white leading-none transform -skew-x-6 inline truncate max-w-full"
+                style={{ textShadow: '2px 2px 0px #000, 3px 3px 0px #000' }}>
+              {member.name}
+            </h3>
+            <div className="mt-2 flex max-w-full overflow-hidden">
+              <span className={`${member.roleTextColor || 'text-black'} font-black font-comic text-sm uppercase tracking-tight px-2 py-1 transform -rotate-1 border-2 border-black inline-block shadow-[2px_2px_0px_#000] ${roleBg} truncate max-w-full`}
+                    style={{ textShadow: member.roleTextColor === 'text-white' ? '1px 1px 0px #000' : 'none' }}>
+                {member.role}
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
 
 const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
   // Randomize rotation for comic panel look
@@ -103,140 +229,16 @@ const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
       </div>
 
       {/* ════════════════════════════════════════════════════
-          MOBILE CARD  ─  below sm, tap-to-flip (3-D)
-          State is controlled by parent (flipped / onFlip)
+          MOBILE CARD  ─  iOS-safe flip (React state swap)
           ════════════════════════════════════════════════════ */}
-      <div
-        className="sm:hidden w-full h-full"
-        style={{
-          transformStyle: 'preserve-3d',
-          WebkitTransformStyle: 'preserve-3d',
-          transition: 'transform 0.6s cubic-bezier(0.4,0.2,0.2,1)',
-          WebkitTransition: 'transform 0.6s cubic-bezier(0.4,0.2,0.2,1)',
-          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-          WebkitTransform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-          position: 'relative',
-        }}
-      >
-        {/* ── FRONT FACE: person photo + "click to reveal" ── */}
-        <div
-          className={`absolute inset-0 w-full h-full ${cardColor} border-[6px] border-black flex flex-col shadow-[10px_10px_0px_#000]`}
-          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
-          onClick={onFlip}
-        >
-          {/* Top strip */}
-          <div className={`border-b-[6px] border-black p-2 flex justify-between items-center relative ${cardColor} overflow-hidden`}>
-            <div className="absolute inset-0 halftone-pattern opacity-[0.10] pointer-events-none"></div>
-            <div className="flex flex-col leading-none z-10">
-              <span className="text-base font-black uppercase text-black tracking-widest bg-yellow-400 px-1 border-2 border-black inline-block transform -skew-x-12 w-fit mb-1">Issue #{index + 1}</span>
-              <span className="text-xl font-black uppercase text-white tracking-tighter w-fit drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Team Sync 4.0</span>
-            </div>
-            <div className="px-3 py-1 border-[3px] border-black transform rotate-3 bg-red-600 shadow-[3px_3px_0px_#000] z-10">
-              <span className="text-sm font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
-            </div>
-          </div>
-
-          {/* Person photo */}
-          <div className="relative flex-1 border-b-[6px] border-black bg-gray-900 overflow-hidden">
-            <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,#fff_10px,#fff_20px)] mix-blend-overlay pointer-events-none"></div>
-            <div className="absolute inset-0 halftone-pattern opacity-40 z-0 pointer-events-none"></div>
-            <img
-              src={member.image}
-              alt={member.name}
-              className="absolute inset-0 w-full h-full object-cover filter contrast-110 saturate-125 block z-10"
-              style={{
-                objectPosition: member.imagePosition || 'top',
-                transform: `scale(${member.imageScale || 1})`,
-                transformOrigin: 'top center',
-              }}
-            />
-            <div className="absolute inset-0 bg-blue-500 mix-blend-color opacity-20 z-20 pointer-events-none"></div>
-            <div className="absolute inset-0 halftone-pattern opacity-20 z-20 pointer-events-none"></div>
-            {/* "Click to reveal" badge */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 pointer-events-none">
-              <span className="bg-yellow-400 border-[3px] border-black text-black font-black uppercase text-[11px] tracking-widest px-3 py-1 shadow-[3px_3px_0px_#000] transform -rotate-1 whitespace-nowrap">
-                Click to reveal character!
-              </span>
-            </div>
-          </div>
-
-          {/* Bottom info */}
-          <div className={`p-3 relative flex-none h-[110px] flex items-center overflow-hidden ${cardColor}`}>
-            <div className="absolute inset-0 halftone-pattern opacity-[0.05] pointer-events-none"></div>
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gray-100 rounded-full blur-xl opacity-50 z-0"></div>
-            <div className="flex flex-col flex-1 relative z-10 min-w-0 pr-2 w-full max-w-full">
-              <h3 className="font-display font-black text-3xl uppercase tracking-tighter text-white leading-none transform -skew-x-6 inline truncate max-w-full"
-                  style={{ textShadow: '2px 2px 0px #000, 3px 3px 0px #000' }}>
-                {member.name}
-              </h3>
-              <div className="mt-2 flex max-w-full overflow-hidden">
-                <span className={`${member.roleTextColor || 'text-black'} font-black font-comic text-sm uppercase tracking-tight px-2 py-1 transform -rotate-1 border-2 border-black inline-block shadow-[2px_2px_0px_#000] ${roleBg} truncate max-w-full`}
-                      style={{ textShadow: member.roleTextColor === 'text-white' ? '1px 1px 0px #000' : 'none' }}>
-                  {member.role}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── BACK FACE: hero portrait + "tap to flip back" ── */}
-        <div
-          className={`absolute inset-0 w-full h-full ${cardColor} border-[6px] border-black flex flex-col shadow-[10px_10px_0px_#000]`}
-          style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-          }}
-          onClick={onFlip}
-        >
-          {/* Top strip */}
-          <div className={`border-b-[6px] border-black p-2 flex justify-between items-center relative ${cardColor} overflow-hidden`}>
-            <div className="absolute inset-0 halftone-pattern opacity-[0.10] pointer-events-none"></div>
-            <div className="flex flex-col leading-none z-10">
-              <span className="text-base font-black uppercase text-black tracking-widest bg-yellow-400 px-1 border-2 border-black inline-block transform -skew-x-12 w-fit mb-1">Issue #{index + 1}</span>
-              <span className="text-xl font-black uppercase text-white tracking-tighter w-fit drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Team Sync 4.0</span>
-            </div>
-            <div className="px-3 py-1 border-[3px] border-black transform rotate-3 bg-red-600 shadow-[3px_3px_0px_#000] z-10">
-              <span className="text-sm font-black uppercase text-white font-display tracking-widest" style={{textShadow: '2px 2px 0 #000'}}>HERO</span>
-            </div>
-          </div>
-
-          {/* Hero portrait */}
-          <div className="relative flex-1 border-b-[6px] border-black bg-gray-900 overflow-hidden">
-            <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,#fff_10px,#fff_20px)] mix-blend-overlay pointer-events-none"></div>
-            <div className="absolute inset-0 halftone-pattern opacity-40 z-0 pointer-events-none"></div>
-            <img
-              src={member.heroPortrait}
-              alt="Hero Avatar"
-              className="absolute inset-0 w-full h-full object-cover object-top filter contrast-125 saturate-150 block z-10"
-            />
-            {/* "Tap to flip back" badge */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 pointer-events-none">
-              <span className="bg-white border-[3px] border-black text-black font-black uppercase text-[10px] tracking-widest px-3 py-1 shadow-[3px_3px_0px_#000] transform rotate-1 whitespace-nowrap">
-                Tap again to flip back
-              </span>
-            </div>
-          </div>
-
-          {/* Bottom info */}
-          <div className={`p-3 relative flex-none h-[110px] flex items-center overflow-hidden ${cardColor}`}>
-            <div className="absolute inset-0 halftone-pattern opacity-[0.05] pointer-events-none"></div>
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gray-100 rounded-full blur-xl opacity-50 z-0"></div>
-            <div className="flex flex-col flex-1 relative z-10 min-w-0 pr-2 w-full max-w-full">
-              <h3 className="font-display font-black text-3xl uppercase tracking-tighter text-white leading-none transform -skew-x-6 inline truncate max-w-full"
-                  style={{ textShadow: '2px 2px 0px #000, 3px 3px 0px #000' }}>
-                {member.name}
-              </h3>
-              <div className="mt-2 flex max-w-full overflow-hidden">
-                <span className={`${member.roleTextColor || 'text-black'} font-black font-comic text-sm uppercase tracking-tight px-2 py-1 transform -rotate-1 border-2 border-black inline-block shadow-[2px_2px_0px_#000] ${roleBg} truncate max-w-full`}
-                      style={{ textShadow: member.roleTextColor === 'text-white' ? '1px 1px 0px #000' : 'none' }}>
-                  {member.role}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <MobileFlipCard
+        member={member}
+        index={index}
+        cardColor={cardColor}
+        roleBg={roleBg}
+        flipped={flipped}
+        onFlip={onFlip}
+      />
     </div>
   );
 };
