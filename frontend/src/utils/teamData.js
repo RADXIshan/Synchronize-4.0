@@ -75,6 +75,10 @@ import portShuri from '../assets/comic_theme/portrait_shuri.png';
 import bgShuri from '../assets/comic_theme/bg_shuri.png';
 import portJeanGrey from '../assets/comic_theme/portrait_jeangrey.png';
 import bgJeanGrey from '../assets/comic_theme/bg_jeangrey.jpg';
+import portWolverine from '../assets/comic_theme/portrait_wolverine.png';
+import bgWolverine from '../assets/comic_theme/bg_wolverine.png';
+import portGamora from '../assets/comic_theme/portrait_gamora.png';
+import bgGamora from '../assets/comic_theme/bg_gamora.png';
 
 // ── Hero registry ─────────────────────────────────────────────────────────────
 const heroes = [
@@ -105,6 +109,8 @@ const heroes = [
   { p: portSheHulk, b: bgSheHulk, cardBg: 'bg-green-500', roleBg: 'bg-purple-600', textColor: 'text-white', roleTextColor: 'text-white' }, // 21: She-Hulk
   { p: portShuri, b: bgShuri, cardBg: 'bg-violet-500', roleBg: 'bg-violet-900', textColor: 'text-white', roleTextColor: 'text-white' }, // 22: Shuri
   { p: portJeanGrey, b: bgJeanGrey, cardBg: 'bg-red-400', roleBg: 'bg-yellow-500', textColor: 'text-white', roleTextColor: 'text-black' }, // 23: Jean Grey
+  { p: portWolverine, b: bgWolverine, cardBg: 'bg-yellow-400', roleBg: 'bg-blue-600', textColor: 'text-black', roleTextColor: 'text-white' }, // 24: Wolverine
+  { p: portGamora, b: bgGamora, cardBg: 'bg-green-600', roleBg: 'bg-fuchsia-700', textColor: 'text-white', roleTextColor: 'text-white' }, // 25: Gamora
 ];
 
 const heroProps = (index) => ({
@@ -122,22 +128,22 @@ export const teamMembers = [
   { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) }, // Black Widow
   { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, ...heroProps(8) }, // Doctor Strange
   { name: 'Ishan', role: 'Tech Lead', image: techLeadIshan, ...heroProps(2) }, // Iron Man
-  { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(17) }, // War Machine
+  { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(9) }, // Vision
   { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) }, // Spider-Man
   { name: 'Manish', role: 'Events Lead', image: eventsLead, ...heroProps(20) }, // Daredevil
   { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, ...heroProps(14) }, // Wasp
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) }, // Black Panther
-  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, ...heroProps(16) }, // Ant-Man
+  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, ...heroProps(18) }, // Deadpool
   { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, ...heroProps(10) }, // White Widow
-  { name: 'Prashant', role: 'Creative Head', image: creativeHead, ...heroProps(18) }, // Deadpool
+  { name: 'Prashant', role: 'Creative Head', image: creativeHead, ...heroProps(16) }, // Ant-Man
   { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(13) }, // Hawkeye
   { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, ...heroProps(11) }, // Rouge
   { name: 'Eshani', role: 'Treasurer', image: treasurerEshani, ...heroProps(7) }, // Scarlet Witch
-  { name: 'Debolina', role: 'Hospitality Lead', image: hospitalityLead, ...heroProps(9) }, // Vision
+  { name: 'Debolina', role: 'Hospitality Lead', image: hospitalityLead, ...heroProps(25) }, // Gamora
   { name: 'Sadhana', role: 'Deputy Hospitality', image: dyHospitalitySadhana, ...heroProps(22) }, // Shuri
   { name: 'Ashmit', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(15) }, // Moon Knight
   { name: 'Akanshya', role: 'Decor Lead', image: decorLead, ...heroProps(23) }, // Jean Grey
-  { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(22) }, // Shuri
+  { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(24) }, // Wolverine
   { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(19) }, // Storm
   { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(12) }, // Star-Lord
   { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(1) }, // Hulk
