@@ -9,17 +9,7 @@ const colors = [
   "bg-indigo-300",
 ];
 
-// ─────────────────────────────────────────────────────────────────
-// MobileFlipCard — iOS-safe flip
-//
-// iOS Safari has a well-known bug where backface-visibility: hidden
-// on children of a preserve-3d container doesn't always hide the
-// back face, so you see both faces stacked. The fix: instead of two
-// absolutely-positioned faces relying on backface-visibility, we
-// use ONE card face whose CONTENT (front vs. back portrait) is
-// swapped at the exact midpoint of the rotation animation by a
-// React state + setTimeout. No backface-visibility needed at all.
-// ─────────────────────────────────────────────────────────────────
+// 
 const FLIP_DURATION = 600; // ms — must match the CSS transition below
 
 const MobileFlipCard = ({ member, index, cardColor, roleBg, flipped, onFlip }) => {
