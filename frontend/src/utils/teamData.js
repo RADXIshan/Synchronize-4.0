@@ -90,37 +90,37 @@ import bgNebula from '../assets/comic_theme/bg_nebula.png';
 // ── Hero registry ─────────────────────────────────────────────────────────────
 const heroes = [
   // Original 10
-  { p: portCap, b: bgCap, cardBg: 'bg-blue-400', roleBg: 'bg-red-400', textColor: 'text-black', roleTextColor: 'text-black' }, //  0: Captain America
-  { p: portHulk, b: bgHulk, cardBg: 'bg-green-400', roleBg: 'bg-yellow-300', textColor: 'text-black', roleTextColor: 'text-black' }, //  1: Hulk
-  { p: portIron, b: bgIron, cardBg: 'bg-red-500', roleBg: 'bg-yellow-400', textColor: 'text-white', roleTextColor: 'text-black' }, //  2: Iron Man
-  { p: portPanther, b: bgPanther, cardBg: 'bg-indigo-400', roleBg: 'bg-fuchsia-400', textColor: 'text-black', roleTextColor: 'text-black' }, //  3: Black Panther
-  { p: portThor, b: bgThor, cardBg: 'bg-cyan-400', roleBg: 'bg-yellow-400', textColor: 'text-black', roleTextColor: 'text-black' }, //  4: Thor
-  { p: portWidow, b: bgWidow, cardBg: 'bg-rose-500', roleBg: 'bg-neutral-800', textColor: 'text-white', roleTextColor: 'text-white' }, //  5: Black Widow
-  { p: portSpidey, b: bgSpidey, cardBg: 'bg-red-500', roleBg: 'bg-blue-400', textColor: 'text-white', roleTextColor: 'text-black' }, //  6: Spider-Man
-  { p: portScarlet, b: bgScarlet, cardBg: 'bg-pink-500', roleBg: 'bg-red-400', textColor: 'text-white', roleTextColor: 'text-black' }, //  7: Scarlet Witch
-  { p: portStrange, b: bgStrange, cardBg: 'bg-teal-400', roleBg: 'bg-orange-400', textColor: 'text-black', roleTextColor: 'text-black' }, //  8: Doctor Strange
-  { p: portVision, b: bgVision, cardBg: 'bg-fuchsia-400', roleBg: 'bg-emerald-300', textColor: 'text-black', roleTextColor: 'text-black' }, //  9: Vision
+  { p: portCap, b: bgCap, cardBg: 'bg-blue-400', roleBg: 'bg-red-400', textColor: 'text-black', roleTextColor: 'text-black', heroName: 'CAPTAIN AMERICA' }, //  0: Captain America
+  { p: portHulk, b: bgHulk, cardBg: 'bg-green-400', roleBg: 'bg-yellow-300', textColor: 'text-black', roleTextColor: 'text-black', heroName: 'HULK' }, //  1: Hulk
+  { p: portIron, b: bgIron, cardBg: 'bg-red-500', roleBg: 'bg-yellow-400', textColor: 'text-white', roleTextColor: 'text-black', heroName: 'IRON MAN' }, //  2: Iron Man
+  { p: portPanther, b: bgPanther, cardBg: 'bg-indigo-400', roleBg: 'bg-fuchsia-400', textColor: 'text-black', roleTextColor: 'text-black', heroName: 'BLACK PANTHER' }, //  3: Black Panther
+  { p: portThor, b: bgThor, cardBg: 'bg-cyan-400', roleBg: 'bg-yellow-400', textColor: 'text-black', roleTextColor: 'text-black', heroName: 'THOR' }, //  4: Thor
+  { p: portWidow, b: bgWidow, cardBg: 'bg-rose-500', roleBg: 'bg-neutral-800', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'BLACK WIDOW' }, //  5: Black Widow
+  { p: portSpidey, b: bgSpidey, cardBg: 'bg-red-500', roleBg: 'bg-blue-400', textColor: 'text-white', roleTextColor: 'text-black', heroName: 'SPIDER-MAN' }, //  6: Spider-Man
+  { p: portScarlet, b: bgScarlet, cardBg: 'bg-pink-500', roleBg: 'bg-red-400', textColor: 'text-white', roleTextColor: 'text-black', heroName: 'SCARLET WITCH' }, //  7: Scarlet Witch
+  { p: portStrange, b: bgStrange, cardBg: 'bg-teal-400', roleBg: 'bg-orange-400', textColor: 'text-black', roleTextColor: 'text-black', heroName: 'DOCTOR STRANGE' }, //  8: Doctor Strange
+  { p: portVision, b: bgVision, cardBg: 'bg-fuchsia-400', roleBg: 'bg-emerald-300', textColor: 'text-black', roleTextColor: 'text-black', heroName: 'VISION' }, //  9: Vision
   // Wave 2
-  { p: portWhiteWidow, b: bgWhiteWidow, cardBg: 'bg-slate-200', roleBg: 'bg-slate-600', textColor: 'text-black', roleTextColor: 'text-white' }, // 10: White Widow
-  { p: portRouge, b: bgRouge, cardBg: 'bg-yellow-400', roleBg: 'bg-red-600', textColor: 'text-black', roleTextColor: 'text-white' }, // 11: Rouge
-  { p: portStarLord, b: bgStarLord, cardBg: 'bg-orange-500', roleBg: 'bg-red-700', textColor: 'text-white', roleTextColor: 'text-white' }, // 12: Star-Lord
-  { p: portHawkeye, b: bgHawkeye, cardBg: 'bg-purple-500', roleBg: 'bg-violet-800', textColor: 'text-white', roleTextColor: 'text-white' }, // 13: Hawkeye
-  { p: portWasp, b: bgWasp, cardBg: 'bg-yellow-300', roleBg: 'bg-black', textColor: 'text-black', roleTextColor: 'text-yellow-300' }, // 14: Wasp
-  { p: portMoonKnight, b: bgMoonKnight, cardBg: 'bg-gray-100', roleBg: 'bg-gray-700', textColor: 'text-black', roleTextColor: 'text-white' }, // 15: Moon Knight
-  { p: portAntMan, b: bgAntMan, cardBg: 'bg-red-600', roleBg: 'bg-gray-800', textColor: 'text-white', roleTextColor: 'text-white' }, // 16: Ant-Man
+  { p: portWhiteWidow, b: bgWhiteWidow, cardBg: 'bg-slate-200', roleBg: 'bg-slate-600', textColor: 'text-black', roleTextColor: 'text-white', heroName: 'WHITE WIDOW' }, // 10: White Widow
+  { p: portRouge, b: bgRouge, cardBg: 'bg-yellow-400', roleBg: 'bg-red-600', textColor: 'text-black', roleTextColor: 'text-white', heroName: 'ROGUE' }, // 11: Rouge
+  { p: portStarLord, b: bgStarLord, cardBg: 'bg-orange-500', roleBg: 'bg-red-700', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'STAR-LORD' }, // 12: Star-Lord
+  { p: portHawkeye, b: bgHawkeye, cardBg: 'bg-purple-500', roleBg: 'bg-violet-800', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'HAWKEYE' }, // 13: Hawkeye
+  { p: portWasp, b: bgWasp, cardBg: 'bg-yellow-300', roleBg: 'bg-black', textColor: 'text-black', roleTextColor: 'text-yellow-300', heroName: 'WASP' }, // 14: Wasp
+  { p: portMoonKnight, b: bgMoonKnight, cardBg: 'bg-gray-100', roleBg: 'bg-gray-700', textColor: 'text-black', roleTextColor: 'text-white', heroName: 'MOON KNIGHT' }, // 15: Moon Knight
+  { p: portAntMan, b: bgAntMan, cardBg: 'bg-red-600', roleBg: 'bg-gray-800', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'ANT-MAN' }, // 16: Ant-Man
   // Wave 3
-  { p: portWarMachine, b: bgWarMachine, cardBg: 'bg-zinc-600', roleBg: 'bg-zinc-900', textColor: 'text-white', roleTextColor: 'text-white' }, // 17: War Machine
-  { p: portDeadpool, b: bgDeadpool, cardBg: 'bg-red-600', roleBg: 'bg-gray-900', textColor: 'text-white', roleTextColor: 'text-white' }, // 18: Deadpool
-  { p: portStorm, b: bgStorm, cardBg: 'bg-sky-300', roleBg: 'bg-indigo-700', textColor: 'text-black', roleTextColor: 'text-white' }, // 19: Storm
-  { p: portDaredevil, b: bgDaredevil, cardBg: 'bg-red-700', roleBg: 'bg-red-900', textColor: 'text-white', roleTextColor: 'text-white' }, // 20: Daredevil
-  { p: portSheHulk, b: bgSheHulk, cardBg: 'bg-green-500', roleBg: 'bg-purple-600', textColor: 'text-white', roleTextColor: 'text-white' }, // 21: She-Hulk
-  { p: portShuri, b: bgShuri, cardBg: 'bg-violet-500', roleBg: 'bg-violet-900', textColor: 'text-white', roleTextColor: 'text-white' }, // 22: Shuri
-  { p: portJeanGrey, b: bgJeanGrey, cardBg: 'bg-red-400', roleBg: 'bg-yellow-500', textColor: 'text-white', roleTextColor: 'text-black' }, // 23: Jean Grey
-  { p: portWolverine, b: bgWolverine, cardBg: 'bg-yellow-400', roleBg: 'bg-blue-600', textColor: 'text-black', roleTextColor: 'text-white' }, // 24: Wolverine
-  { p: portGamora, b: bgGamora, cardBg: 'bg-green-600', roleBg: 'bg-fuchsia-700', textColor: 'text-white', roleTextColor: 'text-white' }, // 25: Gamora
-  { p: portCaptainMarvel, b: bgCaptainMarvel, cardBg: 'bg-red-500', roleBg: 'bg-blue-600', textColor: 'text-white', roleTextColor: 'text-white' }, // 26: Captain Marvel
-  { p: portGroot, b: bgGroot, cardBg: 'bg-amber-800', roleBg: 'bg-green-700', textColor: 'text-white', roleTextColor: 'text-white' }, // 27: Groot
-  { p: portNebula, b: bgNebula, cardBg: 'bg-indigo-950', roleBg: 'bg-purple-800', textColor: 'text-white', roleTextColor: 'text-white' }, // 28: Nebula
+  { p: portWarMachine, b: bgWarMachine, cardBg: 'bg-zinc-600', roleBg: 'bg-zinc-900', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'WAR MACHINE' }, // 17: War Machine
+  { p: portDeadpool, b: bgDeadpool, cardBg: 'bg-red-600', roleBg: 'bg-gray-900', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'DEADPOOL' }, // 18: Deadpool
+  { p: portStorm, b: bgStorm, cardBg: 'bg-sky-300', roleBg: 'bg-indigo-700', textColor: 'text-black', roleTextColor: 'text-white', heroName: 'STORM' }, // 19: Storm
+  { p: portDaredevil, b: bgDaredevil, cardBg: 'bg-red-700', roleBg: 'bg-red-900', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'DAREDEVIL' }, // 20: Daredevil
+  { p: portSheHulk, b: bgSheHulk, cardBg: 'bg-green-500', roleBg: 'bg-purple-600', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'SHE-HULK' }, // 21: She-Hulk
+  { p: portShuri, b: bgShuri, cardBg: 'bg-violet-500', roleBg: 'bg-violet-900', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'SHURI' }, // 22: Shuri
+  { p: portJeanGrey, b: bgJeanGrey, cardBg: 'bg-red-400', roleBg: 'bg-yellow-500', textColor: 'text-white', roleTextColor: 'text-black', heroName: 'JEAN GREY' }, // 23: Jean Grey
+  { p: portWolverine, b: bgWolverine, cardBg: 'bg-yellow-400', roleBg: 'bg-blue-600', textColor: 'text-black', roleTextColor: 'text-white', heroName: 'WOLVERINE' }, // 24: Wolverine
+  { p: portGamora, b: bgGamora, cardBg: 'bg-green-600', roleBg: 'bg-fuchsia-700', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'GAMORA' }, // 25: Gamora
+  { p: portCaptainMarvel, b: bgCaptainMarvel, cardBg: 'bg-red-500', roleBg: 'bg-blue-600', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'CAPTAIN MARVEL' }, // 26: Captain Marvel
+  { p: portGroot, b: bgGroot, cardBg: 'bg-amber-800', roleBg: 'bg-green-700', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'GROOT' }, // 27: Groot
+  { p: portNebula, b: bgNebula, cardBg: 'bg-indigo-950', roleBg: 'bg-purple-800', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'NEBULA' }, // 28: Nebula
 ];
 
 const heroProps = (index) => ({
@@ -130,6 +130,7 @@ const heroProps = (index) => ({
   roleBg: heroes[index].roleBg,
   textColor: heroes[index].textColor,
   roleTextColor: heroes[index].roleTextColor,
+  heroName: heroes[index].heroName,
 });
 
 export const teamMembers = [
@@ -138,14 +139,14 @@ export const teamMembers = [
   { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) }, // Black Widow
   { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(8) }, // Doctor Strange
   { name: 'Ishan', role: 'Tech Lead', image: techLeadIshan, imagePosition: 'center 40%', ...heroProps(2) }, // Iron Man
-  { name: 'Colin', role: 'Tech Lead', image: techLeadColin, imagePosition: 'center 40%', ...heroProps(27) }, // Groot
+  { name: 'Colin Michael', role: 'Tech Lead', image: techLeadColin, imagePosition: 'center 40%', ...heroProps(27) }, // Groot
   { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) }, // Spider-Man
   { name: 'Aditya', role: 'Operations Lead', image: operationsLead, ...heroProps(9) }, // Vision
   { name: 'Manish', role: 'Events Lead', image: eventsLead, imagePosition: 'center 20%', ...heroProps(20) }, // Daredevil
-  { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, imageScale: 1.5, ...heroProps(14) }, // Wasp
+  { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, imagePosition: 'center 40%', ...heroProps(14) }, // Wasp
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) }, // Black Panther
-  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, imagePosition: 'center 10%', imageScale: 1.8, ...heroProps(24) }, // Wolverine
-  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, imageScale: 1.5, ...heroProps(26) }, // Captain Marvel
+  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, imagePosition: 'center 40%', ...heroProps(24) }, // Wolverine
+  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, imagePosition: 'center 40%', ...heroProps(26) }, // Captain Marvel
   { name: 'Prashant', role: 'Creative Head', image: creativeHead, ...heroProps(16) }, // Ant-Man
   { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(13) }, // Hawkeye
   { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, ...heroProps(11) }, // Rouge
