@@ -156,9 +156,9 @@ export const teamMembers = [
   { name: 'Sadhana', role: 'Deputy Hospitality', image: dyHospitalitySadhana, ...heroProps(28) }, // Nebula
   { name: 'Ashmit', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(15) }, // Moon Knight
   { name: 'Akanshya', role: 'Decor Lead', image: decorLead, ...heroProps(23) }, // Jean Grey
-  { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(22) }, // Shuri
+  { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(21) }, // She-Hulk
   { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(19) }, // Storm
   { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(12) }, // Star-Lord
   { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(1) }, // Hulk
-  { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(21) }, // She-Hulk
+  { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(22) }, // Shuri
 ];
