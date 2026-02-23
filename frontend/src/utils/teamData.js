@@ -25,6 +25,8 @@ import volunteerLead from '../assets/CORE TEAM PHOTOS/Volunteer Lead.jpg';
 import creativeHead from '../assets/CORE TEAM PHOTOS/creative head.jpeg';
 import techLeadColin from '../assets/CORE TEAM PHOTOS/TechLead_Colin.jpg';
 import hospitalityLead2 from '../assets/CORE TEAM PHOTOS/Hospitality_Lead_2.png';
+import facultyAshish from '../assets/CORE TEAM PHOTOS/FacultAdvisor_Ashish Sir.jpg';
+import facultySwarup from '../assets/CORE TEAM PHOTOS/FacultyAdvisor_Swarup Sir.jpg';
 
 // ── Marvel Heroes: Portraits & Backgrounds ───────────────────────────────────
 import portCap from '../assets/comic_theme/portrait_cap.png';
@@ -87,6 +89,10 @@ import portGroot from '../assets/comic_theme/portrait_groot.png';
 import bgGroot from '../assets/comic_theme/bg_groot.png';
 import portNebula from '../assets/comic_theme/portrait_nebula.png';
 import bgNebula from '../assets/comic_theme/bg_nebula.png';
+import portDoom from '../assets/comic_theme/portrait_doom.png';
+import bgDoom from '../assets/comic_theme/bg_doom.png';
+import portThanos from '../assets/comic_theme/portrait_thanos.png';
+import bgThanos from '../assets/comic_theme/bg_thanos.png';
 // ── Hero registry ─────────────────────────────────────────────────────────────
 const heroes = [
   // Original 10
@@ -121,6 +127,8 @@ const heroes = [
   { p: portCaptainMarvel, b: bgCaptainMarvel, cardBg: 'bg-red-500', roleBg: 'bg-blue-600', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'CAPTAIN MARVEL' }, // 26: Captain Marvel
   { p: portGroot, b: bgGroot, cardBg: 'bg-amber-800', roleBg: 'bg-green-700', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'GROOT' }, // 27: Groot
   { p: portNebula, b: bgNebula, cardBg: 'bg-indigo-950', roleBg: 'bg-purple-800', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'NEBULA' }, // 28: Nebula
+  { p: portDoom, b: bgDoom, cardBg: 'bg-emerald-700', roleBg: 'bg-emerald-950', textColor: 'text-white', roleTextColor: 'text-white', heroName: 'DOCTOR DOOM' }, // 29: Doctor Doom
+  { p: portThanos, b: bgThanos, cardBg: 'bg-purple-700', roleBg: 'bg-purple-950', textColor: 'text-yellow-400', roleTextColor: 'text-yellow-400', heroName: 'THANOS' }, // 30: Thanos
 ];
 
 const heroProps = (index) => ({
@@ -133,11 +141,16 @@ const heroProps = (index) => ({
   heroName: heroes[index].heroName,
 });
 
+export const facultyAdvisors = [
+  { name: 'Prof. Ashish Kumar', role: 'Faculty Advisor', image: facultyAshish, heroScale: 1, heroPortraitBg: 'white', ...heroProps(30) }, // Thanos
+  { name: 'Prof. Swarup Chattopadhay', role: 'Faculty Advisor', image: facultySwarup, heroScale: 1, heroPosition: 'center center', heroPortraitBg: 'white', ...heroProps(29) }, // Doctor Doom
+];
+
 export const teamMembers = [
   { name: 'Sidhant', role: 'Secretary', image: secretary, ...heroProps(4) }, // Thor
-  { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, ...heroProps(0) }, // Captain America
+  { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, ...heroProps(1) }, // Hulk
   { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) }, // Black Widow
-  { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(8) }, // Doctor Strange
+  { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(0) }, // Captain America
   { name: 'Ishan', role: 'Tech Lead', image: techLeadIshan, imagePosition: 'center 40%', ...heroProps(2) }, // Iron Man
   { name: 'Colin', role: 'Tech Lead', image: techLeadColin, imagePosition: 'center 40%', ...heroProps(27) }, // Groot
   { name: 'Ayush', role: 'Deputy Tech Lead', image: deputyTechLead, ...heroProps(6) }, // Spider-Man
@@ -159,6 +172,6 @@ export const teamMembers = [
   { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(21) }, // She-Hulk
   { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(19) }, // Storm
   { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(12) }, // Star-Lord
-  { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(1) }, // Hulk
+  { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(8) }, // Doctor Strange
   { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(22) }, // Shuri
 ];

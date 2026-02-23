@@ -71,13 +71,19 @@ const MobileFlipCard = ({ member, index, cardColor, roleBg, flipped, onFlip }) =
             <div className="absolute inset-0 halftone-pattern opacity-40 z-0 pointer-events-none"></div>
 
             {showBack ? (
-              /* ── BACK: Hero Portrait ── */
               <>
-                <img
-                  src={member.heroPortrait}
-                  alt="Hero Avatar"
-                  className="absolute inset-0 w-full h-full object-cover object-top filter contrast-125 saturate-150 block z-10"
-                />
+                <div style={{ backgroundColor: member.heroPortraitBg || 'transparent', width: '100%', height: '100%', position: 'absolute', inset: 0, zIndex: 10 }}>
+                  <img
+                    src={member.heroPortrait}
+                    alt="Hero Avatar"
+                    className="w-full h-full object-cover filter contrast-125 saturate-150 block"
+                    style={{
+                      objectPosition: member.heroPosition || 'top',
+                      transform: `scale(${member.heroScale || 1})`,
+                      transformOrigin: 'bottom center',
+                    }}
+                  />
+                </div>
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 pointer-events-none">
                   <span className="bg-white border-[3px] border-black text-black font-black uppercase text-[10px] tracking-widest px-3 py-1 shadow-[3px_3px_0px_#000] transform rotate-1 whitespace-nowrap">
                     Tap again to flip back
@@ -187,11 +193,15 @@ const TeamMemberCard = ({ member, index, setActiveBg, flipped, onFlip }) => {
             </div>
 
             {/* Hero Portrait – revealed on hover */}
-            <div className="absolute inset-0 transition-opacity duration-300 ease-in-out z-20 opacity-0 group-hover:opacity-100">
+            <div className="absolute inset-0 transition-opacity duration-300 ease-in-out z-20 opacity-0 group-hover:opacity-100 flex items-center justify-center overflow-hidden" style={{ backgroundColor: member.heroPortraitBg || 'transparent' }}>
               <img
                 src={member.heroPortrait}
                 alt="Hero Avatar"
-                className="w-full h-full object-cover object-top filter contrast-125 saturate-150 block transition-transform duration-500 origin-bottom group-hover:scale-105"
+                className="w-full h-full object-cover filter contrast-125 saturate-150 block transition-transform duration-500 origin-bottom group-hover:scale-105"
+                style={{
+                  objectPosition: member.heroPosition || 'top',
+                  transform: `scale(${member.heroScale || 1})`
+                }}
               />
             </div>
           </div>

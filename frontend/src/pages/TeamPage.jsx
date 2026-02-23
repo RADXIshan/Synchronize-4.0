@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { teamMembers } from '../utils/teamData'; 
+import { teamMembers, facultyAdvisors } from '../utils/teamData'; 
 import TeamMemberCard from '../components/TeamMemberCard';
 import bgAvengersMain from '../assets/comic_theme/bg_avengers_main.png';
 
@@ -12,14 +12,14 @@ const TeamPage = () => {
   const [flippedIndex, setFlippedIndex] = useState(null);
 
   // Toggle flip: only one card open at a time
-  const handleFlip = (index, heroBg) => {
-    if (flippedIndex === index) {
+  const handleFlip = (id, heroBg) => {
+    if (flippedIndex === id) {
       // clicking the already-open card → flip it back
       setFlippedIndex(null);
       setActiveBg(null);
     } else {
       // flip new card, auto-close any previously open one
-      setFlippedIndex(index);
+      setFlippedIndex(id);
       setActiveBg(heroBg);
     }
   };
@@ -99,15 +99,55 @@ const TeamPage = () => {
            </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 gap-y-16 sm:gap-x-12 px-2 sm:px-6 pt-8 pb-20 justify-items-center">
-          {teamMembers.map((member, index) => (
-            <div key={index} className="team-card w-full max-w-[400px]">
+        {/* Faculty Advisors Section */}
+        <div className="text-center mt-12 mb-10 relative">
+           <div className="relative inline-block px-4">
+             <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white tracking-tighter relative z-10 italic"
+               style={{
+                 WebkitTextStroke: '2px black',
+                 textShadow: '4px 4px 0px #D2161E'
+               }}>
+               FACULTY ADVISORS
+             </h2>
+           </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 gap-y-16 sm:gap-x-12 px-2 sm:px-6 pb-12 justify-items-center max-w-4xl mx-auto">
+          {facultyAdvisors.map((member, index) => (
+            <div key={`faculty-${index}`} className="team-card w-full max-w-[400px]">
               <TeamMemberCard
                 member={member}
                 index={index}
                 setActiveBg={setActiveBg}
-                flipped={flippedIndex === index}
-                onFlip={() => handleFlip(index, member.heroBg)}
+                flipped={flippedIndex === `faculty-${index}`}
+                onFlip={() => handleFlip(`faculty-${index}`, member.heroBg)}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* The Team Section */}
+        <div className="text-center mt-10 mb-10 relative">
+           <div className="relative inline-block px-4">
+             <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white tracking-tighter relative z-10 italic"
+               style={{
+                 WebkitTextStroke: '2px black',
+                 textShadow: '4px 4px 0px #D2161E'
+               }}>
+               THE TEAM
+             </h2>
+           </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 gap-y-16 sm:gap-x-12 px-2 sm:px-6 pt-8 pb-20 justify-items-center">
+          {teamMembers.map((member, index) => (
+            <div key={`team-${index}`} className="team-card w-full max-w-[400px]">
+              <TeamMemberCard
+                member={member}
+                index={index}
+                setActiveBg={setActiveBg}
+                flipped={flippedIndex === `team-${index}`}
+                onFlip={() => handleFlip(`team-${index}`, member.heroBg)}
               />
             </div>
           ))}
