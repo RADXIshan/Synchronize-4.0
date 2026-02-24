@@ -149,7 +149,7 @@ export const facultyAdvisors = [
 
 export const teamMembers = [
   { name: 'Sidhant', role: 'Secretary', image: secretary, ...heroProps(4) }, // Thor
-  { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, ...heroProps(0) }, // Captain America
+  { name: 'Kaif', role: 'Coordinator', image: coordinatorKaif, imagePosition: 'center 20%', ...heroProps(0) }, // Captain America
   { name: 'Simran', role: 'Coordinator', image: coordinator1, ...heroProps(5) }, // Black Widow
   { name: 'Rhea', role: 'Deputy Coordinator', image: coordinatorRhea, imagePosition: 'center 50%', ...heroProps(26) }, // Captain Marvel
   { name: 'Srimad', role: 'Deputy Coordinator', image: dyCoordinatorSrimad, imagePosition: 'center 10%', ...heroProps(8) }, // Doctor Strange
@@ -160,20 +160,20 @@ export const teamMembers = [
   { name: 'Manish', role: 'Events Lead', image: eventsLead, imagePosition: 'center 20%', ...heroProps(20) }, // Daredevil
   { name: 'Pratirupa', role: 'Events Lead', image: eventLeadPratirupa, imagePosition: 'center 40%', ...heroProps(14) }, // Wasp
   { name: 'Subham', role: 'Logistics Lead', image: logisticsLead, ...heroProps(3) }, // Black Panther
-  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, imagePosition: 'center 40%', ...heroProps(24) }, // Wolverine
-  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, imagePosition: 'center 40%', ...heroProps(7) }, // Scarlet Witch
-  { name: 'Prashant', role: 'Creative Head', image: creativeHead, ...heroProps(16) }, // Ant-Man
+  { name: 'Akshat', role: 'Design Lead', image: designLeadAkshat, imagePosition: 'center 50%', ...heroProps(24) }, // Wolverine
+  { name: 'Sneha', role: 'Media & PR Lead', image: mediaPRLead, imagePosition: 'center 50%', ...heroProps(7) }, // Scarlet Witch
+  { name: 'Prashant', role: 'Creative Head', image: creativeHead, imagePosition: 'center 10%', ...heroProps(16) }, // Ant-Man
   { name: 'Mrunmay', role: 'Cam Ops', image: camOps, ...heroProps(13) }, // Hawkeye
-  { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, ...heroProps(10) }, // White Widow
+  { name: 'Hrisita', role: 'Coverage Lead', image: coverageLead, imagePosition: 'center 30%', ...heroProps(10) }, // White Widow
   { name: 'Eshani', role: 'Treasurer', image: treasurerEshani, ...heroProps(11) }, // Rogue
-  { name: 'Debolina', imageScale: 1.3, role: 'Hospitality Lead', image: hospitalityLead, ...heroProps(25) }, // Gamora
+  { name: 'Debolina', role: 'Hospitality Lead', image: hospitalityLead, imagePosition: 'center 40%', ...heroProps(25) }, // Gamora
   { name: 'Daksh', role: 'Hospitality Lead', image: hospitalityLead2, imagePosition: 'center 40%', ...heroProps(18) }, // Deadpool
   { name: 'Sadhana', role: 'Deputy Hospitality', image: dyHospitalitySadhana, ...heroProps(28) }, // Nebula
-  { name: 'Ashmit', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(15) }, // Moon Knight
+  { name: 'Ashmit', imagePosition: 'center 30%', role: 'Deputy Hospitality', image: deputyHospitality1, ...heroProps(15) }, // Moon Knight
   { name: 'Akanshya', role: 'Decor Lead', image: decorLead, ...heroProps(23) }, // Jean Grey
-  { name: 'Priyanka', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(21) }, // She-Hulk
-  { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, ...heroProps(19) }, // Storm
+  { name: 'Priyanka', imagePosition: 'center 30%', role: 'Sponsorship Lead', image: sponsorshipLead, ...heroProps(21) }, // She-Hulk
+  { name: 'Ananya', role: 'Robotics Head', image: roboticsAnanya, imagePosition: 'center 30%', ...heroProps(19) }, // Storm
   { name: 'Ankit', role: 'Robotics Head', image: roboticsAnkit, ...heroProps(12) }, // Star-Lord
-  { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, ...heroProps(9) }, // Vision
-  { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, ...heroProps(22) }, // Shuri
+  { name: 'Jestin', role: 'Volunteer Lead', image: volunteerLead, imagePosition: 'center 30%', ...heroProps(9) }, // Vision
+  { name: 'Pracheta', role: 'Volunteer Lead', image: volunteerLead1, imagePosition: 'center 50%', ...heroProps(22) }, // Shuri
 ];
